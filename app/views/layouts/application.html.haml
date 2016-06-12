@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Lms
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    -if flash[:notice].present?
+      .ui.flash#notice
+        =flash[:notice]
+    =render 'header' 
+    .ui.grid.container#main-container
+      .row
+        -if !logged_in?
+          .sixteen.wide.column
+            = yield
+        -else
+          .four.wide.column
+            =render 'left_sidebar'
+          .twelve.wide.column
+            = yield
+    =render 'footer'

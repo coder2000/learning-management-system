@@ -1,0 +1,181 @@
+//////////////////////////
+////                  ////
+////     top bar      ////
+////                  ////
+//////////////////////////
+.top-bar{
+  height: 50px;
+  background-color: #008947;
+  padding-top: 15px;
+  width: 100%;
+}
+h4.brand-name{
+  color: white;
+}
+.text-right{
+  text-align: right;
+}
+
+
+//////////////////////////
+////                  ////
+////     container    ////
+////                  ////
+//////////////////////////
+
+body{
+  background-color: #f7f7f7;
+}
+#main-container{
+  padding-top: 20px;
+} 
+#login-container{
+  margin: 7% auto;
+  border: 1px solid black;
+  border-radius: 20px 0px 20px 0px;
+  background-color: rgba(254, 254, 254, 0.4);
+  width: 40%;
+}
+
+//////////////////////////
+////                  ////
+////      login       ////
+////                  ////
+//////////////////////////
+
+.login-field{
+}
+#login-label{
+  margin-top: 10px;
+}
+#login-form-control{
+  width: 90%;
+  margin: 5px auto;
+  text-align: center;
+}
+.login-buttons{
+  width: 100%;
+}
+#role-choices{
+  margin-top: 40px !important;
+  width: 90%;
+  margin-left: 35px !important;
+}
+.role-choice{
+}
+#sign-up-modal{
+  padding-bottom: 10px;
+}
+
+//////////////////////////
+////                  ////
+////      pages       ////
+////                  ////
+//////////////////////////
+
+.background-image{
+  background: url("/background.jpg") top left no-repeat;
+  background-size: cover;
+  height: 500px;
+  margin-bottom: 10px;
+  margin-top: 13px;
+}
+.overlay {
+  padding: 0em;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: all 0.5s ease;
+  background: transparent;
+}
+.fixed.overlay {
+  position: fixed;
+  background: transparent;
+  padding: 1em;
+  width: 60%;
+}
+.fixed.overlay + .placeholder {
+  display: block;
+  height: 28px;
+}
+
+//////////////////////////
+////                  ////
+////  registration    ////
+////                  ////
+//////////////////////////
+
+.registration-segment{
+  margin-top: 20px !important;
+}
+
+//////////////////////////
+////                  ////
+////     profile      ////
+////                  ////
+//////////////////////////
+
+.edit-user-form-control{
+  margin-top: 20px !important;
+}
+
+
+//////////////////////////
+////                  ////
+////     group        ////
+////                  ////
+//////////////////////////
+
+.join-form-control{
+  text-align: center;
+}
+#join-button{
+  margin: 10px auto;
+  width: 90%;
+}
+#create-group-form-control{
+  width: 90%;
+  margin: 10px auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.groups-control img{
+  height: 150px;
+}
+
+//////////////////////////
+////                  ////
+////     group        ////
+////                  ////
+//////////////////////////
+
+.input-field {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input-field + label {
+  font-size: 1em;
+  font-weight: 700;
+  color: white;
+  background-color: #008947;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 30px !important;
+}
+
+.input-field:focus + label,
+.input-field + label:hover {
+  background-color: #008947; 
+}
+.input-field + label {
+  cursor: pointer;
+}
+.input-field:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+#video_button{
+  margin-right: 20px;
+}
