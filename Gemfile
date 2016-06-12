@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'remotipart'
+gem 'videojs_rails'
 
 #mongoid
 gem 'mongoid', '5.0.1'

@@ -23,29 +23,31 @@
 //= require visibility
 //= require dimmer
 //= require message
+//= require video
 
 $(document).ready(function(e){
   $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
   var input = document.getElementById( 'video_video' );
   var label = document.getElementById( 'video_button' );
-  input.addEventListener( 'change', function( e ){
-    var fileName = '';
-    if( this.files && this.files.length > 1 ){
-      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-    }
-    else{
-      fileName = e.target.value.split( '\\' ).pop();
-    }
+  if(input !== null){
+    input.addEventListener( 'change', function( e ){
+      var fileName = '';
+      if( this.files && this.files.length > 1 ){
+        fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+      }
+      else{
+        fileName = e.target.value.split( '\\' ).pop();
+      }
 
-    if( fileName ){
-      $("#video_button span").html(fileName);
-    }
-    else{
-      $("#video_button").html(labelVal);
-    }
+      if( fileName ){
+        $("#video_button span").html(fileName);
+      }
+      else{
+        $("#video_button").html(labelVal);
+      }
 		});
-
-		// Firefox bug fix
 		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
 		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+  }
+
 });

@@ -1,13 +1,14 @@
 class VideosController < ApplicationController
   def create
     @repo = current_user.video_repositories.find(params[:video_repository_id])
-    @repo.videos.create!(data)
+    @video = @repo.videos.create!(data)
   end
 
   def destroy
   end
 
   def show
+    @video = Video.find(params[:id])
   end
 
   private

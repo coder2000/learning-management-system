@@ -11,4 +11,16 @@
       %label#video_button{for: 'video_video'}
         %span Choose a video file
       =v.submit "Upload", class: "ui button green"
+  .ui.divided.list
+    -@repo.videos.all.each do |video|
+      .item
+        =link_to video_repository_video_path(@repo, video.id) , data:{confirm: "Are you sure you want to delete this video?", method: :delete} do
+          .right.floated.compact.ui.button.red.inverted
+            Remove
+        =link_to video_repository_video_path(@repo , video.id)  do
+          .right.floated.compact.ui.button.green.inverted
+            View
+        = video.video.thumb.url.present? ? (image_tag video.video.thumb.url , class: "ui avatar image") : (image_tag "7.jpg" , class: "ui avatar image")
+        .content
+          =link_to video.title, video_repository_video_path(@repo , video.id) , class: "header" 
 
