@@ -5,6 +5,13 @@ class VideosController < ApplicationController
   end
 
   def destroy
+    video = Video.find(params[:id])
+    if video
+      video.remove_video!
+      video.save
+      video.delete
+      redirect_to video_repository_path(params[:video_repository_id]), notice: "Video deleted"
+    end
   end
 
   def show

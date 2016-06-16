@@ -7,12 +7,12 @@
         =form_tag join_group_path, method: :post do 
           =text_field_tag :code, nil, placeholder: "Input group code here"
           =submit_tag "Join group", class: "ui button green", id: "join-button"
-.ui.segment
-  .ui.top.attached.label
-    Repositories
-  .content
-    .ui.link.list
-      =link_to "Files" , "javascript:;", class: 'item'
-      =link_to "My Videos" , "javascript:;", class: 'item'
-      =link_to "Norman Videos" , "javascript:;", class: 'item'
+-else
+  .ui.segment
+    .ui.top.attached.label
+      Repositories
+    .content
+      .ui.link.list
+        -current_user.video_repositories.each do |r|
+          =link_to r.title.titleize, video_repository_path(r.id), class: "item"
 

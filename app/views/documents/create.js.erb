@@ -1,0 +1,6 @@
+<% if @document.new_record? %>
+  $('<div class="ui flash" id="notice"> Something went wrong</div>').insertBefore('.ui.page.grid').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
+<% else %>
+  $('#file-box').append("<%= j render(@document) %>");
+  $('#file_button').html("Choose a file");
+<% end %>

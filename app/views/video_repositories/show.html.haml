@@ -4,7 +4,7 @@
   .ui.error.message#video-warning
     =semantic_icon 'close'
     .header
-      MKV, MP4, and OGG are the only available video file type to be uploaded
+      MP4 and OGG are the only available video files type that can be uploaded
   .ui.form
     =form_for [@repo, @video], remote:true, html: {multipart: true} do |v|
       =v.file_field :video, data: {multiple_caption: "{count} files selected"}, class: 'input-field'

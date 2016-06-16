@@ -143,7 +143,7 @@ body{
 
 //////////////////////////
 ////                  ////
-////     group        ////
+////     video        ////
 ////                  ////
 //////////////////////////
 
@@ -178,4 +178,23 @@ body{
 }
 #video_button{
   margin-right: 20px;
+}
+#file_button{
+  margin-right: 20px;
+}
+
+//////////////////////////
+////                  ////
+////      file        ////
+////                  ////
+//////////////////////////
+
+.ui.file-box{
+  display: inline-block;
+  text-overflow: ellipsis;
+  text-align: center;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 }

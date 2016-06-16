@@ -32,6 +32,7 @@ class User
   has_and_belongs_to_many :student_of, inverse_of: :student, class_name: 'Group'
   has_many :requests
   has_many :video_repositories
+  has_many :files, class_name: "Document"
 
   def self.addGroup(user, token)
     group = Group.find_by_token(token)

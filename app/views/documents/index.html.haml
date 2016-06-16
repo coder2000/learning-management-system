@@ -1,0 +1,20 @@
+.ui.segment
+  %h4.header
+    My File Repository
+  .ui.error.message#file-warning
+    =semantic_icon "close"
+    .header
+      doc, docx, ppt, pptx, xls, xlsx, pdf, zip and rar file types that can be uploaded
+  =form_for Document.new, remote: true, html: {multipart: true} do |d|
+    =d.file_field :files,name: 'files[]', data: {multiple_caption: "{count} files selected"},multiple: true, class: 'input-field'
+    %label#file_button{for: 'document_files'}
+      %span Choose a file
+    =d.submit "Upload", class: "ui button green"
+  .ui.segment#file-box
+    -current_user.files.each do |doc|
+      =link_to doc.files.url do
+        .ui.file-box
+          %p= semantic_icon "file big"
+          %h5= doc.title
+    -if !current_user.files.present?
+      %h4.ui.header.empty-message You don't have uploaded a file yet

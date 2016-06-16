@@ -15,7 +15,7 @@
                 =semantic_icon 'inverted large setting'
                 .menu
                   -if current_user.role != 'student'
-                    =link_to "javascript:;", class: "item", id: "my-file-repository" do
+                    =link_to documents_path, class: "item", id: "my-file-repository" do
                       =semantic_icon 'file'
                       My File Repository
                     =link_to "javascript:;", class: "item", id: "my-video-repository" do

@@ -1,22 +1,23 @@
--if current_user.role != 'student'
-  .ui.small.modal#create-group-modal
-    .ui.top.attached.label
-      Create Group
-    .ui.form#create-group-form-control
-      =form_for Group.new do |g|
-        .field
-          =g.text_field :title, placeholder: "Group Title"
-        .field
-          =g.text_area :description, placeholder: "Group Description"
-        .field
-          =g.submit "Create Group", class: "ui button green"
-  .ui.small.modal#create-video-repository-modal
-    .ui.top.attached.label
-      Create Video Repository
-    .ui.form#create-group-form-control
-      =form_for current_user.video_repositories.new do |g|
-        .field
-          =g.text_field :title, placeholder: "Video Repository Title"
-        .field
-          =g.submit "Create Video Repository", class: "ui button green"
-    
+-if logged_in?
+  -if current_user.role != 'student'
+    .ui.small.modal#create-group-modal
+      .ui.top.attached.label
+        Create Group
+      .ui.form#create-group-form-control
+        =form_for Group.new do |g|
+          .field
+            =g.text_field :title, placeholder: "Group Title"
+          .field
+            =g.text_area :description, placeholder: "Group Description"
+          .field
+            =g.submit "Create Group", class: "ui button green"
+    .ui.small.modal#create-video-repository-modal
+      .ui.top.attached.label
+        Create Video Repository
+      .ui.form#create-group-form-control
+        =form_for current_user.video_repositories.new do |g|
+          .field
+            =g.text_field :title, placeholder: "Video Repository Title"
+          .field
+            =g.submit "Create Video Repository", class: "ui button green"
+      
