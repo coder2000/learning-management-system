@@ -20,7 +20,6 @@
         =link_to video_repository_video_path(@repo , video.id)  do
           .right.floated.compact.ui.button.green.inverted
             View
-        = video.video.thumb.url.present? ? (image_tag video.video.thumb.url , class: "ui avatar image") : (image_tag "7.jpg" , class: "ui avatar image")
         .content
           =link_to video.title, video_repository_video_path(@repo , video.id) , class: "header" 
 
