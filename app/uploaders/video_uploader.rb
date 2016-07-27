@@ -3,6 +3,7 @@
 class VideoUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::Video
+  include CarrierWave::Video::Thumbnailer
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -11,6 +12,16 @@ class VideoUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  version :thumb do
+    process thumbnail: [{ format: 'png', quality: 10, size: 192, logger: Rails.logger }]
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
+
+  def png_name for_file, version_name
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
      redirect_back_or_to(pages_index_path, notice: "Logged in successful")
    else
      redirect_to root_url, notice: "Unknown password/email"
-   end 
+   end
   end
   def destroy
     logout

@@ -27,54 +27,56 @@
 //= require videojs
 
 $(document).ready(function(e){
-  $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
-  if($('#video_video').length > 0){
-    var input = document.getElementById( 'video_video' );
-    var label = document.getElementById( 'video_button' );
-    if(input !== null){
-      input.addEventListener( 'change', function( e ){
-        var fileName = '';
-        if( this.files && this.files.length > 1 ){
-          fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-        }
-        else{
-          fileName = e.target.value.split( '\\' ).pop();
-        }
+  document.addEventListener('turbolinks:load', function(){
+    $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
+    if($('#video_video').length > 0){
+      var input = document.getElementById( 'video_video' );
+      var label = document.getElementById( 'video_button' );
+      if(input !== null){
+        input.addEventListener( 'change', function( e ){
+          var fileName = '';
+          if( this.files && this.files.length > 1 ){
+            fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+          }
+          else{
+            fileName = e.target.value.split( '\\' ).pop();
+          }
 
-        if( fileName ){
-          $("#video_button span").html(fileName);
-        } 
-        else{
-          $("#video_button").html(labelVal);
-        }
-      });
-      input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-      input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+          if( fileName ){
+            $("#video_button span").html(fileName);
+          }
+          else{
+            $("#video_button").html(labelVal);
+          }
+        });
+        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+      }
     }
-  }
-  if($('#document_files').length > 0){
-    var input = document.getElementById( 'document_files' );
-    var label = document.getElementById( 'file_button' );
-    if(input !== null){
-      input.addEventListener( 'change', function( e ){
-        var fileName = '';
-        if( this.files && this.files.length > 1 ){
-          fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-        }
-        else{
-          fileName = e.target.value.split( '\\' ).pop();
-        }
+    if($('#document_files').length > 0){
+      var input = document.getElementById( 'document_files' );
+      var label = document.getElementById( 'file_button' );
+      if(input !== null){
+        input.addEventListener( 'change', function( e ){
+          var fileName = '';
+          if( this.files && this.files.length > 1 ){
+            fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+          }
+          else{
+            fileName = e.target.value.split( '\\' ).pop();
+          }
 
-        if( fileName ){
-          $("#file_button span").html(fileName);
-        } 
-        else{
-          $("#file_button").html(labelVal);
-        }
-      });
-      input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-      input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+          if( fileName ){
+            $("#file_button span").html(fileName);
+          } 
+          else{
+            $("#file_button").html(labelVal);
+          }
+        });
+        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+      }
     }
-  }
+  });
 
 });

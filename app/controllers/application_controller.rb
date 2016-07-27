@@ -4,10 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-  
+
   def authenticated?
-    if !current_user.present?
+    if !logged_in?
       redirect_to root_url
+    end
+  end
+
+  def check_if_logged_in
+    if logged_in?
+      redirect_to pages_index_path
     end
   end
 

@@ -10,7 +10,7 @@
     -if flash[:notice].present?
       .ui.flash#notice
         =flash[:notice]
-    =render 'header' 
+    =render 'header'
     .ui.grid.container#main-container
       .row
         -if !logged_in?

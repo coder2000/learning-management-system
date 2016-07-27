@@ -5,7 +5,7 @@ class Video
   field :title, type: String
 
   belongs_to :video_repository
-  
+
   validates_presence_of :video
 
   before_save :set_title
