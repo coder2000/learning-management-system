@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :part_of_the_group?, except: [:create, :index]
+  before_filter :group, only: [:show]
   def index
   end
   def create
@@ -17,10 +18,14 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by_token(params[:id])
+    @post = @group.posts.desc(:updated_at).page(params[:page])
   end
 
   private
+
+  def group
+    @group ||= Group.find_by_token params[:id]
+  end
 
   def data
     params.require(:group).permit(:title, :description)

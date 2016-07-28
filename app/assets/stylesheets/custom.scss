@@ -24,7 +24,7 @@ h4.brand-name{
 //////////////////////////
 
 body{
-  background-color: #f7f7f7;
+  background-color: #E9EBEE;
 }
 #main-container{
   padding-top: 20px;
@@ -198,3 +198,30 @@ body{
   height: 100px;
   margin: 10px;
 }
+//////////////////////////
+////                  ////
+////   group  item    ////
+////                  ////
+//////////////////////////
+
+.item.bordered{
+  border: solid 2px #d9d9d9 !important;
+  border-radius: 2px !important;
+  padding: 10px !important;
+  background: #ffffff !important;
+}
+
+//////////////////////////
+////                  ////
+////   group  post    ////
+////                  ////
+//////////////////////////
+
+.clearfix-segment{
+  overflow: auto;
+
+  .button {
+    margin-top: 10px;
+  }
+}
+

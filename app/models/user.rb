@@ -33,6 +33,7 @@ class User
   has_many :requests
   has_many :video_repositories
   has_many :files, class_name: "Document"
+  has_many :posts, class_name: "Post"
 
   def self.addGroup(user, token)
     group = Group.find_by_token(token)

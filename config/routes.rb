@@ -40,7 +40,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :groups
+  resources :groups do
+    resources :posts, except: [:index]
+  end
   resources :documents, only: [:index, :create, :destroy]
   resources :video_repositories do
     resources :videos, only: [:show, :create, :destroy]

@@ -15,6 +15,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jwplayer/jwplayer
 //= require semantic-ui
 //= require checkbox
 //= require form
@@ -23,8 +24,10 @@
 //= require visibility
 //= require dimmer
 //= require message
-//= require video
+//= require tab
 //= require videojs
+//= require jquery.lazyloadxt.min
+//= require jquery.lazyloadxt.video.min
 
 $(document).ready(function(e){
   document.addEventListener('turbolinks:load', function(){
