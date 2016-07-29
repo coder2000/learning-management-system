@@ -7,6 +7,7 @@ class Document
   before_save :set_title
 
   belongs_to :user, class_name: "User"
+  has_and_belongs_to_many :posts
 
   def set_title
     self.title ||= File.basename(files.filename , '.*').titleize if files

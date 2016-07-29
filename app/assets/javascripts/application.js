@@ -26,8 +26,6 @@
 //= require message
 //= require tab
 //= require videojs
-//= require jquery.lazyloadxt.min
-//= require jquery.lazyloadxt.video.min
 
 $(document).ready(function(e){
   document.addEventListener('turbolinks:load', function(){

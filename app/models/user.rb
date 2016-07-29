@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  mount_uploader :avatar, AvatarUploader
   authenticates_with_sorcery!
   ALLOWED_ROLES = ['student', 'instructor']
 

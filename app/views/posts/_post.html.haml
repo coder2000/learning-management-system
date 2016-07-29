@@ -1,12 +1,26 @@
 .item.bordered
   -if post.video.present?
     .image
+      .ui.dimmer
+        .content
+          =link_to "javascript:;", class: "video-modal", data: { src: post.video.video.url, poster: post.video.video.thumb.url, title: post.video.title } do
+            =semantic_icon "play circle huge"
       =image_tag post.video.video.thumb.url
   .content
-    =link_to post.user.fullname, user_path(post.user.id), class: "header"
-    .meta
-      %span= post.updated_at
+    .ui.list
+      .item
+        =image_tag ( post.user.avatar.present? ? post.user.avatar.thumb.url : "male.png" ), class: "ui avatar image"
+        .content
+          .header
+            =link_to post.user.fullname, user_path(post.user.id)
+            -if post.user.id == current_user.id
+              .ui.inline.dropdown#post-actions
+                =semantic_icon "angle down"
+                .menu
+                  =link_to "Edit", "javascript:;", class: "item"
+                  =link_to "Remove", "javascript:;", class: "item"
+          %span= post.updated_at
     .description
       %p
         =truncate post.content, length: 380, omission: "...  (continued)"
-    =has_extra(post.quiz.present?, post.homework.present?, post.attachment.present?, group_post_path(post.group.token, post.id))
+    =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))
