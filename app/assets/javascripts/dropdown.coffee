@@ -19,6 +19,6 @@ $(document).ready((e) ->
       else
         $("#video-field").hide(300)
     $("#post_attachments").dropdown()
-    $("#post-actions").dropdown()
+    $(".post-actions").dropdown()
   )
 )

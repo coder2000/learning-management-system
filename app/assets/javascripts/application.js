@@ -29,6 +29,9 @@
 
 $(document).ready(function(e){
   document.addEventListener('turbolinks:load', function(){
+    if($("#new_post").length > 0){
+      $("#new_post").form()
+    }
     $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
     if($('#video_video').length > 0){
       var input = document.getElementById( 'video_video' );

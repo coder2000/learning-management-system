@@ -1,4 +1,4 @@
-.item.bordered
+.item.bordered{ id: "item-#{ post.id }" }
   -if post.video.present?
     .image
       .ui.dimmer
@@ -14,7 +14,7 @@
           .header
             =link_to post.user.fullname, user_path(post.user.id)
             -if post.user.id == current_user.id
-              .ui.inline.dropdown#post-actions
+              .ui.inline.dropdown.post-actions
                 =semantic_icon "angle down"
                 .menu
                   =link_to "Edit", "javascript:;", class: "item"
