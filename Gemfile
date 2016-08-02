@@ -18,7 +18,7 @@ gem 'remotipart'
 #gem 'yt'
 
 #pagination
-gem 'kaminari'
+gem 'kaminari-mongoid', ' >= 0.1.2'
 
 #mongoid
 gem 'mongoid', '5.0.1'
@@ -48,6 +48,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails', '>= 3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :development do

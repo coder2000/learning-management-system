@@ -35,7 +35,7 @@ class UsersController < ApplicationController
                                  :gender)
   end
 
-  def data 
+  def data
     params.require(:user).permit(:email,
                                  :fname,
                                  :mname,
