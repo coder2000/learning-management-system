@@ -21,7 +21,7 @@ gem 'remotipart'
 gem 'kaminari-mongoid', ' >= 0.1.2'
 
 #mongoid
-gem 'mongoid', '5.0.1'
+gem 'mongoid', '>=5.0.1'
 gem 'mongoid_token', '>=2.1.1'
 
 #authentication

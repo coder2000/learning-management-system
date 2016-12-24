@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_filter :admin?, except: [:join]
   def join
-    params[:code].present? ? code = "asdasdasd" : code = params[:code]
+    code = params[:code] || ""
     if Group.where(token: code).present?
       group = Group.find_by_token(code)
     end
