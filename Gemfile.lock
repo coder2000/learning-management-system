@@ -279,7 +279,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari-mongoid (>= 0.1.2)
-  mongoid (>= 5.0.1)
+  mongoid (>= 5.0.2)
   mongoid_token (>= 2.1.1)
   rails (= 4.2.5.2)
   remotipart
