@@ -1,6 +1,6 @@
 change = ->
   if $('#video').length > 0
-    jwplayer.key="EA7fi2Owdh/JdYcP7dKRVHiqjiI+RVkI0lZz6w=="
+    jwplayer.key="<JW-Player Token Here>"
     player = jwplayer(document.getElementById('video')).setup({
       "file": $("#video").data('src'),
       "image": $("#video").data('poster'),

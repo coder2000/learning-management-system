@@ -25,7 +25,7 @@
 //= require dimmer
 //= require message
 //= require tab
-//= require videojs
+//= require video_player
 
 $(document).on('turbolinks:load', function(){
   if($("#new_post").length > 0){
