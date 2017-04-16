@@ -10,7 +10,7 @@
       =v.file_field :video, data: {multiple_caption: "{count} files selected"}, class: 'input-field'
       %label#video_button{for: 'video_video'}
         %span Choose a video file
-      =v.submit "Upload", class: "ui button green"
+      =v.submit "Upload", class: "ui button"
   .ui.divided.list
     -@repo.videos.all.each do |video|
       .item
@@ -18,7 +18,7 @@
           .right.floated.compact.ui.button.red.inverted
             Remove
         =link_to video_repository_video_path(@repo , video.id)  do
-          .right.floated.compact.ui.button.green.inverted
+          .right.floated.compact.ui.button.inverted
             View
         = video.video.thumb.url.present? ? (image_tag video.video.thumb.url , class: "ui avatar image") : (image_tag "7.jpg" , class: "ui avatar image")
         .content

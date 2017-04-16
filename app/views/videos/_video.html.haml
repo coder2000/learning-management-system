@@ -3,7 +3,7 @@
     .right.floated.compact.ui.button.inverted.red
       Remove
   =link_to video_repository_video_path(params[:video_repository_id] , video.id)   do
-    .right.floated.compact.ui.button.inverted.green
+    .right.floated.compact.ui.button.inverted
       View
   = video.video.thumb.url.present? ? (image_tag video.video.thumb.url , class: "ui avatar image") : (image_tag "7.jpg" , class: "ui avatar image")
   .content

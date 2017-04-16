@@ -19,10 +19,12 @@ gem 'remotipart'
 
 #pagination
 gem 'kaminari-mongoid', ' >= 0.1.2'
+gem 'kaminari-actionview'
 
 #mongoid
 gem 'mongoid', '>=5.0.2'
 gem 'mongoid_token', '>=2.1.1'
+gem 'mongoid-enum'
 
 #authentication
 gem 'sorcery'

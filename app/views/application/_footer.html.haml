@@ -1,5 +1,5 @@
 -if logged_in?
-  -if current_user.role != 'student'
+  -if current_user.admin?
     .ui.small.modal#create-group-modal
       .ui.top.attached.label
         Create Group
@@ -10,7 +10,7 @@
           .field
             =g.text_area :description, placeholder: "Group Description"
           .field
-            =g.submit "Create Group", class: "ui button green"
+            =g.submit "Create Group", class: "ui button"
     .ui.small.modal#create-video-repository-modal
       .ui.top.attached.label
         Create Video Repository
@@ -19,5 +19,5 @@
           .field
             =g.text_field :title, placeholder: "Video Repository Title"
           .field
-            =g.submit "Create Video Repository", class: "ui button green"
-      
+            =g.submit "Create Video Repository", class: "ui button"
+

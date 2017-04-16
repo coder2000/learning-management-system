@@ -1,0 +1,19 @@
+-if current_user.video_repositories.present?
+  .field
+    %label Repositories
+    =select_tag :repositories, options_from_collection_for_select( current_user.video_repositories, :id, :title), include_blank: true
+  .field#video-field
+    %label Video
+    =post.grouped_collection_select :video, current_user.video_repositories, :videos, :title, :id, :title, include_blank: true
+-if current_user.files.present?
+  .field
+    %label File attachments
+    =select_tag :attachments, options_from_collection_for_select(current_user.files, :id, :title), class: "ui fluid search selection dropdown", id: "post_attachments", multiple: true
+-if user_has_attachments?
+  =post.submit "Post", class: "ui button right floated"
+-else
+  .box
+    %i.folder.icon.massive
+    %h2
+      First, create a video repository or upload a files to attach.
+

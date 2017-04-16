@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, notice: "You have been successfuly registered"
     else
-      redirect_to new_user_path(@user.role), notice: "Something went wrong"
+      redirect_to new_user_path(data[:role]), notice: "Something went wrong"
     end
   end
 

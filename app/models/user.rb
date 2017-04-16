@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Enum
 
   mount_uploader :avatar, AvatarUploader
   authenticates_with_sorcery!
@@ -18,16 +19,10 @@ class User
   validates_confirmation_of :password, on: :create
   validates :password, confirmation: true, on: :create
   validates_uniqueness_of :email
-  validate :role_allowed
-
-  def role_allowed
-    if !ALLOWED_ROLES.include?(role)
-      errors.add(:role, "not is not allowed")
-    end
-  end
+  #validate :role_allowed
 
   def fullname
-    self.fname.titleize + " " + self.lname.titleize
+    fname.titleize + " " + lname.titleize
   end
 
   has_and_belongs_to_many :instructor_of, inverse_of: :instructor, class_name: 'Group'
@@ -37,7 +32,9 @@ class User
   has_many :files, class_name: "Document"
   has_many :posts, class_name: "Post"
 
-  def self.addGroup(user, token)
+  enum :role, [ :student, :admin ]
+
+  def add_group(user, token)
     group = Group.find_by_token(token)
     user = User.find(user)
     user.student_of << group

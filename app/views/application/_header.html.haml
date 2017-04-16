@@ -13,7 +13,7 @@
             .ui.icon.top.right.pointing.dropdown#main_setting
               =semantic_icon 'inverted large setting'
               .menu
-                -if current_user.role != 'student'
+                -if current_user.admin?
                   =link_to documents_path, class: "item", id: "my-file-repository" do
                     =semantic_icon 'file'
                     My File Repository

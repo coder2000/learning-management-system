@@ -1,7 +1,7 @@
 =render 'application/sub_menu'
 .ui.segment
   .ui.grid
-    -if current_user.role != "student"
+    -if current_user.admin?
       -current_user.instructor_of.each do |g|
         .four.wide.column
           =link_to group_path(g.token) do

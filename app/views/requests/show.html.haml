@@ -1,15 +1,20 @@
 =render 'groups/sub_menu'
 .ui.segment
-  -if !Request.where(token: params[:code]).present?
-    %h4.center.align.header
-      No Request at the moment
-  -Request.where(token: params[:code]).each do |r|
+  .box
+    -if !@requests.present?
+      %i.massive.users.icon
+      %h2
+        Share your group code to your students to receive requests.
+        Your group code is:
+        %pre
+          #{ params[:code] }
+  -@requests.each do |r|
     .item
       =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
         .ui.basic.red.button.right.floated.compact#decline-button
           Decline
       =link_to accept_request_path(r.user_id.to_s, r.token) do
-        .ui.basic.green.button.right.floated.compact#accept-button
+        .ui.basic.button.right.floated.compact#accept-button
           Accept
       .content
         .header

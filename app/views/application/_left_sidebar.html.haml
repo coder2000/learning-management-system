@@ -1,4 +1,4 @@
--if current_user.role == "student"
+-if current_user.student?
   .ui.segment
     .ui.top.attached.label
       Join group
@@ -6,7 +6,7 @@
       .ui.form.join-form-control
         =form_tag join_group_path, method: :post do 
           =text_field_tag :code, nil, placeholder: "Input group code here"
-          =submit_tag "Join group", class: "ui button green", id: "join-button"
+          =submit_tag "Join group", class: "ui button", id: "join-button"
 -else
   .ui.segment
     .ui.top.attached.label

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   def index
   end
   def create
-    if current_user.role != 'student'
+    if current_user.role.admin?
       if @group = Group.create!(data)
         @group.instructor << current_user
         current_user.instructor_of << @group
@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @post = @group.posts.desc(:updated_at).page(params[:page])
+    @posts = @group.posts.desc(:updated_at).page(params[:page])
   end
 
   private

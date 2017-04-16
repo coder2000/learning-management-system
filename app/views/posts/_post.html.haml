@@ -12,14 +12,14 @@
         =image_tag ( post.user.avatar.present? ? post.user.avatar.thumb.url : "male.png" ), class: "ui avatar image"
         .content
           .header
-            =link_to post.user.fullname, user_path(post.user.id)
-            -if post.user.id == current_user.id
+            =link_to post.user.fullname, user_path(post.user.id), class: "post_link"
+            -if post.user == current_user
               .ui.inline.dropdown.post-actions
                 =semantic_icon "angle down"
                 .menu
                   =link_to "Edit", "javascript:;", class: "item"
                   =link_to "Remove", "javascript:;", class: "item"
-          %span= post.updated_at
+          %span= ctime_ago_in_words(post.created_at)
     .description
       %p
         =truncate post.content, length: 380, omission: "...  (continued)"

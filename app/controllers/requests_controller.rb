@@ -26,6 +26,7 @@ class RequestsController < ApplicationController
 
   def show
     @group = Group.find_by_token params[:code]
+    @requests = Request.where(token: params[:code])
   end
 
   private

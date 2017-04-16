@@ -1,5 +1,3 @@
-$(document).ready((e) ->
-  document.addEventListener('turbolinks:load', ->
-    $('.ui.checkbox').checkbox()
-  )
+$(document).on( 'turbolinks:load', (e) ->
+  $('.ui.checkbox').checkbox()
 )

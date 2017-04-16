@@ -1,8 +1,6 @@
-$(document).ready((e) ->
-  document.addEventListener('turbolinks:load', ->
-    $("#sub_menu").visibility(
-      type: 'fixed',
-      offset: 15
-    )
+$(document).on('turbolinks:load', ->
+  $("#sub_menu").visibility(
+    type: 'fixed',
+    offset: 15
   )
 )

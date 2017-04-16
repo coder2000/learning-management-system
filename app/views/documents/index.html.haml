@@ -9,7 +9,7 @@
     =d.file_field :files,name: 'files[]', data: {multiple_caption: "{count} files selected"},multiple: true, class: 'input-field'
     %label#file_button{for: 'document_files'}
       %span Choose a file
-    =d.submit "Upload", class: "ui button green"
+    =d.submit "Upload", class: "ui button"
   .ui.segment#file-box
     -current_user.files.each do |doc|
       =link_to doc.files.url do

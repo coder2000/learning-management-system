@@ -1,3 +1,4 @@
+@import 'variables';
 //////////////////////////
 ////                  ////
 ////     top bar      ////
@@ -5,9 +6,18 @@
 //////////////////////////
 .top-bar{
   height: 50px;
-  background-color: #4862A3;
+  background-color: $primary-color;
   padding-top: 15px;
   width: 100%;
+}
+.ui.label, .ui.button{
+  background-color: $primary-color;
+  color: white;
+}
+
+.ui.button:hover{
+  background-color: $faded-primary-color;
+  color: white;
 }
 h4.brand-name{
   color: white;
@@ -24,11 +34,11 @@ h4.brand-name{
 //////////////////////////
 
 body{
-  background-color: #E9EBEE;
+  background-color: $background-color;
 }
 #main-container{
   padding-top: 20px;
-} 
+}
 #login-container{
   margin: 7% auto;
   border: 1px solid black;
@@ -108,11 +118,6 @@ body{
 ////     profile      ////
 ////                  ////
 //////////////////////////
-
-.edit-user-form-control{
-  margin-top: 20px !important;
-}
-
 
 //////////////////////////
 ////                  ////
@@ -225,4 +230,23 @@ body{
 }
 #video-modal{
   height: 500px;
+}
+
+//////////////////////////
+////                  ////
+////  global box      ////
+////                  ////
+//////////////////////////
+.box{
+  width: 500px;
+  height: 400px;
+  margin: 1rem auto;
+  border: solid 1px rgba(22, 22, 22, 0.2);
+  text-align: center;
+  padding: 60px 50px;
+  background-color: $background-color;
+
+  h2{
+    font-size: 1.5rem;
+  }
 }
