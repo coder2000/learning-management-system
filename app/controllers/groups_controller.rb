@@ -18,7 +18,12 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @posts = @group.posts.desc(:updated_at).page(params[:page])
+    @posts = @group.posts.desc(:updated_at).page(params[:page]).per(3)
+
+    respond_to do |format|
+      format.js { @posts }
+      format.html { @posts }
+    end
   end
 
   private

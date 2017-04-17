@@ -18,8 +18,12 @@ module ApplicationHelper
   end
 
   def ctime_ago_in_words(time_str)
-    time = time_str.to_time + (-Time.zone_offset(Time.now.zone))
-    "#{ time_ago_in_words(time_str) } ago"
+    time = time_str.to_time
+    if time < 11.months.ago
+      time.strftime("%B %d %Y at %I:%M %p")
+    else
+      "#{ time_ago_in_words(time) } ago"
+    end
   end
 
   def user_has_attachments?

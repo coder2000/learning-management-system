@@ -19,7 +19,7 @@
                 .menu
                   =link_to "Edit", "javascript:;", class: "item"
                   =link_to "Remove", "javascript:;", class: "item"
-          %span= ctime_ago_in_words(post.created_at)
+          %span.time_ago= ctime_ago_in_words(post.created_at)
     .description
       %p
         =truncate post.content, length: 380, omission: "...  (continued)"
