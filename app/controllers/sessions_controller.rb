@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :authenticated?, only: [:destroy]
+  before_filter :check_if_logged_in, only: [ :authenticate ]
   def authenticate
    user = login(params[:email], params[:password])
    if user
@@ -13,4 +14,6 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: "Logged out successfuly"
 
   end
+
 end
+

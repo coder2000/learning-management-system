@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :authenticated?
+
   private
 
   def authenticated?
@@ -18,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    if current_user.role == 'student'
+    if current_user.student?
       redirect_to pages_index_path, notice: "Unkown URL"
     end
   end
