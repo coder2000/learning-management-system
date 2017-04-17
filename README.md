@@ -18,3 +18,9 @@ cd learning-management-system
 bundle install
 ```
 
+## Contacts
+
+Feel free to contact me.
+
+Norman Santiago: [nsantiago2719@gmail.com](mailto:nsantiago2719@gmail.com)
+
