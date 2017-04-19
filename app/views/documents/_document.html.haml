@@ -1,3 +1,4 @@
-.ui.file-box
-  %p= semantic_icon "file big"
-  %h4= @document.title
+=link_to @document.files.url, target: '_blank' do
+  .ui.file-box
+    %p= semantic_icon "file big"
+    %h4= @document.title

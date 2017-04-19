@@ -12,7 +12,7 @@
     =d.submit "Upload", class: "ui button"
   .ui.segment#file-box
     -current_user.files.each do |doc|
-      =link_to doc.files.url do
+      =link_to doc.files.url, target: "_blank" do
         .ui.file-box
           %p= semantic_icon "file big"
           %h5= doc.title

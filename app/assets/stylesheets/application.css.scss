@@ -59,9 +59,6 @@ a:hover{
 .menu a.item:hover{
   color: black !important;
 }
-.post_link:hover{
-  color: $primary-color !important;
-}
-.ui.link.list a:hover{
+.post_link:hover, .ui.lik.list a:hover, #file-box a:hover{
   color: $primary-color !important;
 }
