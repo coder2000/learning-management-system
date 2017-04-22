@@ -16,6 +16,8 @@ To get started with development:
 git clone https://github.com/nsantiago2719/learning-management-system.git
 cd learning-management-system
 bundle install
+
+Note: You'll also need FFMpegThumbailer for creating thumbnails of the videos.
 ```
 
 ## Contacts

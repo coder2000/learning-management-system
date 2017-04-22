@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '~> 4.2'
 
 #view
@@ -29,6 +28,8 @@ gem 'mongoid-enum'
 #authentication
 gem 'sorcery'
 
+#authorization
+gem 'pundit'
 
 #carrierwave
 gem 'carrierwave'
