@@ -1,23 +1,26 @@
 =render 'groups/sub_menu'
 .ui.segment
-  .box
-    -if !@requests.present?
+  -if !@requests.present?
+    .box
       .ui.icon.header
         %i.massive.users.icon
         .content
           Your group code is: #{ params[:code] }
         .sub.header
           Share your group code to your students to receive requests.
-  -@requests.each do |r|
-    .item
-      =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
-        .ui.basic.red.button.right.floated.compact#decline-button
-          Decline
-      =link_to accept_request_path(r.user_id.to_s, r.token) do
-        .ui.basic.button.right.floated.compact#accept-button
-          Accept
-      .content
-        .header
-          =r.user.fullname
-          want to joint the group
-
+  -else
+    .ui.items
+      -@requests.each do |r|
+        .item
+          .ui.mini.image
+            = image_tag avatar_url(r.user.avatar.url)
+          .middle.aligned.content
+            = link_to r.user.fullname, user_path(r.user.id)
+            %p want to join the group
+          .middle.aligned.content
+            =link_to accept_request_path(r.user_id.to_s, r.token) do
+              .ui.basic.button.right.floated.compact#accept-button
+                Accept
+            =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
+              .ui.basic.red.button.right.floated.compact#decline-button
+                Decline

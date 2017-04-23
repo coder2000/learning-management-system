@@ -29,4 +29,16 @@ module ApplicationHelper
   def user_has_attachments?
     current_user.video_repositories.present? || current_user.files.present?
   end
+
+  def avatar_url(url=nil)
+    if url
+      url
+    else
+      if current_user.gender == 'female'
+        'female.png'
+       else
+         'male.png'
+      end
+    end
+  end
 end

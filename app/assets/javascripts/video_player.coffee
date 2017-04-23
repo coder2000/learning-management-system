@@ -23,5 +23,5 @@ change = ->
         console.log "completed without seeking"
     )
 
-document.addEventListener("turbolinks:load", change)
+$(document).on("turbolinks:load", change)
 

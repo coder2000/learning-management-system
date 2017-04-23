@@ -4,6 +4,7 @@
       .ui.card#post-show-card
         .content
           %h5.ui.header
+            =image_tag avatar_url(@post.user.avatar.url), class: "ui avatar image left floated"
             = link_to @post.user.fullname, user_path(@post.user.id), class: "post_link"
             - if @post.owner?(current_user.id)
               .ui.inline.dropdown.post-actions
@@ -12,7 +13,7 @@
                   = link_to "Edit", "javascript:;", class: "item"
                   = link_to "Remove", "javascript:;", class: "item"
             %br
-            .time_ago= ctime_ago_in_words(@post.created_at)
+            .time_ago.meta= ctime_ago_in_words(@post.created_at)
           .description
             = @post.content
             .ui.divider

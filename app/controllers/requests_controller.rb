@@ -18,8 +18,8 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    if User.addGroup(params[:user_id], params[:group_id])
-      Request.where(user_id: params[:user_id], token: params[:group_id]).delete
+    if rekuest = Request.find_by(params[:user_id], token: params[:group_id])
+      rekuest.accept
       redirect_to group_path(params[:group_id]), notice: "Student added in the group"
     end
   end

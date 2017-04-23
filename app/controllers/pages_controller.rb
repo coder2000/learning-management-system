@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   layout 'application', except: [:login]
   before_filter :check_if_logged_in, only: [:login]
+  skip_before_filter :authenticated?, only: [:login]
   def login
   end
 

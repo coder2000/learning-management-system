@@ -1,0 +1,18 @@
+-if current_user.student?
+  .ui.segment
+    .ui.top.attached.label
+      Join group
+    .content
+      .ui.form.join-form-control
+        =form_tag join_group_path, method: :post do 
+          =text_field_tag :code, nil, placeholder: "Input group code here"
+          =submit_tag "Join group", class: "ui button", id: "join-button"
+-else
+  .ui.segment
+    .ui.top.attached.label
+      Repositories
+    .content
+      .ui.link.list
+        -current_user.video_repositories.each do |r|
+          =link_to r.title.titleize, video_repository_path(r.id), class: "item"
+

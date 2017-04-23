@@ -1,6 +1,4 @@
 =form_for @user, class: "user-form-control" do |r|
-  -if !logged_in?
-    =r.hidden_field :role, value: params[:role]
   .two.fields
     .field
       =r.text_field :email, placeholder: "E-mail", readonly: (params[:action] == 'edit' ? true : false)

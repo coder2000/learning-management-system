@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_filter :check_if_logged_in, only: [:new, :create]
+  skip_before_filter :authenticated?, only: [:new, :create]
   def new
-    @user = User.new
+    @user = User.new(role: params[:role])
   end
 
   def create
-    @user = User.new(data)
-    if @user.save
+    if User.create(data)
       redirect_to root_url, notice: "You have been successfuly registered"
     else
       redirect_to new_user_path(data[:role]), notice: "Something went wrong"

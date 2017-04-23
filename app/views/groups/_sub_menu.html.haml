@@ -7,7 +7,7 @@
       =number_of_student + 1 > 1 ? "Member".pluralize : "Member"
       .ui.teal.circular.label
         =number_of_student + 1
-    -if current_user.role != 'student'
+    -if not current_user.student?
       =link_to request_path(@group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active" : "item" )do
         Requests
 

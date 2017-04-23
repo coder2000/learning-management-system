@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  layout 'post_show', only: [:show]
   before_filter :group, only: [:show, :create]
   before_filter :post, only: [:show]
   def show

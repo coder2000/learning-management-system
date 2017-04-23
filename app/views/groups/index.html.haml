@@ -1,9 +1,9 @@
 =render 'application/sub_menu'
 .ui.segment
-  .ui.grid
+  .ui.three.column.grid
     -if current_user.admin?
       -current_user.instructor_of.each do |g|
-        .four.wide.column
+        .column
           =link_to group_path(g.token) do
             .ui.fluid.card.groups-control
               =image_tag "group_default.jpg"
@@ -13,7 +13,7 @@
                     =g.title
     -else
       -current_user.student_of.each do |g|
-        .four.wide.column
+        .column
           =link_to group_path(g.token) do
             .ui.fluid.card.groups-control
               =image_tag "group_default.jpg"

@@ -34,7 +34,7 @@ class User
 
   enum :role, [ :student, :admin ]
 
-  def add_group(user, token)
+  def self.add_group(user, token)
     group = Group.find_by_token(token)
     user = User.find(user)
     user.student_of << group
