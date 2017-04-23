@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :group, only: [:show, :create]
+  before_filter :post, only: [:show]
   def show
   end
   def create
@@ -26,5 +27,9 @@ class PostsController < ApplicationController
 
   def group
     @group ||= Group.find_by_token params[:group_id]
+  end
+
+  def post
+    @post ||= Post.find params[:id]
   end
 end

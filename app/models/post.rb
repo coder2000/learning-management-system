@@ -10,4 +10,8 @@ class Post
   belongs_to :user, class_name: "User"
   belongs_to :video, class_name: "Video"
   has_and_belongs_to_many :attachments, class_name: "Document"
+
+  def owner?(author_id)
+    user.id == author_id
+  end
 end

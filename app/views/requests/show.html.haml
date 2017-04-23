@@ -2,12 +2,12 @@
 .ui.segment
   .box
     -if !@requests.present?
-      %i.massive.users.icon
-      %h2
-        Share your group code to your students to receive requests.
-        Your group code is:
-        %pre
-          #{ params[:code] }
+      .ui.icon.header
+        %i.massive.users.icon
+        .content
+          Your group code is: #{ params[:code] }
+        .sub.header
+          Share your group code to your students to receive requests.
   -@requests.each do |r|
     .item
       =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
