@@ -14,12 +14,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    authorize current_user, :edit?
   end
 
   def update
-    if current_user.update_attributes(update_data)
-      redirect_to edit_user_path(current_user.id), notice: "Update successfuly"
+    if current_user.update_attributes(permitted_attributes(current_user))
+      redirect_to edit_user_path(current_user.id), notice: "Updated successfuly"
     else
       redirect_to edit_user_path(current_user.id), notice: "Something went wrong"
     end
