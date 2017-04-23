@@ -41,4 +41,12 @@ class User
     group.student << user
   end
 
+  def part_of_the_group?(code)
+    if admin?
+      return true if instructor_of.pluck(:token).include?(code)
+    else
+      return true if student_of.pluck(:token).include?(code)
+    end
+  end
+
 end

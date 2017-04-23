@@ -40,9 +40,9 @@ class UsersController < ApplicationController
                                  :fname,
                                  :mname,
                                  :lname,
-                                 :password, 
-                                 :password_confirmation, 
-                                 :role, 
+                                 :password,
+                                 :password_confirmation,
+                                 :role,
                                  :gender)
   end
 end
