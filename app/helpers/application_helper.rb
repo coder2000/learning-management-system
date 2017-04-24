@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def ctime_ago_in_words(time_str)
     time = time_str.to_time
-    if time < 11.months.ago
+    if time < 2.months.ago
       time.strftime("%B %d %Y at %I:%M %p")
     else
       "#{ time_ago_in_words(time) } ago"

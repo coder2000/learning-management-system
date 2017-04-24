@@ -19,8 +19,11 @@
         -else
           .four.wide.column
             =render 'left_sidebar'
-          .eight.wide.column
-            = yield
-          .four.wide.column
-            =render 'right_sidebar'
+          .twelve.wide.column
+            .ui.grid
+              .row
+                .ten.wide.column
+                  = yield
+                .six.wide.column
+                  =render 'right_sidebar'
     =render 'footer'

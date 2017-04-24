@@ -1,25 +1,20 @@
-.ui.grid.container
-  .row
-    .ten.wide.column
-      .ui.card#post-show-card
-        .content
-          %h5.ui.header
-            =image_tag avatar_url(@post.user.avatar.url), class: "ui avatar image left floated"
-            = link_to @post.user.fullname, user_path(@post.user.id), class: "post_link"
-            - if @post.owner?(current_user.id)
-              .ui.inline.dropdown.post-actions
-                =semantic_icon "angle down"
-                .menu
-                  = link_to "Edit", "javascript:;", class: "item"
-                  = link_to "Remove", "javascript:;", class: "item"
-            %br
-            .time_ago.meta= ctime_ago_in_words(@post.created_at)
-          .description
-            = @post.content
-            .ui.divider
-            -if @post.video.present?
-              .video#video{ data: { src: @post.video.video.url, poster: @post.video.video.thumb.url, title: @post.video.title } }
-              .ui.divider
-    .six.wide.column
-      = render "post_right_sidebar"
+.ui.card#post-show-card
+  .content
+    %h5.ui.header
+      =image_tag avatar_url(@post.user.avatar.url), class: "ui avatar image left floated"
+      = link_to @post.user.fullname, user_path(@post.user.id), class: "post_link"
+      - if @post.owner?(current_user.id)
+        .ui.inline.dropdown.post-actions
+          =semantic_icon "angle down"
+          .menu
+            = link_to "Edit", "javascript:;", class: "item"
+            = link_to "Remove", "javascript:;", class: "item"
+      %br
+      .time_ago.meta= ctime_ago_in_words(@post.created_at)
+    .description
+      = @post.content
+      .ui.divider
+      -if @post.video.present?
+        .video#video{ data: { src: @post.video.video.url, poster: @post.video.video.thumb.url, title: @post.video.title } }
+        .ui.divider
 

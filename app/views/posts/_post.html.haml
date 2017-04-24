@@ -1,11 +1,4 @@
 .item.bordered{ id: "item-#{ post.id }" }
-  -if post.video.present?
-    .image
-      .ui.dimmer
-        .content
-          =link_to "javascript:;", class: "video-modal", data: { src: post.video.video.url, poster: post.video.video.thumb.url, title: post.video.title } do
-            =semantic_icon "play circle huge"
-      =image_tag post.video.video.thumb.url
   .content
     .ui.list
       .item
@@ -23,4 +16,8 @@
     .description
       %p
         =truncate post.content, length: 380, omission: "...  (continued)"
+    .ui.divider
+    -if post.video.present?
+      .video#video{ data: { src: post.video.video.url, poster: post.video.video.thumb.url, title: post.video.title } }
+      .ui.divider
     =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))
