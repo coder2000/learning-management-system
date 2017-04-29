@@ -5,8 +5,8 @@ $(document).on('turbolinks:load', ->
   $("#create-group").on('click', (e)->
     $('#create-group-modal').modal('show')
   )
-  $("#create-video-repository").on('click', (e)->
-    $('#create-video-repository-modal').modal('show')
+  $("#create-repository").on('click', (e)->
+    $('#create-repository-modal').modal('show')
   )
   $(".video-modal").on 'click', (e)->
     video_src = $(@).data('src')

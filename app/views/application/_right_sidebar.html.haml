@@ -13,6 +13,6 @@
       Repositories
     .content
       .ui.link.list
-        -current_user.video_repositories.each do |r|
-          =link_to r.title.titleize, video_repository_path(r.id), class: "item"
+        -current_user.repositories.each do |r|
+          =link_to r.title.titleize, repository_path(r.id), class: "item"
 

@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_filter :admin?, except: [:join]
+
   def join
     code ||= params[:code]
     if Group.where(token: code).present?

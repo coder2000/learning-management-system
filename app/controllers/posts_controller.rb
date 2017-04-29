@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  layout 'post_show', only: [:show]
   before_filter :group, only: [:show, :create]
   before_filter :post, only: [:show]
   def show
@@ -9,7 +8,7 @@ class PostsController < ApplicationController
     if params.has_key?(:attachments)
       params[:attachments].each do |file|
         if file.present?
-          doc = Document.find file
+          doc = Record.find file
           @post.attachments << doc
         end
       end

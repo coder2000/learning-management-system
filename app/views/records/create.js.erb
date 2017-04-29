@@ -1,10 +1,10 @@
-<%- if @video.new_record? %>
+<%- if @record.new_record? %>
   $('<div class="ui flash" id="notice"> Something went wrong</div>').insertBefore('.ui.page.grid').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
 <%else %>
   if($('.empty-message').length > 1){
     $('.empty-message').html("");
   }
-  $('.ui.divided.list').append("<%= j render(@video) %>");
+  $('.ui.divided.list').append("<%= j render(@record) %>");
   $('<div class="ui flash" id="notice"> Video Uploaded</div>').insertBefore('.ui.page.grid').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
   $('#video_button').html('Choose a video file');
 <%end%>

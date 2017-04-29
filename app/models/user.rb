@@ -29,6 +29,7 @@ class User
   has_and_belongs_to_many :student_of, inverse_of: :student, class_name: 'Group'
   has_many :requests
   has_many :video_repositories
+  has_many :repositories
   has_many :files, class_name: "Document"
   has_many :posts, class_name: "Post"
 

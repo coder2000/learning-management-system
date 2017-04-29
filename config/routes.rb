@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   ####          ####
   ##################
   ##################
-  
+
   get "/home" => "pages#index", as: "pages_index"
   get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
   get "requests/:code" => "requests#show", as: "request"
@@ -43,8 +43,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :posts, except: [:index]
   end
-  resources :documents, only: [:index, :create, :destroy]
-  resources :video_repositories do
-    resources :videos, only: [:show, :create, :destroy]
+  resources :repositories do
+    resources :records, only: [:show, :create, :destroy]
   end
 end

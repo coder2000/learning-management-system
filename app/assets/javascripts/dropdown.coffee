@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', ->
   ###################
   ### post ##########
   ###################
-  $("#video-field").hide()
+  $(".hidden-field").hide()
   video_select = $("#post_video").html()
   $('#repositories').dropdown()
   $('#post_video').dropdown()
@@ -14,9 +14,9 @@ $(document).on('turbolinks:load', ->
     options = $(video_select).filter("optgroup[label='#{repository}']").html()
     if options
       $("#post_video").html(options)
-      $("#video-field").show(300)
+      $(".hidden-field").show(300)
     else
-      $("#video-field").hide(300)
+      $(".hidden-field").hide(300)
   $("#post_attachments").dropdown()
   $(".post-actions").dropdown()
 )

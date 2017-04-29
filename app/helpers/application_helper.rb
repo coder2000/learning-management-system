@@ -41,4 +41,39 @@ module ApplicationHelper
       end
     end
   end
+
+  def render_right_sidebar
+    if controller.controller_name == 'posts'
+      render 'posts/post_right_sidebar'
+    else
+      render 'right_sidebar'
+    end
+  end
+
+  def truncate_content(content)
+    truncate( content, length: 380, omission: "... (continued)" )
+  end
+
+  def truncate_title(title)
+    truncate( title, length: 30, ommission: "..." )
+  end
+
+  def file_options(grouped_options, type)
+    body = "".html_safe
+
+    grouped_options.each do |container|
+      html_attributes = option_html_attributes(container)
+
+      label = container.title
+      html_attributes = { label: label }.merge!(html_attributes)
+      if type == 'video'
+        html_options = container.records.where(file_type: 'video').map { |v| [ v.title, v.id ] }
+      else
+        html_options = container.records.where(file_type: 'application').map { |d| [ d.title, d.id ] }
+      end
+      body.safe_concat content_tag("optgroup".freeze, options_for_select(html_options), html_attributes)
+    end
+    body
+  end
+
 end

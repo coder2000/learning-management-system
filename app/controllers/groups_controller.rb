@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
 
   before_filter :group, only: [:show]
 
+  layout 'application', except: [ :index ]
+
   def index
   end
 

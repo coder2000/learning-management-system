@@ -14,20 +14,13 @@
               =semantic_icon 'inverted large setting'
               .menu
                 -if current_user.admin?
-                  =link_to documents_path, class: "item", id: "my-file-repository" do
-                    =semantic_icon 'file'
-                    My File Repository
-                  =link_to "javascript:;", class: "item", id: "my-video-repository" do
+                  =link_to repositories_path, class: "item", id: "create-repository" do
                     =semantic_icon 'folder'
-                    My Video Repositories
-                  .divider
-                  =link_to "javascript:;", class: "item", id: "create-video-repository" do
-                    =semantic_icon 'video play'
-                    Create Video Repository
+                    My Repositories
                   =link_to "javascript:;", class: "item", id: "create-group" do
                     =semantic_icon "users"
                     Create Group
-                .divider
+                  .divider
                 =link_to logout_path, method: :delete, class: "item" do
                   =semantic_icon "power"
                   Logout

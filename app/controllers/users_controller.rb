@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     authorize current_user, :edit?
   end
 

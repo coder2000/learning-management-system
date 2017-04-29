@@ -15,9 +15,9 @@
           %span.time_ago= ctime_ago_in_words(post.created_at)
     .description
       %p
-        =truncate post.content, length: 380, omission: "...  (continued)"
+        =truncate_content post.content
     .ui.divider
     -if post.video.present?
-      .video#video{ data: { src: post.video.video.url, poster: post.video.video.thumb.url, title: post.video.title } }
+      .video{ id: "video-#{ post.id }", data: { src: post.video.record_file.url, poster: post.video.record_file.thumb.url, title: post.video.title } }
       .ui.divider
     =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))
