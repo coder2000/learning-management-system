@@ -15,6 +15,6 @@
       = @post.content
       .ui.divider
       -if @post.video.present?
-        .video#video{ data: { src: @post.video.video.url, poster: @post.video.video.thumb.url, title: @post.video.title } }
+        .video#video{ data: { src: @post.video.record_file.url, poster: @post.video.record_file.thumb.url, title: @post.video.title } }
         .ui.divider
 

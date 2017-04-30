@@ -18,6 +18,10 @@
         =truncate_content post.content
     .ui.divider
     -if post.video.present?
-      .video{ id: "video-#{ post.id }", data: { src: post.video.record_file.url, poster: post.video.record_file.thumb.url, title: post.video.title } }
+      .video-box-container{ align: 'center' }
+        %video.video-js.vjs-big-play-centered{ id: "video-#{ post.id }", controls: :true, data: { setup: "{}" } }
+          %source{ src: post.video.record_file.url }
+          %p.vjs-no-js
+            Pls enable your javascript to view this video.
       .ui.divider
     =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))

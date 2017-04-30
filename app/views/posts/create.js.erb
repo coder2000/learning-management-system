@@ -1,21 +1,9 @@
-<%- if !@post.new_record? %>
+<%- unless @post.new_record? %>
   $(".ui.items").prepend('<%= j render(@post) %>');
   $("#item-<%= @post.id %>").fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600);
 <%- else %>
   $('<div class="ui flash" id="notice"> Something went wrong</div>').insertBefore('#main-container').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
 <% end %>
-jwplayer.key="EA7fi2Owdh/JdYcP7dKRVHiqjiI+RVkI0lZz6w==";
-player = jwplayer(document.getElementById("video-<%= @post.id %>")).setup({
-  "file": "<%= @post.video.record_file.url %>",
-  "image": "<%= @post.video.record_file.thumb.url %>",
-  "title": "<%= @post.video.title %>",
-  "height": 480,
-  "width": "100%",
-  "primary": "flash",
-  "flashplayer": "/assets/jwplayer/jwplayer.flash.swf",
-  "preload": "none",
-  "usekeys": true
-});
-
+videojs("#video-<%= @post.id %>")
 $(".post-actions").dropdown();
 $("#new_post").form("reset");
