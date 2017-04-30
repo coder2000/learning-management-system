@@ -3,8 +3,12 @@ class RepositoriesController < ApplicationController
   before_filter :repository, only: [:show]
 
   def create
-    repository = current_user.repositories.create!(data)
-    redirect_to repositories_path(repository.id), notice: "Repository Created"
+    @repository = current_user.repositories.new(data)
+    if @repository.save
+      redirect_to repositories_path(repository.id), notice: "Repository Created"
+    else
+      redirect_to root_url
+    end
   end
 
   def show

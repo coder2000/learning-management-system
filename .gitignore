@@ -15,9 +15,6 @@
 /config/mongoid.yml
 /public/uploads
 /test
-/spec
 .rspec
 /coverage
 
-#ignoreing this file for now
-/app/assets/javascripts/video_player.coffee
