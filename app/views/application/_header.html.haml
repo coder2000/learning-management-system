@@ -14,7 +14,7 @@
               =semantic_icon 'inverted large setting'
               .menu
                 -if current_user.admin?
-                  =link_to repositories_path, class: "item", id: "create-repository" do
+                  =link_to "javascript:;", class: "item", id: "create-repository" do
                     =semantic_icon 'folder'
                     My Repositories
                   =link_to "javascript:;", class: "item", id: "create-group" do
