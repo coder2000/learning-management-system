@@ -15,6 +15,9 @@
       = @post.content
       .ui.divider
       -if @post.video.present?
-        .video#video{ data: { src: @post.video.record_file.url, poster: @post.video.record_file.thumb.url, title: @post.video.title } }
-        .ui.divider
+        .video-box-container{ align: 'center' }
+          %video.video-js.vjs-big-play-centered{ id: "video-#{ @post.id }", controls: :true, data: { setup: "{}" } }
+            %source{ src: @post.video.record_file.url }
+            %p.vjs-no-js
+              Pls enable your javascript to view this video.
 
