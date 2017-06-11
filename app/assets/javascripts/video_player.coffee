@@ -9,6 +9,6 @@ before_change = ->
       player = videojs(@)
       player.dispose
     )
-$(document).on("turbolinks:before-visist", before_change)
+$(document).on("turbolinks:before-visit", before_change)
 $(document).on("turbolinks:load", change)
 

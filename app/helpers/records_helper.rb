@@ -7,7 +7,7 @@ module RecordsHelper
         yield
       end
     else:get
-      link_to repository_record_path(record.repository.id, record.id) do
+      link_to repository_record_path(record.repository.id, record.id), target: "_blank" do
         yield
       end
     end
