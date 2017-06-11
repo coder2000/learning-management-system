@@ -2,7 +2,6 @@ language: ruby
 rvm:
   - 2.3.1
 bundle_script:
-  - bundle exec rake db:migrate
-  - bundle exec rails s -d
+  - bundle exec rspec spec
 script:
   - echo "Build Success"
