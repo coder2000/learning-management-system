@@ -32,8 +32,8 @@ $(document).on('turbolinks:load', function(){
     $("#new_post").form()
   }
   $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
-  if($('#video_video').length > 0){
-    var input = document.getElementById( 'video_video' );
+  if($('#record_record_file').length > 0){
+    var input = document.getElementById( 'record_record_file' );
     var label = document.getElementById( 'video_button' );
     if(input !== null){
       input.addEventListener( 'change', function( e ){
@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function(){
           fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
         }
         else{
-          fileName = e.target.value.split( '\\' ).pop();
+          fileName = e.target.value.split( '\\' ).pop().substring(0, 20) + "...";
         }
 
         if( fileName ){

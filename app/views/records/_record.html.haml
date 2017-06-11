@@ -7,4 +7,4 @@
       View
   = record.record_file.thumb.present? ? (image_tag record.record_file.thumb.url , class: "ui avatar image") : (semantic_icon "file")
   .content.middle.align
-    =link_to truncate_title(record.title), repository_record_path(record.repository.id , record.id) , class: "header" 
+    =link_to truncate_title(record.title), repository_record_path(record.repository.id , record.id) , class: "header", target: "_blank"
