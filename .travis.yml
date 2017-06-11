@@ -9,4 +9,5 @@ before_install:
   - rvm get stable --auto-dotfiles
   - gem update bundler
 script:
+  - cp config/mongoid.yml.sample config/mongoid.yml
   - bundle exec rspec spec
