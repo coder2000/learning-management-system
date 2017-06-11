@@ -1,7 +1,10 @@
 language: ruby
 rvm:
   - 2.3.1
-bundle_script:
-  - bundle exec rspec spec
+gemfile:
+  - Gemfile
+before_install:
+  - rvm get stable --auto-dotfiles
+  - gem update bundler
 script:
-  - echo "Build Success"
+  - bundle exec rspec spec
