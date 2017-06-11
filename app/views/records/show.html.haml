@@ -1,0 +1,7 @@
+.item.bordered
+  .video-box-container{ align: 'center' }
+    %video.video-js.vjs-big-play-centered{ controls: :true, data: { setup: "{}" } }
+      %source{ src: @record.record_file.url }
+      %p.vjs-no-js
+        Pls enable your javascript to view this video.
+
