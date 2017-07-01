@@ -1,0 +1,17 @@
+.comment{ id: "comment-#{ comment.id }" }
+  = link_to "javascript:;", class: "avatar" do
+    = image_tag avatar_url(current_user.avatar.url), class: "ui circular image"
+  .content
+    = link_to comment.user.fullname, "javascript:;", class: "post_link"
+    -if comment.owner?(current_user.id)
+      .ui.inline.dropdown.post-actions
+        = semantic_icon 'angle down'
+        .menu
+          =link_to "Edit", "javascript:;", class: "item"
+          =link_to "Remove", "javascript:;", class: "item"
+    .text
+      = comment.content
+    .actions
+      .metadata
+        %span.date= ctime_ago_in_words(comment.created_at)
+

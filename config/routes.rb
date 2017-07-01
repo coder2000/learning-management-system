@@ -1,36 +1,12 @@
 Rails.application.routes.draw do
   root "pages#login"
   
-  ##################
-  ##################
-  ####          ####
-  ####   post   ####
-  ####          ####
-  ##################
-  ##################
-
   post "login" => "sessions#authenticate", as: "login"
   post "request/join" => "requests#join", as: "join_group"
-
-  ##################
-  ##################
-  ####          ####
-  ####   get    ####
-  ####          ####
-  ##################
-  ##################
 
   get "/home" => "pages#index", as: "pages_index"
   get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
   get "requests/:code" => "requests#show", as: "request"
-
-  ##################
-  ##################
-  ####          ####
-  ####   delete ####
-  ####          ####
-  ##################
-  ##################
 
   delete "/logout" => "sessions#destroy", as: "logout"
 
@@ -41,7 +17,9 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index] do
+      resources :comments, except: [ :index, :show ]
+    end
   end
   resources :repositories do
     resources :records, only: [:show, :create, :destroy]

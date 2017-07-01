@@ -30,6 +30,7 @@ class User
   has_many :requests
   has_many :repositories
   has_many :posts, class_name: "Post"
+  has_many :comments, inverse_of: :user
 
   enum :role, [ :student, :admin ]
 

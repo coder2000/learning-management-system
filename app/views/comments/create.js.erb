@@ -1,0 +1,4 @@
+$(".new_comment")[0].reset();
+$("#comment_content").blur();
+$(".comments").append("<%= j render('comments/comment', comment: @comment) %>");
+$(".post-actions").dropdown();
