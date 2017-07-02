@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :valid_comment, class: "Comment" do
     content Faker::Lorem.sentence
-    association :user, factory: :clean_user
+    association :user, factory: :student
     association :post, factory: :valid_post
   end
 

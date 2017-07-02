@@ -17,4 +17,21 @@ RSpec.describe Comment, type: :model do
     it { is_expected.to validate_presence_of(:content) }
   end
 
+  describe "#owner?" do
+    let(:comment) { FactoryGirl.create(:valid_comment) }
+    let(:user) { FactoryGirl.create(:student) }
+
+    context "when the user is owner of the comment" do
+      it "should return true" do
+        expect(comment.owner?(comment.user.id)).to eq(true)
+      end
+    end
+
+    context "when user is not the owner of the comment" do
+      it "should return false" do
+        expect(comment.owner?(user.id)).to eq(false)
+      end
+    end
+  end
+
 end

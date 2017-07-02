@@ -19,5 +19,22 @@ RSpec.describe Post, type: :model do
     it { is_expected.to have_and_belong_to_many(:attachments) }
   end
 
+  describe "#owner" do
+    let!(:post) { FactoryGirl.create(:valid_post) }
+    let!(:user) { FactoryGirl.create(:student)    }
+
+    context "when the user is a owner of the topic" do
+      it "should return true" do
+        expect(post.owner?(post.user.id)).to eq(true)
+      end
+    end
+
+    context "when the user is not the owner of the topic" do
+      it "should return false" do
+        expect(post.owner?(user.id)).to eq(false)
+      end
+    end
+  end
+
 end
 
