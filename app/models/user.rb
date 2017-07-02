@@ -47,6 +47,7 @@ class User
     else
       return true if student_of.pluck(:token).include?(code)
     end
+    return false
   end
 
 end

@@ -13,7 +13,7 @@ FactoryGirl.define do
     end
 
     factory :instructor do
-      role                  :instructor
+      role                  :admin
     end
   end
 end
