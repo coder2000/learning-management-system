@@ -6,6 +6,11 @@ class CommentsController < ApplicationController
     @comment = @post.comments.create(data.merge(user: current_user))
   end
 
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy!
+  end
+
   private
 
   def data

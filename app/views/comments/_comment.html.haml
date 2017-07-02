@@ -8,7 +8,7 @@
         = semantic_icon 'angle down'
         .menu
           =link_to "Edit", "javascript:;", class: "item"
-          =link_to "Remove", "javascript:;", class: "item"
+          =link_to "Remove", group_post_comment_path(params[:group_id], comment.post.id, comment.id), data: { remote: true, method: :delete, confirm: "Are you sure?" }, class: "item"
     .text
       = comment.content
     .actions
