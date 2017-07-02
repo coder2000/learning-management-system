@@ -20,4 +20,11 @@
             %source{ src: @post.video.record_file.url }
             %p.vjs-no-js
               Pls enable your javascript to view this video.
+  .comments-section
+    .comments-content
+      = render 'comments/index', post: @post
+      = form_for [ @group, @post, @post.comments.new ], remote: true do |comment|
+        .ui.right.icon.fluid.input
+          = comment.text_field :content, placeholder: "Have something you want to ask?"
+          %i.comment.icon
 
