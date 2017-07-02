@@ -14,9 +14,12 @@
               =semantic_icon 'inverted large setting'
               .menu
                 -if current_user.admin?
-                  =link_to "javascript:;", class: "item", id: "create-repository" do
+                  = link_to repositories_path, class: "item" do
                     =semantic_icon 'folder'
                     My Repositories
+                  =link_to "javascript:;", class: "item", id: "create-repository" do
+                    = semantic_icon 'add square'
+                    Create Repository
                   =link_to "javascript:;", class: "item", id: "create-group" do
                     =semantic_icon "users"
                     Create Group

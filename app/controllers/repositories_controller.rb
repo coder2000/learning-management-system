@@ -2,6 +2,10 @@ class RepositoriesController < ApplicationController
   before_filter :admin?
   before_filter :repository, only: [:show]
 
+  def index
+    @repositories = current_user.repositories
+  end
+
   def create
     @repository = current_user.repositories.new(data)
     if @repository.save
