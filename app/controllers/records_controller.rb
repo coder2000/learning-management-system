@@ -3,11 +3,13 @@ class RecordsController < ApplicationController
   before_filter :record, except: [:create]
 
   def create
+    authorize current_user.repositories.new, :create?
     @repository = current_user.repositories.find( params[:repository_id] )
     @record = @repository.records.create!(data)
   end
 
   def destroy
+    authorize @record, :delete?
     if @record
       @record.remove_record_file!
       @record.delete

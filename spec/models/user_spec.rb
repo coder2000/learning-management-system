@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     let(:user) { FactoryGirl.create(:student) }
 
     it "should return the fullname of the user" do
-      expect(user.fullname).to eq("#{ user.fname } #{ user.lname }")
+      expect(user.fullname).to eq("#{ user.fname.titleize } #{ user.lname.titleize }")
     end
   end
 

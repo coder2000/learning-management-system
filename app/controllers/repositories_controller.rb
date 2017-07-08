@@ -4,9 +4,11 @@ class RepositoriesController < ApplicationController
 
   def index
     @repositories = current_user.repositories
+    authorize @repositories, :index?
   end
 
   def create
+    authorize current_user.repositories.new, :create?
     @repository = current_user.repositories.new(data)
     if @repository.save
       redirect_to repositories_path(repository.id), notice: "Repository Created"
@@ -16,6 +18,7 @@ class RepositoriesController < ApplicationController
   end
 
   def show
+    authorize @repository, :show?
     @record = @repository.records.new
   end
 

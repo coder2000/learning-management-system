@@ -7,4 +7,8 @@ class Repository
 
   has_many :records
   belongs_to :user
+
+  def owner?(owner_id)
+    user.id == owner_id
+  end
 end
