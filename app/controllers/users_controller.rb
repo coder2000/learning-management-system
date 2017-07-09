@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    authorize current_user, :edit?
+    @user = User.find params[:id]
+    authorize @user, :edit?
   end
 
   def update

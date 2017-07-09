@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
 
   def edit?
-    return true if @user
+    @record.id == @user.id
   end
 
 end
