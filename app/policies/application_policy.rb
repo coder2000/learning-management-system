@@ -6,5 +6,13 @@ class ApplicationPolicy
     @user = user
     @record = record
   end
+
+  def create?
+    return true if @user.admin?
+  end
+
+  def delete?
+    return true if @user.admin? || @record.owner?(@user)
+  end
 end
 

@@ -26,14 +26,23 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:posts) }
     it { is_expected.to have_many(:comments) }
     it { is_expected.to have_and_belong_to_many(:instructor_of) }
-    it { is_expected.to have_and_belong_to_many(:student_of) }
+    it { is_expected.to have_and_belong_to_many(:member_of) }
   end
 
   describe "#fullname" do
     let(:user) { FactoryGirl.create(:student) }
 
-    it "should return the fullname of the user" do
-      expect(user.fullname).to eq("#{ user.fname } #{ user.lname }")
+    context "when user have a lastname" do
+      it "should return the fullname of the user" do
+        expect(user.fullname).to eq("#{ user.fname.titleize } #{ user.lname.titleize }")
+      end
+    end
+
+    context "when user don't have a lastname" do
+      it "should return the fullname of the user" do
+        user.update!(lname: nil)
+        expect(user.fullname).to eq("#{ user.fname.titleize }")
+      end
     end
   end
 
@@ -41,9 +50,11 @@ RSpec.describe User, type: :model do
     let(:user) { FactoryGirl.create(:instructor) }
     let(:group) { FactoryGirl.create(:valid_group) }
 
-    context "when the user is administrator" do
-      it "should return true if user is in the group" do
+    context "when the user is in the group" do
+      it "should return true" do
         group = user.instructor_of.create(FactoryGirl.attributes_for(:valid_group))
+        group.members << user
+        user.member_of << group
         expect(user.part_of_the_group?(group.token)).to eq(true)
       end
 

@@ -1,0 +1,9 @@
+.item{ id: repository.id }
+  =link_to "javascript:;" do
+    .right.floated.compact.ui.button.inverted.red
+      Remove
+  =link_to repository_path(repository.id) do
+    .right.floated.compact.ui.button.inverted
+      Show
+  .content.middle.align
+    = link_to truncate_title(repository.title), repository_path(repository.id), class: "header"

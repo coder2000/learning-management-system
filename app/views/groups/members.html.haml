@@ -1,6 +1,6 @@
 =render 'groups/sub_menu'
 .ui.segment
-  -if !@requests.present?
+  -if !@members.present?
     .box
       .ui.icon.header
         %i.massive.users.icon
@@ -10,17 +10,23 @@
           Share your group code to your students to receive requests.
   -else
     .ui.items
-      -@requests.each do |r|
+      -@members.each do |m|
         .item
           .ui.mini.image
-            = image_tag avatar_url(r.user.avatar.url)
+            = image_tag avatar_url(m.avatar.url)
           .middle.aligned.content
-            = link_to r.user.fullname, user_path(r.user.id)
-            %p want to join the group
+            = link_to m.fullname, user_path(m.id)
           .middle.aligned.content
-            =link_to group_accept_request_path(params[:code], r.user_id.to_s, r.token) do
-              .ui.basic.button.right.floated.compact#accept-button
-                Accept
+            - if current_user.admin?
+              - unless m.instructor_of?(params[:group_id])
+                =link_to "javascript:;" do
+                  .ui.basic.green.button.right.floated.compact
+                    Make Admin
+              - else
+                =link_to "javascript:;" do
+                  .ui.basic.green.button.right.floated.compact
+                    Unset as Admin
             =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
               .ui.basic.red.button.right.floated.compact#decline-button
-                Decline
+                Remove
+

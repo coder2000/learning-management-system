@@ -8,8 +8,8 @@ class Request
 
   def accept
     group = Group.find_by_token token
-    user.student_of << group
-    group.student << user
+    user.member_of << group
+    group.members << user
     delete
   end
 end

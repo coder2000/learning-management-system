@@ -14,13 +14,16 @@
               =semantic_icon 'inverted large setting'
               .menu
                 -if current_user.admin?
-                  =link_to "javascript:;", class: "item", id: "create-repository" do
+                  = link_to repositories_path, class: "item hover-black" do
                     =semantic_icon 'folder'
                     My Repositories
-                  =link_to "javascript:;", class: "item", id: "create-group" do
+                  =link_to "javascript:;", class: "item hover-black", id: "create-repository" do
+                    = semantic_icon 'add square'
+                    Create Repository
+                  =link_to "javascript:;", class: "item hover-black", id: "create-group" do
                     =semantic_icon "users"
                     Create Group
                   .divider
-                =link_to logout_path, method: :delete, class: "item" do
+                =link_to logout_path, method: :delete, class: "item hover-black" do
                   =semantic_icon "power"
                   Logout

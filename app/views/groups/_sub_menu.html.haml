@@ -1,14 +1,14 @@
--number_of_student = @group.student.count
+-number_of_members= @group.members.count
 .overlay#sub_menu
   .ui.menu
-    =link_to group_path(@group.token), class: (( params[:controller] == "groups" and params[:action] == 'show') ? "item active" : "item" )do
+    =link_to group_path(@group.token), class: (( params[:controller] == "groups" and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
       =@group.title
-    =link_to "javascript:;", class: (params[:action] == 'members' ? "item active" : "item" )do
-      =number_of_student + 1 > 1 ? "Member".pluralize : "Member"
+    =link_to group_members_path(@group.token), class: (params[:action] == 'members' ? "item active hover-black" : "item hover-black" )do
+      =number_of_members > 1 ? "Member".pluralize : "Member"
       .ui.teal.circular.label
-        =number_of_student + 1
+        =number_of_members
     -if not current_user.student?
-      =link_to request_path(@group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active" : "item" )do
+      =link_to group_request_path(@group.token, @group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
         Requests
 
 
