@@ -40,6 +40,7 @@ RSpec.describe User, type: :model do
 
     context "when user don't have a lastname" do
       it "should return the fullname of the user" do
+        user.update!(lname: nil)
         expect(user.fullname).to eq("#{ user.fname.titleize }")
       end
     end
@@ -52,7 +53,7 @@ RSpec.describe User, type: :model do
     context "when the user is in the group" do
       it "should return true" do
         group = user.instructor_of.create(FactoryGirl.attributes_for(:valid_group))
-        group.member << user
+        group.members << user
         user.member_of << group
         expect(user.part_of_the_group?(group.token)).to eq(true)
       end
