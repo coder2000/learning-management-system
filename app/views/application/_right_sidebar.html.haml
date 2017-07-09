@@ -14,5 +14,5 @@
     .content
       .ui.link.list
         -current_user.repositories.each do |r|
-          =link_to r.title.titleize, repository_path(r.id), class: "item"
+          =link_to r.title.titleize, repository_path(r.id), class: "item hover-black"
 

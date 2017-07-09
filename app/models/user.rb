@@ -22,11 +22,11 @@ class User
   #validate :role_allowed
 
   def fullname
-    "#{ fname.titleize } #{ lname.titleize }"
+    lname.present? ? "#{ fname.titleize } #{ lname.titleize }" : fname.titleize
   end
 
   has_and_belongs_to_many :instructor_of, inverse_of: :instructor, class_name: 'Group'
-  has_and_belongs_to_many :student_of, inverse_of: :student, class_name: 'Group'
+  has_and_belongs_to_many :member_of, inverse_of: :member, class_name: 'Group'
   has_many :requests
   has_many :repositories
   has_many :posts, class_name: "Post"
@@ -37,17 +37,16 @@ class User
   def self.add_group(user, token)
     group = Group.find_by_token(token)
     user = User.find(user)
-    user.student_of << group
+    user.member_of << group
     group.student << user
   end
 
   def part_of_the_group?(code)
-    if admin?
-      return true if instructor_of.pluck(:token).include?(code)
-    else
-      return true if student_of.pluck(:token).include?(code)
-    end
-    return false
+    member_of.pluck(:token).include?(code) ? true : false
+  end
+
+  def instructor_of?(code)
+    instructor_of.pluck(:token).include?(code) ? true : false
   end
 
 end

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   post "request/join" => "requests#join", as: "join_group"
 
   get "/home" => "pages#index", as: "pages_index"
-  get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
-  get "requests/:code" => "requests#show", as: "request"
 
   delete "/logout" => "sessions#destroy", as: "logout"
 
@@ -17,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
+
+    get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
+    get "requests/:code" => "requests#show", as: "request"
+    get "members" => "groups#members",       as: "members"
+
     resources :posts, except: [:index] do
       resources :comments, except: [ :index, :show ]
     end

@@ -11,8 +11,15 @@ class GroupsController < ApplicationController
     authorize Group.new, :create?
     @group = Group.create! permitted_attributes(Group.new)
     @group.instructor << current_user
+    @group.members << current_user
     current_user.instructor_of << @group
+    current_user.member_of    <<  @group
     redirect_to group_path(@group.token), notice: "Group Created"
+  end
+
+  def members
+    @group = Group.find_by_token params[:group_id]
+    @members = @group.members
   end
 
   def show
@@ -29,7 +36,7 @@ class GroupsController < ApplicationController
   private
 
   def group
-    @group ||= Group.find_by_token params[:id]
+    @group ||= Group.find_by_token( params[:id] )
   end
 
   def data

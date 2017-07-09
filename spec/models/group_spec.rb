@@ -15,7 +15,7 @@ RSpec.describe Group, type: :model do
   describe "relations" do
     it { is_expected.to have_many(:posts) }
     it { is_expected.to have_and_belong_to_many(:instructor) }
-    it { is_expected.to have_and_belong_to_many(:student) }
+    it { is_expected.to have_and_belong_to_many(:members) }
   end
 
 end
