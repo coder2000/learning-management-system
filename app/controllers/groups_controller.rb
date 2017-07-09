@@ -9,12 +9,16 @@ class GroupsController < ApplicationController
 
   def create
     authorize Group.new, :create?
-    @group = Group.create! permitted_attributes(Group.new)
-    @group.instructor << current_user
-    @group.members << current_user
-    current_user.instructor_of << @group
-    current_user.member_of    <<  @group
-    redirect_to group_path(@group.token), notice: "Group Created"
+    @group = Group.new data
+    if @group.save
+      @group.instructor << current_user
+      @group.members << current_user
+      current_user.instructor_of << @group
+      current_user.member_of    <<  @group
+      redirect_to group_path(@group.token), notice: "Group Created"
+    else
+      redirect_to pages_index_path, notice: "Something went wrong"
+    end
   end
 
   def members

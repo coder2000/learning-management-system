@@ -8,6 +8,9 @@ $(document).on('turbolinks:load', ->
   $("#create-repository").on('click', (e)->
     $('#create-repository-modal').modal('show')
   )
+  $("#edit-group").on('click', (e)->
+    $('#edit-group-modal').modal('show')
+  )
   $(".video-modal").on 'click', (e)->
     video_src = $(@).data('src')
     video_poster = $(@).data('poster')

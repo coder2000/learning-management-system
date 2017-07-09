@@ -1,8 +1,6 @@
 $(document).on('turbolinks:load', ->
   $('#login-form-control')
     .form(
-      inline: true,
-      on: 'blur',
       fields: {
         email: {
           identifier: 'email'
@@ -98,5 +96,18 @@ $(document).on('turbolinks:load', ->
         ]
       }
     }
+  )
+  $(".group-form-control .form").form(
+           inline: true
+           on:     'blur'
+           fields: {
+             title: {
+               identifier: 'group[title]'
+               rules: [{
+                 type: 'empty',
+                 prompt: 'Enter group title'
+               }]
+             }
+          }
   )
 )

@@ -4,7 +4,7 @@
       Join group
     .content
       .ui.form.join-form-control
-        =form_tag join_group_path, method: :post do 
+        =form_tag join_group_path, method: :post, remote: true, id: "join-form" do
           =text_field_tag :code, nil, placeholder: "Input group code here"
           =submit_tag "Join group", class: "ui button", id: "join-button"
 -else
