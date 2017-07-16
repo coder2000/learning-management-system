@@ -5,5 +5,5 @@
   =link_to repository_path(repository.id) do
     .right.floated.compact.ui.button.inverted
       Show
-  .content.middle.align
+  .middle.aligned.content
     = link_to truncate_title(repository.title), repository_path(repository.id), class: "header"

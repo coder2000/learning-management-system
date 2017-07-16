@@ -1,3 +1,10 @@
 $primary-color: rgba(72, 98, 168, 1);
 $faded-primary-color: rgba(72, 98, 168, 0.8);
 $background-color: #E9EBEE;
+
+// Links variables
+$link-primary-color: $primary-color;
+$link-header-color: white;
+$dropdown-link-color: black;
+$link-hover-color: white;
+$link-button-hover-color: $faded-primary-color;

@@ -24,11 +24,11 @@ $.turbo =
   addCallback: (callback) ->
     if $.turbo.isReady
       callback($)
-    $document.on 'turbo:ready', -> callback($)
+    $document.on 'turbolinks:load', -> callback($)
 
   onLoad: ->
     $.turbo.isReady = true
-    $document.trigger('turbo:ready')
+    $document.trigger('turbolinks:ready')
 
   onFetch: ->
     $.turbo.isReady = false
@@ -46,4 +46,4 @@ $.turbo =
 
 # Use with Turbolinks.
 $.turbo.register()
-$.turbo.use('page:load', 'page:fetch')
+$.turbo.use('turbolinks:load', 'page:fetch')

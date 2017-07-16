@@ -8,7 +8,7 @@
     .ui.small.modal#create-repository-modal
       .ui.top.attached.label
         Create Repository
-      .ui.form#create-group-form-control
+      .ui.form.group-form-control#create-group-form-control
         =form_for current_user.repositories.new do |g|
           .field
             =g.text_field :title, placeholder: "Repository Title"
