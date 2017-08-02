@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_filter :group, only: [:show]
+  before_filter :group, only: [:show ]
 
   layout 'application', except: [ :index ]
 
@@ -24,6 +24,16 @@ class GroupsController < ApplicationController
   def members
     @group = Group.find_by_token params[:group_id]
     @members = @group.members
+  end
+
+  def remove_member
+    @group = Group.find_by_token params[:group_id]
+    user = User.find_by id: params[:user_id]
+    if @group.remove_member(user) == nil
+      render json: { user: user.id.to_s }, status: 200
+    else
+      render json: { }, status: 500
+    end
   end
 
   def show
