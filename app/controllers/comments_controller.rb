@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_filter :post
+  before_action :post
 
   def create
     @comment = @post.comments.create(data.merge(user: current_user))

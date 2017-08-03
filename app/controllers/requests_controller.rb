@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_filter :admin?, except: [:join]
+  before_action :admin?, except: [:join]
 
   def join
     code ||= params[:code]

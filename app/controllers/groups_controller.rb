@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_filter :group, only: [:show ]
+  before_action :group, only: [:show ]
 
   layout 'application', except: [ :index ]
 

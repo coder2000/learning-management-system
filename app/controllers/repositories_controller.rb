@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
-  before_filter :admin?
-  before_filter :repository, only: [:show]
+  before_action :admin?
+  before_action :repository, only: [:show]
 
   def index
     @repositories = current_user.repositories

@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
-  before_filter :admin?
-  before_filter :record, except: [:create]
+  before_action :admin?
+  before_action :record, except: [:create]
 
   def create
     authorize current_user.repositories.new, :create?

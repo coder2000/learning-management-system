@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :group, only: [:show, :create]
-  before_filter :post, only: [:show]
+  before_action  :group, only: [:show, :create]
+  before_action :post, only: [:show]
   def show
   end
   def create
