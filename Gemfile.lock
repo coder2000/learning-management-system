@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/mongoid-rspec/mongoid-rspec
+  revision: f392d24abc6853895bd959b4916cd82a1b12f6f4
+  specs:
+    mongoid-rspec (4.0.0.pre.alpha1)
+      activesupport (>= 4.0.0)
+      mongoid (~> 6.0)
+      rspec (~> 3.3)
+
+GIT
   remote: https://github.com/ritxi/mongoid_token.git
   revision: 45203061bc1044b9894a7a652e04f1c305408aaa
   specs:
@@ -156,10 +165,6 @@ GEM
     mongoid-grid_fs (2.3.0)
       mime-types (>= 1.0, < 4.0)
       mongoid (>= 3.0, < 7.0)
-    mongoid-rspec (1.10.0)
-      mongoid (>= 3.0.1)
-      rake
-      rspec (>= 2.14)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -313,7 +318,7 @@ DEPENDENCIES
   kaminari-actionview
   kaminari-mongoid (> 0.1.2)
   mongoid
-  mongoid-rspec
+  mongoid-rspec!
   mongoid_token!
   pundit
   rails (~> 5.1.2)

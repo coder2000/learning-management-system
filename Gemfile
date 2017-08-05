@@ -51,7 +51,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'mongoid-rspec'
+  gem 'mongoid-rspec', git: "https://github.com/mongoid-rspec/mongoid-rspec"
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'faker'
