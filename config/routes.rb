@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
     get "requests/:code" => "requests#show", as: "request"
     get "members" => "groups#members",       as: "members"
+    delete 'members/:user_id/remove/' => 'groups#remove_member', as: "remove_member"
 
     resources :posts, except: [:index] do
       resources :comments, except: [ :index, :show ]

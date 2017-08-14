@@ -19,4 +19,5 @@ $(document).on('turbolinks:load', ->
       $(".hidden-field").hide(300)
   $("#post_attachments").dropdown()
   $(".post-actions").dropdown()
+  $("#group-settings").dropdown()
 )

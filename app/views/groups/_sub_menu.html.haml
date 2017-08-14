@@ -10,5 +10,15 @@
     -if not current_user.student?
       =link_to group_request_path(@group.token, @group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
         Requests
+      .ui.dropdown.item.hover-black.right.floated#group-settings
+        = semantic_icon "setting large"
+        .menu
+          = link_to "Edit Group", 'javascript:;', class: "item", id: "edit-group"
+          = link_to "Delete Group", group_path(@group.token), class: "item", data: { method: :delete, confirm: "Are you sure to delete this group?" }
 
-
+- if current_user.instructor_of?(@group.token)
+  .ui.small.modal#edit-group-modal
+    .ui.top.attached.label
+      Edit Group
+    .ui.form.group-form-control
+      = render 'groups/form', group: @group

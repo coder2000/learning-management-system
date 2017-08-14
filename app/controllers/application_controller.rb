@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include Pundit
 
-  before_filter :authenticated?
+  before_action :authenticated?
 
   private
 

@@ -12,7 +12,7 @@
 }
 .ui.label, .ui.button{
   background-color: $primary-color;
-  color: white;
+  color: white !important;
 }
 
 .ui.button:hover{
@@ -25,7 +25,9 @@ h4.brand-name{
 .text-right{
   text-align: right;
 }
-
+a.header-link{
+  color: $link-header-color !important;
+}
 //////////////////////////
 ////                  ////
 ////   left-sidebar / ///
@@ -141,7 +143,7 @@ body{
   margin: 10px auto;
   width: 90%;
 }
-#create-group-form-control{
+.group-form-control{
   width: 90%;
   margin: 10px auto;
   padding-top: 10px;

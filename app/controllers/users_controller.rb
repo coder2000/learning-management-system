@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :check_if_logged_in, only: [:new, :create]
-  skip_before_filter :authenticated?, only: [:new, :create]
+  before_action :check_if_logged_in, only: [:new, :create]
+  skip_before_action :authenticated?, only: [:new, :create]
   def new
     @user = User.new(role: params[:role])
   end
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    authorize current_user, :edit?
+    @user = User.find params[:id]
+    authorize @user, :edit?
   end
 
   def update

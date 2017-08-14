@@ -11,22 +11,33 @@
   -else
     .ui.items
       -@members.each do |m|
-        .item
+        .item{ id: "#{ m.id }"}
           .ui.mini.image
             = image_tag avatar_url(m.avatar.url)
           .middle.aligned.content
-            = link_to m.fullname, user_path(m.id)
+            = link_to m.fullname, user_path(m.id), class: "hover-black"
           .middle.aligned.content
             - if current_user.admin?
-              - unless m.instructor_of?(params[:group_id])
-                =link_to "javascript:;" do
-                  .ui.basic.green.button.right.floated.compact
-                    Make Admin
-              - else
-                =link_to "javascript:;" do
-                  .ui.basic.green.button.right.floated.compact
-                    Unset as Admin
-            =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
-              .ui.basic.red.button.right.floated.compact#decline-button
-                Remove
+              - if m.admin?
+                - unless m.instructor_of?(params[:group_id])
+                  =link_to "javascript:;" do
+                    .ui.basic.green.button.right.floated.compact
+                      Make Admin
+                - else
+                  - if m != current_user
+                    =link_to "javascript:;" do
+                      .ui.basic.green.button.right.floated.compact
+                        Unset as Admin
+            - if m != current_user
+              =link_to "javascript:;", class: "remove-user-button", data:  { remove_user_url: group_remove_member_path(params[:group_id], m.id) } do
+                .ui.basic.red.button.right.floated.compact#decline-button
+                  Remove
+.ui.mini.modal.remove-user-modal
+  .header
+    Remove user to the group?
+  .content
+    %p Are you sure you want to remove this user from your group?
+  .actions
+    .ui.negative.button No
+    .ui.positive.button Yes
 

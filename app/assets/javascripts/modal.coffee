@@ -8,22 +8,37 @@ $(document).on('turbolinks:load', ->
   $("#create-repository").on('click', (e)->
     $('#create-repository-modal').modal('show')
   )
-  $(".video-modal").on 'click', (e)->
-    video_src = $(@).data('src')
-    video_poster = $(@).data('poster')
-    video_title = $(@).data('title')
-    jwplayer.key="EA7fi2Owdh/JdYcP7dKRVHiqjiI+RVkI0lZz6w=="
-    player = jwplayer(document.getElementById('video-in-modal')).setup({
-      "file": video_src,
-      "image": video_poster,
-      "title": video_title,
-      "height": 480,
-      "width": "100%",
-      "primary": "flash",
-      "flashplayer": "/assets/jwplayer/jwplayer.flash.swf",
-      "preload": "none",
-      "usekeys": true
-    })
-    $('#video-modal').modal('show')
-    $('#video-modal').modal('refresh')
+  $("#edit-group").on('click', (e)->
+    $('#edit-group-modal').modal('show')
+  )
+  $('.remove-user-button').on('click', (e)->
+    url = $(@).data('remove-user-url')
+    $(".remove-user-modal").modal(
+      closable: false,
+      onApprove: (e)->
+        $.ajax(
+          url: url,
+          method: 'delete'
+          dataType: 'json',
+          success: (e)->
+            $('<div class="ui flash" id="notice">Student has been successefully removed from the group</div>')
+              .insertBefore('#main-container')
+              .hide()
+              .delay(800)
+              .fadeIn(800)
+              .delay(5000)
+              .fadeOut(800)
+          error:  (e)->
+            $('<div class="ui flash" id="notice">Something went wrong</div>')
+              .insertBefore('#main-container')
+              .hide()
+              .delay(800)
+              .fadeIn(800)
+              .delay(5000)
+              .fadeOut(800)
+        )
+      onDeny: (e)->
+        $(@).modal('hide')
+    ).modal('show')
+  )
 )

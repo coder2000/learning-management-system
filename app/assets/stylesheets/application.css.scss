@@ -58,9 +58,22 @@ h1, h2, h3, h4, h5, h6{
 a:hover{
   color: white !important;
 }
-a.item.hover-black:hover{
+a.item.hover-black:hover, .hover-black:hover{
   color: black !important;
 }
 .post_link:hover, .ui.lik.list a:hover, #file-box a:hover{
   color: $primary-color !important;
+}
+//////////////////////////
+////                  ////
+////   link           ////
+////                  ////
+//////////////////////////
+
+a{
+  color: $primary-color !important;
+}
+
+.menu a{
+  color: $dropdown-link-color !important;
 }

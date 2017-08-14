@@ -13,7 +13,7 @@ module ApplicationHelper
       if downloadable_resources
         concat content_tag :div, "Downloadable Resources", class: "ui label"
       end
-      concat content_tag :a, "View Post", class: "ui button right floated", href: post_link, target: "_blank"
+      concat content_tag :a, "View Post", class: "ui button right floated", href: post_link
     end
   end
 

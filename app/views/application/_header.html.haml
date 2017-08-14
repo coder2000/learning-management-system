@@ -3,13 +3,13 @@
     .row
       .four.wide.column
         %h4.brand-name
-          Brand Name
+          = link_to "Brand Name", root_url, class: 'header-link'
       -if logged_in?
         .right.floated.four.wide.column
           .ui.text-right
             .ui.horizontal.list.inverted
-              =link_to "Home", pages_index_path, class: "item"
-              =link_to "#{current_user.fullname}", edit_user_path(current_user.id), class: "item"
+              =link_to "Home", pages_index_path, class: "item header-link"
+              =link_to "#{current_user.fullname}", edit_user_path(current_user.id), class: "item header-link"
             .ui.icon.top.right.pointing.dropdown#main_setting
               =semantic_icon 'inverted large setting'
               .menu

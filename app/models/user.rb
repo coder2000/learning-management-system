@@ -1,6 +1,5 @@
 class User
   include Mongoid::Document
-  include Mongoid::Enum
 
   mount_uploader :avatar, AvatarUploader
   authenticates_with_sorcery!
@@ -32,8 +31,6 @@ class User
   has_many :posts, class_name: "Post"
   has_many :comments, inverse_of: :user
 
-  enum :role, [ :student, :admin ]
-
   def self.add_group(user, token)
     group = Group.find_by_token(token)
     user = User.find(user)
@@ -49,4 +46,11 @@ class User
     instructor_of.pluck(:token).include?(code) ? true : false
   end
 
+  def admin?
+    role == 2
+  end
+
+  def student?
+    role == 1
+  end
 end
