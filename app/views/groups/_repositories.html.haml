@@ -1,4 +1,4 @@
--if current_user.repositories.present?
+-if current_user.repositories.present? && current_user.admin?
   .field
     %label Repositories
     =select_tag :repositories, options_from_collection_for_select( current_user.repositories, :id, :title), include_blank: true

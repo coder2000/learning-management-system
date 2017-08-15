@@ -21,7 +21,7 @@ class User
   #validate :role_allowed
 
   def fullname
-    lname.present? ? "#{ fname.titleize } #{ lname.titleize }" : "#{ fname.titleize }"
+    "#{ fname.titleize } #{ lname.titleize }"
   end
 
   has_and_belongs_to_many :instructor_of, inverse_of: :instructor, class_name: 'Group'

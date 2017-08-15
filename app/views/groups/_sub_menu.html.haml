@@ -8,7 +8,7 @@
       .ui.teal.circular.label
         =number_of_members
     -if not current_user.student?
-      =link_to group_request_path(@group.token, @group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
+      =link_to group_request_path(@group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
         Requests
       .ui.dropdown.item.hover-black.right.floated#group-settings
         = semantic_icon "setting large"

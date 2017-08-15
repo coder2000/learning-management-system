@@ -5,7 +5,7 @@
       .ui.icon.header
         %i.massive.users.icon
         .content
-          Your group code is: #{ params[:code] }
+          Your group code is: #{ params[:group_id] }
         .sub.header
           Share your group code to your students to receive requests.
   -else
@@ -18,7 +18,7 @@
             = link_to r.user.fullname, user_path(r.user.id)
             %p want to join the group
           .middle.aligned.content
-            =link_to group_accept_request_path(params[:code], r.user_id.to_s, r.token) do
+            =link_to group_accept_request_path(params[:group_id], r.user_id.to_s, r.token) do
               .ui.basic.button.right.floated.compact#accept-button
                 Accept
             =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do

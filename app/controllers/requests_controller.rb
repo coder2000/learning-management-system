@@ -2,19 +2,15 @@ class RequestsController < ApplicationController
   before_action :admin?, except: [:join]
 
   def join
-    code ||= params[:code]
-    if Group.where(token: code).present?
-      group = Group.find_by_token(code)
-    end
-    if !Group.where(token: code).present?
-      @notice = "Group doesn't exist yet"
-    elsif current_user.requests.where(token: code).present?
+    if Group.find_by( token: params[:code] ).present?
+      current_user.requests.create(token: params[:code])
+      @notice = "Request sent"
+    elsif current_user.requests.find_by(token: @code).present?
       @notice = "You already sent a request"
     elsif current_user.member_of.pluck(:id).include?(params[:code])
       @notice = "You're already part of the group"
     else
-      current_user.requests.create(token: params[:code])
-      @notice = "Request sent"
+      @notice = "Group not found"
     end
   end
 
@@ -26,8 +22,8 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by_token params[:code]
-    @requests = Request.where(token: params[:code])
+    @group = Group.find_by_token params[:group_id]
+    @requests = Request.where(token: params[:group_id])
   end
 
   private
