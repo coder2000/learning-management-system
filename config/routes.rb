@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
   resources :groups do
 
-    get "request/accept/:user_id/group/:group_id" => "requests#accept", as: "accept_request"
-    get "requests/:code" => "requests#show", as: "request"
+    get "request/accept/:user_id/" => "requests#accept", as: "accept_request"
+    get "requests" => "requests#show", as: "request"
     get "members" => "groups#members",       as: "members"
     delete 'members/:user_id/remove/' => 'groups#remove_member', as: "remove_member"
 

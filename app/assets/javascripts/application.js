@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function(){
   if($("#new_post").length > 0){
     $("#new_post").form()
   }
-  $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300);
+  $('.ui.flash').hide().delay(800).fadeIn(800).delay(5000).fadeOut(300).delay(100);
   if($('#record_record_file').length > 0){
     var input = document.getElementById( 'record_record_file' );
     var label = document.getElementById( 'video_button' );

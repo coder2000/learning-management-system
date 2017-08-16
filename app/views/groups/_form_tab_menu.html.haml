@@ -1,7 +1,9 @@
-.ui.pointing.secondary.menu#post-form-menu
-  =link_to "Post", "javascript:;", data: { tab: "post" }, class: "item active"
-  =link_to "Attachments", "javascript:;", data: { tab: "attachment" }, class: "item"
-  =link_to "Quiz/Homework", "javascript:;", data: { tab: "quizahomework" }, class: "item"
+
+-if current_user.admin?
+  .ui.pointing.secondary.menu#post-form-menu
+    =link_to "Post", "javascript:;", data: { tab: "post" }, class: "item active"
+    =link_to "Attachments", "javascript:;", data: { tab: "attachment" }, class: "item"
+    =link_to "Quiz/Homework", "javascript:;", data: { tab: "quizahomework" }, class: "item"
 .ui.form
   =form_for [ @group, @group.posts.new ], remote: true do |post|
     .ui.tab.active.segment.clearfix-segment{ data: { tab: "post" } }

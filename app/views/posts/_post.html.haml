@@ -19,7 +19,7 @@
     .ui.divider
     -if post.video.present?
       .video-box-container{ align: 'center' }
-        %video.video-js.vjs-big-play-centered{ id: "video-#{ post.id }", controls: :true, data: { setup: "{}" } }
+        %video.video-js.vjs-big-play-centered{ id: "video-#{ post.id }", controls: :true, data: { setup: "{}", src: post.video.record_file.url } }
           %source{ src: post.video.record_file.url }
           %p.vjs-no-js
             Pls enable your javascript to view this video.

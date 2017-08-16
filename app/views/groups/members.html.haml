@@ -28,7 +28,7 @@
                     =link_to "javascript:;" do
                       .ui.basic.green.button.right.floated.compact
                         Unset as Admin
-            - if m != current_user
+            - if m != current_user && current_user.admin?
               =link_to "javascript:;", class: "remove-user-button", data:  { remove_user_url: group_remove_member_path(params[:group_id], m.id) } do
                 .ui.basic.red.button.right.floated.compact#decline-button
                   Remove
