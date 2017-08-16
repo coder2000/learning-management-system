@@ -12,10 +12,10 @@ class User
   field :role, type: Integer, default: 1
 
   validates :email, presence: true, uniqueness: true
-  validates :fname
-  validates :password, on: :create
-  validates :password_confirmation, on: :create
-  validates :password, confirmation: true, on: :create
+  validates :fname, presence: true
+  validates :password, on: :create, presence: true
+  validates :password_confirmation, on: :create, presence: true
+  validates :password, confirmation: true, on: :create, presence: true
   #validate :role_allowed
 
   def fullname
