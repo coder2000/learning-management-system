@@ -7,8 +7,8 @@ class Comment
   belongs_to :user, inverse_of: :comments
   belongs_to :post, inverse_of: :comments
 
-  validates_presence_of :content
-  validates_presence_of :user
+  validates :content, presence: true
+  validates :user, presence: true
 
   def owner?(author_id)
     user.id == author_id
