@@ -3,7 +3,7 @@ class Repository
 
   field :title, type: String
 
-  validates_presence_of :title
+  validates :title, presence: true
 
   has_many :records
   belongs_to :user

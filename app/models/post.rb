@@ -16,5 +16,5 @@ class Post
     user.id == author_id
   end
 
-  validates_presence_of :content
+  validates :content, presence: true
 end

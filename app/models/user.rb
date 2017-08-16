@@ -11,13 +11,11 @@ class User
   field :gender, type: String, default: "male"
   field :role, type: Integer, default: 1
 
-  validates_presence_of :email
-  validates_presence_of :fname
-  validates_presence_of :password, on: :create
-  validates_presence_of :password_confirmation, on: :create
-  validates_confirmation_of :password, on: :create
+  validates :email, presence: true, uniqueness: true
+  validates :fname
+  validates :password, on: :create
+  validates :password_confirmation, on: :create
   validates :password, confirmation: true, on: :create
-  validates_uniqueness_of :email
   #validate :role_allowed
 
   def fullname
