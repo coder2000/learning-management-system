@@ -11,6 +11,15 @@ class CommentsController < ApplicationController
     @comment.destroy!
   end
 
+  def edit
+    @comment = Comment.find_by id: params[:id]
+  end
+
+  def update
+    @comment = Comment.find_by id: params[:id]
+    @comment.update(data)
+  end
+
   private
 
   def data

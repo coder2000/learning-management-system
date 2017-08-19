@@ -76,4 +76,7 @@ module ApplicationHelper
     body
   end
 
+  def edited?(content)
+    "edited" if content.created_at != content.updated_at
+  end
 end

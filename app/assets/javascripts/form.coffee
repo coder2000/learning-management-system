@@ -98,16 +98,17 @@ $(document).on('turbolinks:load', ->
     }
   )
   $(".group-form-control .form").form(
-           inline: true
-           on:     'blur'
-           fields: {
-             title: {
-               identifier: 'group[title]'
-               rules: [{
-                 type: 'empty',
-                 prompt: 'Enter group title'
-               }]
-             }
-          }
+    inline: true
+    on:     'blur'
+    fields: {
+      title: {
+        identifier: 'group[title]'
+        rules: [{
+          type: 'empty',
+          prompt: 'Enter group title'
+        }]
+      }
+    }
   )
+
 )

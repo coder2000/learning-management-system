@@ -1,4 +1,6 @@
-$(".new_comment")[0].reset();
-$("#comment_content").blur();
-$(".comments").append("<%= j render('comments/comment', comment: @comment) %>");
-$(".post-actions").dropdown();
+<%- if not @comment.new_record? %>
+  $(".new_comment")[0].reset();
+  $("#comment_content").blur();
+  $(".comments").append("<%= j render('comments/comment', comment: @comment) %>");
+  $(".post-actions").dropdown();
+<%- end %>

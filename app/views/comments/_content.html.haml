@@ -1,0 +1,7 @@
+.text
+  = comment.content
+.actions
+  .metadata
+    = edited?(comment)
+    %span.date= ctime_ago_in_words(comment.updated_at)
+

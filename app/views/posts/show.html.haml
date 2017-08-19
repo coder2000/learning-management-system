@@ -23,8 +23,4 @@
   .comments-section
     .comments-content
       = render 'comments/index', post: @post
-      = form_for [ @group, @post, @post.comments.new ], remote: true do |comment|
-        .ui.right.icon.fluid.input
-          = comment.text_field :content, placeholder: "Have something you want to ask?"
-          %i.comment.icon
-
+      = render_form @post, @post.comments.new, true

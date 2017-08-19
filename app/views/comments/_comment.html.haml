@@ -7,11 +7,7 @@
       .ui.inline.dropdown.post-actions
         = semantic_icon 'angle down'
         .menu
-          =link_to "Edit", "javascript:;", class: "item"
+          =link_to "Edit", edit_group_post_comment_path(params[:group_id], comment.post.id, comment.id), class: "item", remote: true
           =link_to "Remove", group_post_comment_path(params[:group_id], comment.post.id, comment.id), data: { remote: true, method: :delete, confirm: "Are you sure?" }, class: "item"
-    .text
-      = comment.content
-    .actions
-      .metadata
-        %span.date= ctime_ago_in_words(comment.created_at)
-
+    .post-footer
+      = render 'comments/content', comment: comment
