@@ -2,26 +2,6 @@ $(".ui.items").append('<%= j render(@posts) %>');
 <% if @posts.next_page %>
     $(".pagination").replaceWith('<%= j paginate(@posts) %>');
 <% end %>
-$(".video-modal").on('click', function(e){
-  var video_src = $(this).data('src');
-  var video_poster = $(this).data('poster');
-  var video_title = $(this).data('title');
-  jwplayer.key="EA7fi2Owdh/JdYcP7dKRVHiqjiI+RVkI0lZz6w==";
-  player = jwplayer(document.getElementById('video-in-modal')).setup({
-    "file": video_src,
-    "image": video_poster,
-    "title": video_title,
-    "height": 480,
-    "width": "100%",
-    "primary": "flash",
-    "flashplayer": "/assets/jwplayer/jwplayer.flash.swf",
-    "preload": "none",
-    "usekeys": true
-  });
-
-  $("#video-modal").modal("show");
-  $('#video-modal').modal('refresh');
-});
 $(".item.bordered .image").dimmer({
   on: 'hover'
 });

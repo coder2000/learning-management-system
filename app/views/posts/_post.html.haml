@@ -17,11 +17,6 @@
       %p
         =truncate_content post.content
     .ui.divider
-    -if post.video.present?
-      .video-box-container{ align: 'center' }
-        %video.video-js.vjs-big-play-centered{ id: "video-#{ post.id }", controls: :true, data: { setup: "{}", src: post.video.record_file.url } }
-          %source{ src: post.video.record_file.url }
-          %p.vjs-no-js
-            Pls enable your javascript to view this video.
-      .ui.divider
+    = render("/shared/video_player", video: post.video, player_id: "video-#{ post.id }") if post.video.present?
+    .ui.divider
     =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))
