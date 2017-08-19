@@ -1,5 +1,16 @@
+## Description
+This project is a learning management system that has a vision of improving the
+ways of the educational institutions thru techonology. At the same time help the
+students enjoy there time learning in there free time.
+
+This project is merely a tool to the institutions for them to deliver what they
+are commited to. It is a supplementary tool not a substitute for a
+teacher/instructor. Because I, the currently owner of the project believe that the school
+is the best place to learn.
+
 ## License
 This project is available as open source under the terms of the GNU General Public License v2
+
 ## Contributing
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
