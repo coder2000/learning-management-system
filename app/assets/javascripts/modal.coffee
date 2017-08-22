@@ -13,23 +13,42 @@ $(document).on('turbolinks:load', ->
   )
   $('.remove-user-button').on('click', (e)->
     url = $(@).data('remove-user-url')
-    $(".remove-user-modal").modal(
+    item = "#member-#{ $(@).data('user') }"
+    title = "#{ $(@).data('header') }"
+    content = "#{ $(@).data('content') }"
+    confirm_modal(url, item, title, content)
+  )
+  $('.remove-post').on('click', (e)->
+    url = $(@).data('remove-post-url')
+    item = "#item-#{ $(@).data('post-id') }"
+    title = $(@).data('header')
+    content = $(@).data('content')
+    confirm_modal(url, item, title, content)
+  )
+
+  confirm_modal = (url, item, title, message)->
+    $(".confirm-modal .header").html(title)
+    $(".confirm-modal .content p").html(message)
+    $(".confirm-modal").modal(
       closable: false,
       onApprove: (e)->
         $.ajax(
           url: url,
           method: 'delete'
-          dataType: 'json',
+          dataType: 'json'
           success: (e)->
-            $('<div class="ui flash" id="notice">Student has been successefully removed from the group</div>')
+            $("<div class='ui flash' id='notice'>#{ e.message }</div>")
               .insertBefore('#main-container')
               .hide()
               .delay(800)
               .fadeIn(800)
               .delay(5000)
               .fadeOut(800)
+            $(item).remove()
           error:  (e)->
-            $('<div class="ui flash" id="notice">Something went wrong</div>')
+            if e.message == undefined
+              e.message = "Something went wrong"
+            $("<div class='ui flash' id='notice'>#{ e.message }</div>")
               .insertBefore('#main-container')
               .hide()
               .delay(800)
@@ -40,5 +59,5 @@ $(document).on('turbolinks:load', ->
       onDeny: (e)->
         $(@).modal('hide')
     ).modal('show')
+
   )
-)

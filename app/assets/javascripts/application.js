@@ -21,11 +21,11 @@
 //= require form
 //= require modal
 //= require dropdown
-//= require visibility
 //= require dimmer
 //= require message
 //= require tab
 //= require video_player
+//= require visibility
 
 $(document).on('turbolinks:load', function(){
   if($("#new_post").length > 0){

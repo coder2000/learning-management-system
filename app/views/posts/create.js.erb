@@ -1,9 +1,11 @@
 <%- unless @post.new_record? %>
   $(".ui.items").prepend('<%= j render(@post) %>');
   $("#item-<%= @post.id %>").fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600);
+  if( $("#video-#<%= @post.id %>").length > 0 ){
+    videojs("#video-<%= @post.id %>")
+  }
+  $(".post-actions").dropdown();
+  $("#new_post")[0].reset();
 <%- else %>
   $('<div class="ui flash" id="notice"> Something went wrong</div>').insertBefore('#main-container').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
 <% end %>
-videojs("#video-<%= @post.id %>")
-$(".post-actions").dropdown();
-$("#new_post").form("reset");

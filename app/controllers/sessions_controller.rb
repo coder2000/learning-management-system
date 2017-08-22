@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :authenticated?, only: [:destroy]
+  before_action :require_login, only: [:destroy]
   before_action :check_if_logged_in, only: [ :authenticate ]
   def authenticate
    user = login(params[:email], params[:password])

@@ -11,7 +11,7 @@
   -else
     .ui.items
       -@members.each do |m|
-        .item{ id: "#{ m.id }"}
+        .item{ id: "member-#{ m.id }"}
           .ui.mini.image
             = image_tag avatar_url(m.avatar.url)
           .middle.aligned.content
@@ -29,15 +29,7 @@
                       .ui.basic.green.button.right.floated.compact
                         Unset as Admin
             - if m != current_user && current_user.admin?
-              =link_to "javascript:;", class: "remove-user-button", data:  { remove_user_url: group_remove_member_path(params[:group_id], m.id) } do
+              =remove_user_link( group_remove_member_path(params[:group_id], m.id.to_s), m.id.to_s ) do
                 .ui.basic.red.button.right.floated.compact#decline-button
                   Remove
-.ui.mini.modal.remove-user-modal
-  .header
-    Remove user to the group?
-  .content
-    %p Are you sure you want to remove this user from your group?
-  .actions
-    .ui.negative.button No
-    .ui.positive.button Yes
 

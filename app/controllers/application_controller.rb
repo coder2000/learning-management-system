@@ -4,15 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include Pundit
 
-  before_action :authenticated?
+  before_action :require_login
 
   private
-
-  def authenticated?
-    if !logged_in?
-      redirect_to root_url
-    end
-  end
 
   def check_if_logged_in
     if logged_in?
@@ -22,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def admin?
     if current_user.student?
-      redirect_to pages_index_path, notice: "Unkown URL"
+      redirect_to '/404'
     end
   end
 end

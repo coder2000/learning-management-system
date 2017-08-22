@@ -1,9 +1,15 @@
 class Group
+
+  attr_accessor :user
+
   include Mongoid::Document
   include Mongoid::Token
 
+  after_create :add_user_to_group
+
   field :title, type: String
   field :description, type: String
+
 
   validates :title, presence: true
 
@@ -16,5 +22,12 @@ class Group
   def remove_member(user)
     user.member_of.delete(self)
     self.members.delete(user)
+  end
+
+  def add_user_to_group
+    instructor << user
+    members << user
+    user.instructor_of << self
+    user.member_of << self
   end
 end

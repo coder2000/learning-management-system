@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def user_has_attachments?
-    current_user.video_repositories.present? || current_user.files.present?
+    current_user.video_repositories.present?
   end
 
   def avatar_url(url=nil)

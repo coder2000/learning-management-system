@@ -2,5 +2,8 @@ $(".ui.items").append('<%= j render(@posts) %>');
 <% if @posts.next_page %>
     $(".pagination").replaceWith('<%= j paginate(@posts) %>');
 <% end %>
+$('video').each(function(){
+  player = videojs(this);
+});
 $(".post-actions").dropdown();
 $("#new_post").form("reset");

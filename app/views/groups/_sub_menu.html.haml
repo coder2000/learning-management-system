@@ -5,7 +5,7 @@
       =@group.title
     =link_to group_members_path(@group.token), class: (params[:action] == 'members' ? "item active hover-black" : "item hover-black" )do
       =number_of_members > 1 ? "Member".pluralize : "Member"
-      .ui.teal.circular.label
+      .ui.primary-color.circular.label
         =number_of_members
     -if not current_user.student?
       =link_to group_request_path(@group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do

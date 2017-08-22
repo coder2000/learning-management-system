@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, only: [:new, :create]
-  skip_before_action :authenticated?, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
   def new
     @user = User.new(role: params[:role])
   end
@@ -19,10 +19,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes(permitted_attributes(current_user))
-      redirect_to edit_user_path(current_user.id), notice: "Updated successfuly"
+    if current_user == User.find(params[:id])
+      if current_user.update(update_data)
+        redirect_to edit_user_path(current_user.id), notice: "Updated successfuly"
+      else
+        redirect_to edit_user_path(current_user.id), notice: "Something went wrong"
+      end
     else
-      redirect_to edit_user_path(current_user.id), notice: "Something went wrong"
+      redirect_to '/404', status: 404
     end
   end
 
