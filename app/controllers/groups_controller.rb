@@ -1,11 +1,10 @@
+# Groups controller
 class GroupsController < ApplicationController
+  before_action :group, only: [:show]
 
-  before_action :group, only: [:show ]
+  layout 'application', except: [:index]
 
-  layout 'application', except: [ :index ]
-
-  def index
-  end
+  def index; end
 
   def create
     authorize Group.new, :create?
@@ -14,10 +13,10 @@ class GroupsController < ApplicationController
       @group.instructor << user
       @group.members << user
       current_user.instructor_of << @group
-      current_user.member_of << @group
-      redirect_to group_path(@group.token), notice: "Group Created"
+      current_user.member_of <<  @group
+      redirect_to group_path(@group.token), notice: 'Group Created'
     else
-      redirect_to pages_index_path, notice: "Something went wrong"
+      redirect_to pages_index_path, notice: 'Something went wrong'
     end
   end
 
@@ -50,12 +49,10 @@ class GroupsController < ApplicationController
   private
 
   def group
-    @group ||= Group.find_by_token( params[:id] )
+    @group ||= Group.find_by_token(params[:id])
   end
 
   def data
     params.require(:group).permit(:title, :description)
   end
-
 end
-

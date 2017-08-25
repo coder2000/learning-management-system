@@ -1,15 +1,18 @@
+# Users controller
 class UsersController < ApplicationController
-  before_action :check_if_logged_in, only: [:new, :create]
-  skip_before_action :require_login, only: [:new, :create]
+
+  before_action :check_if_logged_in, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create]
+
   def new
     @user = User.new(role: params[:role])
   end
 
   def create
     if User.create(data)
-      redirect_to root_url, notice: "You have been successfuly registered"
+      redirect_to root_url, notice: 'You have been successfully registered'
     else
-      redirect_to new_user_path(data[:role]), notice: "Something went wrong"
+      redirect_to new_user_path(data[:role]), notice: 'Something went wrong'
     end
   end
 
@@ -21,15 +24,16 @@ class UsersController < ApplicationController
   def update
     if current_user == User.find(params[:id])
       if current_user.update(update_data)
-        redirect_to edit_user_path(current_user.id), notice: "Updated successfuly"
+        redirect_to edit_user_path(current_user.id),
+                    notice: 'Updated successfuly'
       else
-        redirect_to edit_user_path(current_user.id), notice: "Something went wrong"
+        redirect_to edit_user_path(current_user.id),
+                    notice: 'Something went wrong'
       end
     else
       redirect_to '/404', status: 404
     end
   end
-
 
   private
 

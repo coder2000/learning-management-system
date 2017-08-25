@@ -2,39 +2,39 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.3'
 
-#view
-gem 'haml-rails'
-gem 'semantic-ui-sass'
-gem 'sass-rails'
-gem 'uglifier'
+# view
 gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
+gem 'haml-rails'
 gem 'jbuilder'
+gem 'jquery-rails'
 gem 'remotipart'
+gem 'sass-rails'
+gem 'semantic-ui-sass'
+gem 'turbolinks'
+gem 'uglifier'
 
-#gem 'omniauth-google-oauth2'
-#gem 'yt'
+# gem 'omniauth-google-oauth2'
+# gem 'yt'
 
-#pagination
-gem 'kaminari-mongoid', ' > 0.1.2'
+# pagination
 gem 'kaminari-actionview'
+gem 'kaminari-mongoid', ' > 0.1.2'
 
-#mongoid
+# mongoid
 gem 'mongoid'
-gem 'mongoid_token', git: "https://github.com/ritxi/mongoid_token.git"
+gem 'mongoid_token', git: 'https://github.com/ritxi/mongoid_token.git'
 
-#authentication
+# authentication
 gem 'sorcery'
 
-#authorization
+# authorization
 gem 'pundit'
 
-#carrierwave
+# carrierwave
 gem 'carrierwave'
+gem 'carrierwave-mongoid'
 gem 'carrierwave-video'
 gem 'carrierwave-video-thumbnailer'
-gem 'carrierwave-mongoid'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -50,19 +50,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'mongoid-rspec', git: "https://github.com/mongoid-rspec/mongoid-rspec"
-  gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'faker'
   gem 'database_cleaner'
-  gem 'simplecov', require: false
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'mongoid-rspec', git: 'https://github.com/mongoid-rspec/mongoid-rspec'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'web-console'
   gem 'better_errors'
   gem 'spring'
+  gem 'web-console'
 end
-

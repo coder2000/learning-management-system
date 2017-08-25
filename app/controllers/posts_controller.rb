@@ -1,13 +1,16 @@
+# Posts controller
 class PostsController < ApplicationController
-  before_action  :group, only: [:show, :create]
-  before_action :post, only: [:show, :destroy]
+  before_action  :group, only: %i[show, create]
+  before_action :post, only: %i[show, destroy]
+  
   def show
     if @post.nil?
       redirect_to '/404'
     end
   end
+  
   def create
-    @post = @group.posts.create(data.merge! user: current_user )
+    @post = @group.posts.create(data.merge! user: current_user)
     if params.has_key?(:attachments)
       params[:attachments].each do |file|
         if file.present?

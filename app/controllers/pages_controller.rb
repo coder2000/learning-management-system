@@ -1,9 +1,10 @@
+# Pages controller
 class PagesController < ApplicationController
   layout 'application', except: [:login]
   before_action :check_if_logged_in, only: [:login]
   skip_before_action :require_login, only: [:login]
-  def login
-  end
+  
+  def login; end
 
   def index
     @posts =  current_user.member_of.collect(&:posts).flatten
@@ -17,4 +18,3 @@ class PagesController < ApplicationController
   end
 
 end
-

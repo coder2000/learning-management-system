@@ -3,12 +3,12 @@ class User
 
   mount_uploader :avatar, AvatarUploader
   authenticates_with_sorcery!
-  ALLOWED_ROLES = [1, 2]
+  ALLOWED_ROLES = [1, 2].freeze
 
   field :fname, type: String
   field :mname, type: String
   field :lname, type: String
-  field :gender, type: String, default: "male"
+  field :gender, type: String, default: 'male'
   field :role, type: Integer, default: 1
 
   validates :email, presence: true, uniqueness: true
@@ -16,17 +16,17 @@ class User
   validates :password, on: :create, presence: true
   validates :password_confirmation, on: :create, presence: true
   validates :password, confirmation: true, on: :create, presence: true
-  #validate :role_allowed
+  # validate :role_allowed
 
   def fullname
-    lname.present? ? "#{ fname.titleize } #{ lname.titleize }" : fname.titleize
+    lname.present? ? "#{fname.titleize} #{lname.titleize}" : fname.titleize
   end
 
   has_and_belongs_to_many :instructor_of, inverse_of: :instructor, class_name: 'Group'
   has_and_belongs_to_many :member_of, inverse_of: :member, class_name: 'Group'
   has_many :requests
   has_many :repositories
-  has_many :posts, class_name: "Post"
+  has_many :posts, class_name: 'Post'
   has_many :comments, inverse_of: :user
 
   def self.add_group(user, token)

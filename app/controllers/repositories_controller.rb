@@ -1,3 +1,4 @@
+# Repositories controller
 class RepositoriesController < ApplicationController
   before_action :admin?
   before_action :repository, only: [:show]
@@ -11,7 +12,7 @@ class RepositoriesController < ApplicationController
     authorize current_user.repositories.new, :create?
     @repository = current_user.repositories.new(data)
     if @repository.save
-      redirect_to repositories_path(repository.id), notice: "Repository Created"
+      redirect_to repositories_path(repository.id), notice: 'Repository Created'
     else
       redirect_to root_url
     end

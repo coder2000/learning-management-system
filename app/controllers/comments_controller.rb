@@ -1,3 +1,4 @@
+# Comments controller
 class CommentsController < ApplicationController
 
   before_action :post

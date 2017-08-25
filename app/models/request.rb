@@ -4,7 +4,7 @@ class Request
   field :token, type: String
 
   belongs_to :user
-  accepts_nested_attributes_for:user
+  accepts_nested_attributes_for :user
 
   def accept
     group = Group.find_by_token token

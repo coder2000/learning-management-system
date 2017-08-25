@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', ->
   $('#main_setting').dropdown()
 
   ###################
-  ### post ##########
+  ### post ### #######
   ###################
   $(".hidden-field").hide()
   video_select = $("#post_video").html()

@@ -4,7 +4,7 @@ before_change = ->
     video.dispose()
 
 $(document).on('page:change', ->
-               if $('.video-js').length > 0
-                 video = videojs(@.id)
-              )
+  if $('.video-js').length > 0
+    video = videojs(@.id)
+)
 $(document).on('page:before-unload', before_change)
