@@ -1,12 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'support/database_cleaner'
 require 'spec_helper'
 require 'rspec/rails'
 require 'simplecov'
 SimpleCov.start :rails
-
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
