@@ -1,10 +1,11 @@
+# Records controller
 class RecordsController < ApplicationController
   before_action :admin?
   before_action :record, except: [:create]
 
   def create
     authorize current_user.repositories.new, :create?
-    @repository = current_user.repositories.find( params[:repository_id] )
+    @repository = current_user.repositories.find(params[:repository_id])
     @record = @repository.records.create!(data)
   end
 
@@ -13,12 +14,12 @@ class RecordsController < ApplicationController
     if @record
       @record.remove_record_file!
       @record.delete
-      redirect_to repository_path(params[:repository_id]), notice: "Video deleted"
+      redirect_to repository_path(params[:repository_id]),
+                  notice: 'Video deleted'
     end
   end
 
-  def show
-  end
+  def show; end
 
   private
 

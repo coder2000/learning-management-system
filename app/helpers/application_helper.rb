@@ -1,28 +1,24 @@
+# Application helper
 module ApplicationHelper
-  def has_extra(quiz,homework,downloadable_resources, post_link)
-    content_tag :div, class: "extra" do
-      if quiz || homework || downloadable_resources
-        concat "Has: "
+  def has_extra(quiz, homework, resources, post_link)
+    content_tag :div, class: 'extra' do
+      concat 'Has: ' if quiz || homework || resources
+      concat content_tag :div, 'Quiz', class: 'ui label' if quiz
+      concat content_tag :div, 'Homework', class: 'ui label' if homework
+      if resources
+        concat content_tag :div, 'Downloadable Resources', class: 'ui label'
       end
-      if quiz
-        concat content_tag :div, "Quiz", class: "ui label"
-      end
-      if homework
-        concat content_tag :div, "Homework", class: "ui label"
-       end
-      if downloadable_resources
-        concat content_tag :div, "Downloadable Resources", class: "ui label"
-      end
-      concat content_tag :a, "View Post", class: "ui button right floated", href: post_link
+      concat content_tag :a, 'View Post', class: 'ui button right floated',
+                                          href: post_link
     end
   end
 
   def ctime_ago_in_words(time_str)
     time = time_str.to_time
     if time < 2.months.ago
-      time.strftime("%B %d %Y at %I:%M %p")
+      time.strftime('%B %d %Y at %I:%M %p')
     else
-      "#{ time_ago_in_words(time) } ago"
+      "#{time_ago_in_words(time)} ago"
     end
   end
 
@@ -30,15 +26,13 @@ module ApplicationHelper
     current_user.video_repositories.present? || current_user.files.present?
   end
 
-  def avatar_url(url=nil)
+  def avatar_url(url = nil)
     if url
       url
+    elsif current_user.gender == 'female'
+      'female.png'
     else
-      if current_user.gender == 'female'
-        'female.png'
-       else
-         'male.png'
-      end
+      'male.png'
     end
   end
 
@@ -51,15 +45,15 @@ module ApplicationHelper
   end
 
   def truncate_content(content)
-    truncate( content, length: 380, omission: "... (continued)" )
+    truncate(content, length: 380, omission: '... (continued)')
   end
 
   def truncate_title(title)
-    truncate( title, length: 30, ommission: "..." )
+    truncate(title, length: 30, ommission: '...')
   end
 
   def file_options(grouped_options, type)
-    body = "".html_safe
+    body = ''.html_safe
 
     grouped_options.each do |container|
       html_attributes = option_html_attributes(container)
@@ -67,13 +61,14 @@ module ApplicationHelper
       label = container.title
       html_attributes = { label: label }.merge!(html_attributes)
       if type == 'video'
-        html_options = container.records.where(file_type: 'video').map { |v| [ v.title, v.id ] }
+        html_options = container.records.where(file_type: 'video').map { |v| [v.title, v.id] }
       else
-        html_options = container.records.where(file_type: 'application').map { |d| [ d.title, d.id ] }
+        html_options = container.records.where(file_type: 'application').map { |d| [d.title, d.id] }
       end
-      body.safe_concat content_tag("optgroup".freeze, options_for_select(html_options), html_attributes)
+      body.safe_concat content_tag('optgroup'.freeze,
+                                   options_for_select(html_options),
+                                   html_attributes)
     end
     body
   end
-
 end

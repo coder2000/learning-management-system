@@ -16,7 +16,6 @@ class Record
   end
 
   def set_file_type
-    self.file_type = record_file.content_type.starts_with?('video') ? "video" : "application"
+    self.file_type = record_file.content_type.starts_with?('video') ? 'video' : 'application'
   end
-
 end

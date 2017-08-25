@@ -1,10 +1,12 @@
+# Posts controller
 class PostsController < ApplicationController
-  before_action  :group, only: [:show, :create]
+  before_action :group, only: %i[show create]
   before_action :post, only: [:show]
-  def show
-  end
+
+  def show; end
+
   def create
-    @post = @group.posts.create(data.merge! user: current_user )
+    @post = @group.posts.create(data.merge! user: current_user)
     if params.has_key?(:attachments)
       params[:attachments].each do |file|
         if file.present?

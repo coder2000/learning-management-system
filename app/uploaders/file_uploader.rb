@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class FileUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
 
@@ -15,13 +14,13 @@ class FileUploader < CarrierWave::Uploader::Base
   #
   version :thumb, if: :video? do
     process thumbnail: [{ format: 'png', quality: 9, size: 598, logger: Rails.logger }]
-    def full_filename for_file
+    def full_filename(for_file)
       png_name for_file, version_name
     end
   end
 
-  def png_name for_file, version_name
-    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  def png_name(for_file, version_name)
+    %(#{version_name}_#{for_file.chomp(File.extname(for_file))}.png)
   end
 
   def store_dir
@@ -50,9 +49,9 @@ class FileUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-   def extension_white_list
-     %w(doc docx ppt pptx xls xlsx pdf zip rar mp4 ogg flv mkv)
-   end
+  def extension_white_list
+    %w[doc docx ppt pptx xls xlsx pdf zip rar mp4 ogg flv mkv]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

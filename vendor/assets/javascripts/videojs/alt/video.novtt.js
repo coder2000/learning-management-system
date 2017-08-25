@@ -11628,7 +11628,7 @@ var Player = function (_Component) {
       }
     }
 
-    return;
+
   };
 
   /**
@@ -12811,7 +12811,7 @@ var Player = function (_Component) {
      */
     this.trigger('error');
 
-    return;
+
   };
 
   /**
@@ -18924,7 +18924,7 @@ function tryUpdateStyle(el, style, rule) {
   } catch (e) {
 
     // Satisfies linter.
-    return;
+
   }
 }
 
@@ -24788,12 +24788,12 @@ module.exports = videojs;
 },{"101":101,"102":102,"108":108,"45":45,"46":46,"5":5,"56":56,"57":57,"59":59,"63":63,"64":64,"66":66,"74":74,"80":80,"81":81,"83":83,"85":85,"86":86,"88":88,"89":89,"91":91,"92":92,"93":93,"94":94,"95":95,"97":97}],99:[function(_dereq_,module,exports){
 
 },{}],100:[function(_dereq_,module,exports){
-var isFunction = _dereq_(103)
+var isFunction = _dereq_(103);
 
-module.exports = forEach
+module.exports = forEach;
 
-var toString = Object.prototype.toString
-var hasOwnProperty = Object.prototype.hasOwnProperty
+var toString = Object.prototype.toString;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function forEach(list, iterator, context) {
     if (!isFunction(iterator)) {
@@ -24805,9 +24805,9 @@ function forEach(list, iterator, context) {
     }
     
     if (toString.call(list) === '[object Array]')
-        forEachArray(list, iterator, context)
+        forEachArray(list, iterator, context);
     else if (typeof list === 'string')
-        forEachString(list, iterator, context)
+        forEachString(list, iterator, context);
     else
         forEachObject(list, iterator, context)
 }
@@ -24838,7 +24838,7 @@ function forEachObject(object, iterator, context) {
 },{"103":103}],101:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
-    typeof window !== 'undefined' ? window : {}
+    typeof window !== 'undefined' ? window : {};
 var minDoc = _dereq_(99);
 
 if (typeof document !== 'undefined') {
@@ -24868,12 +24868,12 @@ if (typeof window !== "undefined") {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],103:[function(_dereq_,module,exports){
-module.exports = isFunction
+module.exports = isFunction;
 
-var toString = Object.prototype.toString
+var toString = Object.prototype.toString;
 
 function isFunction (fn) {
-  var string = toString.call(fn)
+  var string = toString.call(fn);
   return string === '[object Function]' ||
     (typeof fn === 'function' && string !== '[object RegExp]') ||
     (typeof window !== 'undefined' &&
@@ -24882,27 +24882,26 @@ function isFunction (fn) {
       fn === window.alert ||
       fn === window.confirm ||
       fn === window.prompt))
-};
-
+}
 },{}],104:[function(_dereq_,module,exports){
 var trim = _dereq_(106)
   , forEach = _dereq_(100)
   , isArray = function(arg) {
       return Object.prototype.toString.call(arg) === '[object Array]';
-    }
+    };
 
 module.exports = function (headers) {
   if (!headers)
-    return {}
+    return {};
 
-  var result = {}
+  var result = {};
 
   forEach(
       trim(headers).split('\n')
     , function (row) {
         var index = row.indexOf(':')
           , key = trim(row.slice(0, index)).toLowerCase()
-          , value = trim(row.slice(index + 1))
+          , value = trim(row.slice(index + 1));
 
         if (typeof(result[key]) === 'undefined') {
           result[key] = value
@@ -24912,16 +24911,16 @@ module.exports = function (headers) {
           result[key] = [ result[key], value ]
         }
       }
-  )
+  );
 
   return result
 }
 },{"100":100,"106":106}],105:[function(_dereq_,module,exports){
-module.exports = SafeParseTuple
+module.exports = SafeParseTuple;
 
 function SafeParseTuple(obj, reviver) {
-    var json
-    var error = null
+    var json;
+    var error = null;
 
     try {
         json = JSON.parse(obj, reviver)
@@ -24956,7 +24955,7 @@ function clean (s) {
 
 module.exports = function tsml (sa) {
   var s = ''
-    , i = 0
+    , i = 0;
 
   for (; i < arguments.length; i++)
     s += clean(sa[i]) + (arguments[i + 1] || '')
@@ -24965,22 +24964,22 @@ module.exports = function tsml (sa) {
 }
 },{}],108:[function(_dereq_,module,exports){
 "use strict";
-var window = _dereq_(102)
-var isFunction = _dereq_(103)
-var parseHeaders = _dereq_(104)
-var xtend = _dereq_(109)
+var window = _dereq_(102);
+var isFunction = _dereq_(103);
+var parseHeaders = _dereq_(104);
+var xtend = _dereq_(109);
 
-module.exports = createXHR
-createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
-createXHR.XDomainRequest = "withCredentials" in (new createXHR.XMLHttpRequest()) ? createXHR.XMLHttpRequest : window.XDomainRequest
+module.exports = createXHR;
+createXHR.XMLHttpRequest = window.XMLHttpRequest || noop;
+createXHR.XDomainRequest = "withCredentials" in (new createXHR.XMLHttpRequest()) ? createXHR.XMLHttpRequest : window.XDomainRequest;
 
 forEachArray(["get", "put", "post", "patch", "head", "delete"], function(method) {
     createXHR[method === "delete" ? "del" : method] = function(uri, options, callback) {
-        options = initParams(uri, options, callback)
-        options.method = method.toUpperCase()
+        options = initParams(uri, options, callback);
+        options.method = method.toUpperCase();
         return _createXHR(options)
     }
-})
+});
 
 function forEachArray(array, iterator) {
     for (var i = 0; i < array.length; i++) {
@@ -24996,10 +24995,10 @@ function isEmpty(obj){
 }
 
 function initParams(uri, options, callback) {
-    var params = uri
+    var params = uri;
 
     if (isFunction(options)) {
-        callback = options
+        callback = options;
         if (typeof uri === "string") {
             params = {uri:uri}
         }
@@ -25007,12 +25006,12 @@ function initParams(uri, options, callback) {
         params = xtend(options, {uri: uri})
     }
 
-    params.callback = callback
+    params.callback = callback;
     return params
 }
 
 function createXHR(uri, options, callback) {
-    options = initParams(uri, options, callback)
+    options = initParams(uri, options, callback);
     return _createXHR(options)
 }
 
@@ -25021,13 +25020,13 @@ function _createXHR(options) {
         throw new Error("callback argument missing")
     }
 
-    var called = false
+    var called = false;
     var callback = function cbOnce(err, response, body){
         if(!called){
-            called = true
+            called = true;
             options.callback(err, response, body)
         }
-    }
+    };
 
     function readystatechange() {
         if (xhr.readyState === 4) {
@@ -25037,7 +25036,7 @@ function _createXHR(options) {
 
     function getBody() {
         // Chrome with requestType=blob throws errors arround when even testing access to responseText
-        var body = undefined
+        var body = undefined;
 
         if (xhr.response) {
             body = xhr.response
@@ -25055,27 +25054,27 @@ function _createXHR(options) {
     }
 
     function errorFunc(evt) {
-        clearTimeout(timeoutTimer)
+        clearTimeout(timeoutTimer);
         if(!(evt instanceof Error)){
             evt = new Error("" + (evt || "Unknown XMLHttpRequest Error") )
         }
-        evt.statusCode = 0
+        evt.statusCode = 0;
         return callback(evt, failureResponse)
     }
 
     // will load the data & process the response in a special response object
     function loadFunc() {
-        if (aborted) return
-        var status
-        clearTimeout(timeoutTimer)
+        if (aborted) return;
+        var status;
+        clearTimeout(timeoutTimer);
         if(options.useXDR && xhr.status===undefined) {
             //IE8 CORS GET successful response doesn't have a status field, but body is fine
             status = 200
         } else {
             status = (xhr.status === 1223 ? 204 : xhr.status)
         }
-        var response = failureResponse
-        var err = null
+        var response = failureResponse;
+        var err = null;
 
         if (status !== 0){
             response = {
@@ -25085,7 +25084,7 @@ function _createXHR(options) {
                 headers: {},
                 url: uri,
                 rawRequest: xhr
-            }
+            };
             if(xhr.getAllResponseHeaders){ //remember xhr can in fact be XDR for CORS in IE
                 response.headers = parseHeaders(xhr.getAllResponseHeaders())
             }
@@ -25095,7 +25094,7 @@ function _createXHR(options) {
         return callback(err, response, response.body)
     }
 
-    var xhr = options.xhr || null
+    var xhr = options.xhr || null;
 
     if (!xhr) {
         if (options.cors || options.useXDR) {
@@ -25105,15 +25104,15 @@ function _createXHR(options) {
         }
     }
 
-    var key
-    var aborted
-    var uri = xhr.url = options.uri || options.url
-    var method = xhr.method = options.method || "GET"
-    var body = options.body || options.data
-    var headers = xhr.headers = options.headers || {}
-    var sync = !!options.sync
-    var isJson = false
-    var timeoutTimer
+    var key;
+    var aborted;
+    var uri = xhr.url = options.uri || options.url;
+    var method = xhr.method = options.method || "GET";
+    var body = options.body || options.data;
+    var headers = xhr.headers = options.headers || {};
+    var sync = !!options.sync;
+    var isJson = false;
+    var timeoutTimer;
     var failureResponse = {
         body: undefined,
         headers: {},
@@ -25121,29 +25120,29 @@ function _createXHR(options) {
         method: method,
         url: uri,
         rawRequest: xhr
-    }
+    };
 
     if ("json" in options && options.json !== false) {
-        isJson = true
-        headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json") //Don't override existing accept header declared by user
+        isJson = true;
+        headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json"); //Don't override existing accept header declared by user
         if (method !== "GET" && method !== "HEAD") {
-            headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json") //Don't override existing accept header declared by user
+            headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json"); //Don't override existing accept header declared by user
             body = JSON.stringify(options.json === true ? body : options.json)
         }
     }
 
-    xhr.onreadystatechange = readystatechange
-    xhr.onload = loadFunc
-    xhr.onerror = errorFunc
+    xhr.onreadystatechange = readystatechange;
+    xhr.onload = loadFunc;
+    xhr.onerror = errorFunc;
     // IE9 must have onprogress be set to a unique function.
     xhr.onprogress = function () {
         // IE must die
-    }
+    };
     xhr.onabort = function(){
         aborted = true;
-    }
-    xhr.ontimeout = errorFunc
-    xhr.open(method, uri, !sync, options.username, options.password)
+    };
+    xhr.ontimeout = errorFunc;
+    xhr.open(method, uri, !sync, options.username, options.password);
     //has to be after open
     if(!sync) {
         xhr.withCredentials = !!options.withCredentials
@@ -25153,11 +25152,11 @@ function _createXHR(options) {
     // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
     if (!sync && options.timeout > 0 ) {
         timeoutTimer = setTimeout(function(){
-            if (aborted) return
-            aborted = true//IE9 may still call readystatechange
-            xhr.abort("timeout")
-            var e = new Error("XMLHttpRequest timeout")
-            e.code = "ETIMEDOUT"
+            if (aborted) return;
+            aborted = true;//IE9 may still call readystatechange
+            xhr.abort("timeout");
+            var e = new Error("XMLHttpRequest timeout");
+            e.code = "ETIMEDOUT";
             errorFunc(e)
         }, options.timeout )
     }
@@ -25185,7 +25184,7 @@ function _createXHR(options) {
     // Microsoft Edge browser sends "undefined" when send is called with undefined value.
     // XMLHttpRequest spec says to pass null as body to indicate no body
     // See https://github.com/naugtur/xhr/issues/100.
-    xhr.send(body || null)
+    xhr.send(body || null);
 
     return xhr
 
@@ -25196,7 +25195,7 @@ function getXml(xhr) {
     if (xhr.responseType === "document") {
         return xhr.responseXML
     }
-    var firefoxBugTakenEffect = xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
+    var firefoxBugTakenEffect = xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror";
     if (xhr.responseType === "" && !firefoxBugTakenEffect) {
         return xhr.responseXML
     }
@@ -25207,15 +25206,15 @@ function getXml(xhr) {
 function noop() {}
 
 },{"102":102,"103":103,"104":104,"109":109}],109:[function(_dereq_,module,exports){
-module.exports = extend
+module.exports = extend;
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function extend() {
-    var target = {}
+    var target = {};
 
     for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i]
+        var source = arguments[i];
 
         for (var key in source) {
             if (hasOwnProperty.call(source, key)) {
