@@ -1,3 +1,4 @@
+# Group Policy
 class GroupPolicy < ApplicationPolicy
 
   def show?

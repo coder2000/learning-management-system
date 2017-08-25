@@ -1,3 +1,4 @@
+# Application Policy
 class ApplicationPolicy
   attr_reader :user, :record
 

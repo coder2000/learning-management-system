@@ -1,3 +1,4 @@
+# Group Model
 class Group
 
   attr_accessor :user

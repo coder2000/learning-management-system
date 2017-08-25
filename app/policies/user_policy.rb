@@ -1,3 +1,4 @@
+# User Policy
 class UserPolicy < ApplicationPolicy
 
   def edit?

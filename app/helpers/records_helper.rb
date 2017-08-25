@@ -1,3 +1,4 @@
+# Records Helper
 module RecordsHelper
   def link_to_record(record, method = :get)
     case method

@@ -1,3 +1,4 @@
+# Request Model
 class Request
   include Mongoid::Document
 

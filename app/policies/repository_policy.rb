@@ -1,3 +1,4 @@
+# Repository Policy
 class RepositoryPolicy < ApplicationPolicy
 
   def index?

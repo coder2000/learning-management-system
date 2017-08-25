@@ -1,3 +1,4 @@
+# Record Model
 class Record
   include Mongoid::Document
 

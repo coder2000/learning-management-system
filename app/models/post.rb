@@ -1,3 +1,4 @@
+# Post Model
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
