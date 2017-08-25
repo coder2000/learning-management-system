@@ -17,4 +17,3 @@ $(document).on('turbolinks:load', ->
           $.getScript(url)
     )
 )
-

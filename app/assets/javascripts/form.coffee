@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', ->
-  $('#login-form-control')
-    .form(
+  $('#login-form-control').form(
     fields: {
       email: {
         identifier: 'email'
@@ -26,8 +25,7 @@ $(document).on('turbolinks:load', ->
       }
     }
   )
-  $('#new_user')
-    .form(
+  $('#new_user').form(
     inline: true,
     on: 'blur',
     fields: {

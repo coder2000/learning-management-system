@@ -11,4 +11,3 @@ before_change = ->
     )
 $(document).on("turbolinks:before-visit", before_change)
 $(document).on("turbolinks:load", change)
-
