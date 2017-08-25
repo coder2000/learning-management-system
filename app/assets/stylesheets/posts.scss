@@ -1,3 +1,8 @@
+@import 'variables';
+
 #post-show-card{
   width: 100%;
+}
+#file_attachment_field > div > a.ui.label:hover{
+  background-color: $link-button-hover-color;
 }

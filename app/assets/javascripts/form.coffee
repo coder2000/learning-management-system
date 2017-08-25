@@ -110,4 +110,5 @@ $(document).on('turbolinks:load', ->
       }
     }
   )
+
 )

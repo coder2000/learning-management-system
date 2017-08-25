@@ -8,10 +8,10 @@ class GroupsController < ApplicationController
 
   def create
     authorize Group.new, :create?
-    @group = Group.new data
+    @group = Group.new data.merge!(user: current_user)
     if @group.save
-      @group.instructor << current_user
-      @group.members << current_user
+      @group.instructor << user
+      @group.members << user
       current_user.instructor_of << @group
       current_user.member_of <<  @group
       redirect_to group_path(@group.token), notice: 'Group Created'
@@ -28,15 +28,15 @@ class GroupsController < ApplicationController
   def remove_member
     @group = Group.find_by_token params[:group_id]
     user = User.find_by id: params[:user_id]
-    if @group.remove_member(user).nil?
-      render json: { user: user.id.to_s }, status: 200
+    if @group.remove_member(user) == nil
+      render json: { message: "User has been removed from the group" }, status: 200
     else
-      render json: {}, status: 500
+      render json: { message: "Something went wrong" }, status: 500
     end
   end
 
   def show
-    @posts = @group.posts.desc(:updated_at).page(params[:page]).per(3)
+    @posts = @group.posts.desc(:updated_at).page(params[:page]).per(6)
 
     authorize @group, :show?
 

@@ -51,6 +51,9 @@ h1, h2, h3, h4, h5, h6 {
   text-align: justify;
   z-index: 999;
 }
+.ui.primary-color.label{
+  background-color: $primary-color !important;
+}
 
 //////////////////////////
 ////                  ////

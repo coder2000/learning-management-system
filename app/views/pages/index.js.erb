@@ -1,9 +1,13 @@
+$(".pagination").hide(0);
 $(".ui.items").append('<%= j render(@posts) %>');
 <% if @posts.next_page %>
     $(".pagination").replaceWith('<%= j paginate(@posts) %>');
 <% end %>
 $(".item.bordered .image").dimmer({
   on: 'hover'
+});
+$('video').each(function(){
+  player = videojs(this);
 });
 $(".post-actions").dropdown();
 $("#new_post").form("reset");

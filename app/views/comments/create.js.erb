@@ -1,4 +1,8 @@
-$(".new_comment")[0].reset();
-$("#comment_content").blur();
-$(".comments").append("<%= j render('comments/comment', comment: @comment) %>");
-$(".post-actions").dropdown();
+<%- unless @comment.new_record? %>
+  $(".new_comment")[0].reset();
+  $("#comment_content").blur();
+  $(".comments").append("<%= j render('comments/comment', comment: @comment) %>");
+  $(".post-actions").dropdown();
+<%- else %>
+  $('<div class="ui flash" id="notice"> Something went wrong</div>').insertBefore('#main-container').hide().delay(800).fadeIn(800).delay(5000).fadeOut(800);
+<%- end %>
