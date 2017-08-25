@@ -1,11 +1,11 @@
 change = ->
   if $('video').length > 0
-    $('video').each( ->
+    $('video').each(->
       player = videojs(@)
     )
 before_change = ->
   if $('video').length > 0
-    $('video').each( ->
+    $('video').each(->
       player = videojs(@)
       player.dispose
     )

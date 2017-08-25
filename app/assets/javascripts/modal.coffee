@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', ->
               .fadeIn(800)
               .delay(5000)
               .fadeOut(800)
-          error:  (e)->
+          error: (e)->
             $('<div class="ui flash" id="notice">Something went wrong</div>')
               .insertBefore('#main-container')
               .hide()
