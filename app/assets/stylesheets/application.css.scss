@@ -18,31 +18,33 @@
  */
 @import "semantic-ui";
 @import 'variables';
-body{
+
+body {
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
   margin: 5px;
 }
-.ui.inverted.button{
+
+.ui.inverted.button {
   background-color: transparent !important;
-  box-shadow: 0px 0px 0px 2px #008947 inset !important;
+  box-shadow: 0 0 0 2px #008947 inset !important;
   color: $primary-color !important;
 }
-.ui.inverted.button:hover{
+
+.ui.inverted.button:hover {
   background-color: $primary-color !important;
-  box-shadow: 0px 0px 0px 2px #008947 inset !important;
+  box-shadow: 0 0 0 2px #008947 inset !important;
   color: white !important;
 }
 
-.ui.flash
-{
+.ui.flash {
   background-color: $faded-primary-color;
-  color:white;
-  top:55px;
+  color: white;
+  top: 55px;
   right: 35px;
-  font-size:13px;
-  padding:20px 10px 20px 10px;
+  font-size: 13px;
+  padding: 20px 10px 20px 10px;
   position: fixed;
   height: auto;
   width: 20%;
@@ -55,25 +57,28 @@ h1, h2, h3, h4, h5, h6{
 ////   link hovers    ////
 ////                  ////
 //////////////////////////
-a:hover{
+a:hover {
   color: white !important;
 }
-a.item.hover-black:hover, .hover-black:hover{
+
+a.item.hover-black:hover, .hover-black:hover {
   color: black !important;
 }
-.post_link:hover, .ui.lik.list a:hover, #file-box a:hover{
+
+.post_link:hover, .ui.lik.list a:hover, #file-box a:hover {
   color: $primary-color !important;
 }
+
 //////////////////////////
 ////                  ////
 ////   link           ////
 ////                  ////
 //////////////////////////
 
-a{
+a {
   color: $primary-color !important;
 }
 
-.menu a{
+.menu a {
   color: $dropdown-link-color !important;
 }
