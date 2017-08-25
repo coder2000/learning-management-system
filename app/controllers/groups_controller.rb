@@ -11,6 +11,10 @@ class GroupsController < ApplicationController
     authorize Group.new, :create?
     @group = Group.new data.merge!(user: current_user)
     if @group.save
+      @group.instructor << user
+      @group.members << user
+      current_user.instructor_of << @group
+      current_user.member_of << @group
       redirect_to group_path(@group.token), notice: "Group Created"
     else
       redirect_to pages_index_path, notice: "Something went wrong"
