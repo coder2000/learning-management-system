@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def user_has_attachments?
-    current_user.video_repositories.present? || current_user.files.present?
+    current_user.video_repositories.present?
   end
 
   def avatar_url(url = nil)
@@ -80,5 +80,9 @@ module ApplicationHelper
                                    html_attributes)
     end
     body
+  end
+  
+  def edited?(content)
+    "edited" if content.created_at != content.updated_at
   end
 end

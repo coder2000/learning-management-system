@@ -11,12 +11,13 @@
                 =semantic_icon "angle down"
                 .menu
                   =link_to "Edit", "javascript:;", class: "item"
-                  =link_to "Remove", "javascript:;", class: "item"
+                  = remove_post_link( group_post_path(post.group.id.to_s, post.id.to_s ), post.id.to_s )
           %span.time_ago= ctime_ago_in_words(post.created_at)
     .description
       %p
         =truncate_content post.content
-    .ui.divider
-    = render("/shared/video_player", video: post.video, player_id: "video-#{ post.id }") if post.video.present?
+    - if post.video.present?
+      .ui.divider
+      = render("/shared/video_player", video: post.video, player_id: "video-#{ post.id }")
     .ui.divider
     =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))

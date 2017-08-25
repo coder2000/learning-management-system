@@ -1,4 +1,12 @@
 -if logged_in?
+  .ui.mini.modal.confirm-modal
+    .header
+    .content
+      %p#confirm-modal-content
+    .actions
+      .ui.negative.button No
+      .ui.positive.button Yes
+
   -if current_user.admin?
     .ui.small.modal#create-group-modal
       .ui.top.attached.label

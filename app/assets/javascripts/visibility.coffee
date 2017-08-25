@@ -8,11 +8,11 @@ $(document).on('turbolinks:load', ->
     $(".pagination").hide(0)
     $("#endless-container").visibility(
       once: false
-      observeChanges: true
+      continuous: true
       transition: "fade in"
-      onBottomVisible: ->
+      onPassing: (e)->
         url = $(".pagination span.next a").attr('href')
-        if url
+        if url and ( e.percentagePassed >= .50)
           $('.pagination').html('')
           $.getScript(url)
     )

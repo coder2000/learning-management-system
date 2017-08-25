@@ -1,9 +1,13 @@
 class Group
+
+  attr_accessor :user
+
   include Mongoid::Document
   include Mongoid::Token
 
   field :title, type: String
   field :description, type: String
+
 
   validates :title, presence: true
 
@@ -18,4 +22,5 @@ class Group
     user.member_of.delete(self)
     members.delete(user)
   end
+
 end
