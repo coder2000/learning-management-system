@@ -1,3 +1,4 @@
+# Repository policy
 class RepositoryPolicy < ApplicationPolicy
 
   def index?
@@ -8,4 +9,3 @@ class RepositoryPolicy < ApplicationPolicy
     @record.owner?(@user.id)
   end
 end
-

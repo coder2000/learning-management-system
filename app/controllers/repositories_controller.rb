@@ -10,8 +10,8 @@ class RepositoriesController < ApplicationController
 
   def create
     authorize current_user.repositories.new, :create?
-    @repository = current_user.repositories.new(data)
-    if @repository.save
+    repository = current_user.repositories.new(data)
+    if repository.save!
       redirect_to repositories_path(repository.id), notice: 'Repository Created'
     else
       redirect_to root_url
@@ -26,7 +26,7 @@ class RepositoriesController < ApplicationController
   private
 
   def repository
-    @repository = Repository.find params[:id]
+    @repository = Repository.find(params[:id])
   end
 
   def data

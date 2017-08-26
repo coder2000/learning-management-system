@@ -1,25 +1,26 @@
-=form_for @user, class: "user-form-control" do |r|
+=form_for @user, class: 'user-form-control' do |r|
+  =r.hidden_field :role, value: :role == 'student' ? 1 : 2
   .two.fields
     .field
-      =r.text_field :email, placeholder: "E-mail", readonly: (params[:action] == 'edit' ? true : false)
+      =r.text_field :email, placeholder: 'E-mail', readonly: (params[:action] == 'edit' ? true : false)
     .field
-      =r.select :gender, options_for_select([["Mr.", "male"], ["Ms.", "female"], ["Mrs.", "female"]])
+      =r.select :gender, options_for_select([%w(Mr. male), %w(Ms. female), %w(Mrs. female)])
   .three.fields
     .field
-      =r.text_field :fname, placeholder: "First Name"
+      =r.text_field :first_name, placeholder: 'First Name'
     .field
-      =r.text_field :mname, placeholder: "Middle Name"
+      =r.text_field :middle_name, placeholder: 'Middle Name'
     .field
-      =r.text_field :lname, placeholder: "Last Name"
+      =r.text_field :last_name, placeholder: 'Last Name'
   -if !logged_in?
     .two.fields
       .field
-        =r.password_field :password, placeholder: "Password"
+        =r.password_field :password, placeholder: 'Password'
       .field
-        =r.password_field :password_confirmation, placeholder: "Password Confirmation"
+        =r.password_field :password_confirmation, placeholder: 'Password Confirmation'
     .two.fields
       .field
-        =r.submit "Register", class: "ui button"
-        =link_to "Back", root_url, class: "ui button"
+        =r.submit 'Register', class: 'ui button'
+        =link_to 'Back', root_url, class: 'ui button'
   -else
-    =r.submit "Update", class: "ui button"
+    =r.submit 'Update', class: 'ui button'

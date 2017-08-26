@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    if current_user.student?
-      redirect_to '/404'
-    end
+    redirect_to '/404' if current_user.student?
   end
 end

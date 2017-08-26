@@ -3,27 +3,27 @@
     .row
       .four.wide.column
         %h4.brand-name
-          = link_to "Brand Name", root_url, class: 'header-link'
+          = link_to 'Brand Name', root_url, class: 'header-link'
       -if logged_in?
         .right.floated.four.wide.column
           .ui.text-right
             .ui.horizontal.list.inverted
-              =link_to "Home", pages_index_path, class: "item header-link"
-              =link_to "#{current_user.fullname}", edit_user_path(current_user.id), class: "item header-link"
+              =link_to 'Home', pages_index_path, class: 'item header-link'
+              =link_to "#{current_user.full_name}", edit_user_path(current_user.id), class: 'item header-link'
             .ui.icon.top.right.pointing.dropdown#main_setting
               =semantic_icon 'inverted large setting'
               .menu
                 -if current_user.admin?
-                  = link_to repositories_path, class: "item hover-black" do
+                  = link_to repositories_path, class: 'item hover-black' do
                     =semantic_icon 'folder'
                     My Repositories
-                  =link_to "javascript:;", class: "item hover-black", id: "create-repository" do
+                  =link_to 'javascript:;', class: 'item hover-black', id: 'create-repository' do
                     = semantic_icon 'add square'
                     Create Repository
-                  =link_to "javascript:;", class: "item hover-black", id: "create-group" do
-                    =semantic_icon "users"
+                  =link_to 'javascript:;', class: 'item hover-black', id: 'create-group' do
+                    =semantic_icon 'users'
                     Create Group
                   .divider
-                =link_to logout_path, method: :delete, class: "item hover-black" do
-                  =semantic_icon "power"
+                =link_to logout_path, method: :delete, class: 'item hover-black' do
+                  =semantic_icon 'power'
                   Logout

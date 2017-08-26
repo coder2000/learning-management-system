@@ -1,17 +1,15 @@
 # Posts controller
 class PostsController < ApplicationController
-  before_action  :group, only: %i[show, create]
-  before_action :post, only: %i[show, destroy]
-  
+  before_action :group, only: %i[show create]
+  before_action :post, only: %i[show destroy]
+
   def show
-    if @post.nil?
-      redirect_to '/404'
-    end
+    redirect_to '/404' if @post.nil?
   end
-  
+
   def create
-    @post = @group.posts.create(data.merge! user: current_user)
-    if params.has_key?(:attachments)
+    @post = @group.posts.create(data.merge!(user: current_user))
+    if params.key?(:attachments)
       params[:attachments].each do |file|
         if file.present?
           doc = Record.find file
@@ -27,9 +25,9 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      render json: { message: "Post deleted" }, status: 200
+      render json: { message: 'Post deleted' }, status: 200
     else
-      render json: { message: "Something went wrong" }, status: 500 
+      render json: { message: 'Something went wrong' }, status: 500
     end
   end
 

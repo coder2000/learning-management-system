@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if current_user == User.find(params[:id])
       if current_user.update(update_data)
         redirect_to edit_user_path(current_user.id),
-                    notice: 'Updated successfuly'
+                    notice: 'Updated successfully'
       else
         redirect_to edit_user_path(current_user.id),
                     notice: 'Something went wrong'
@@ -38,17 +38,17 @@ class UsersController < ApplicationController
   private
 
   def update_data
-    params.require(:user).permit(:fname,
-                                 :mname,
-                                 :lname,
+    params.require(:user).permit(:first_name,
+                                 :middle_name,
+                                 :last_name,
                                  :gender)
   end
 
   def data
     params.require(:user).permit(:email,
-                                 :fname,
-                                 :mname,
-                                 :lname,
+                                 :first_name,
+                                 :middle_name,
+                                 :last_name,
                                  :password,
                                  :password_confirmation,
                                  :role,

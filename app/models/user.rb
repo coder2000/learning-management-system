@@ -1,3 +1,4 @@
+# User model
 class User
   include Mongoid::Document
 
@@ -5,24 +6,29 @@ class User
   authenticates_with_sorcery!
   ALLOWED_ROLES = [1, 2].freeze
 
-  field :fname, type: String
-  field :mname, type: String
-  field :lname, type: String
+  field :first_name, type: String
+  field :middle_name, type: String
+  field :last_name, type: String
   field :gender, type: String, default: 'male'
   field :role, type: Integer, default: 1
 
   validates :email, presence: true, uniqueness: true
-  validates :fname, presence: true
+  validates :first_name, presence: true
   validates :password, on: :create, presence: true
   validates :password_confirmation, on: :create, presence: true
   validates :password, confirmation: true, on: :create, presence: true
   # validate :role_allowed
 
-  def fullname
-    lname.present? ? "#{fname.titleize} #{lname.titleize}" : fname.titleize
+  def full_name
+    if last_name.present?
+      "#{first_name.titleize} #{last_name.titleize}"
+    else
+      first_name.titleize
+    end
   end
 
-  has_and_belongs_to_many :instructor_of, inverse_of: :instructor, class_name: 'Group'
+  has_and_belongs_to_many :instructor_of, inverse_of: :instructor,
+                                          class_name: 'Group'
   has_and_belongs_to_many :member_of, inverse_of: :member, class_name: 'Group'
   has_many :requests
   has_many :repositories
