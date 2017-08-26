@@ -10,12 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
- *= require normalize
- *= require posts
- *= require videojs/video-js.min
- *= require custom
  */
+@import 'normalize';
+@import 'posts';
+@import 'video-js';
+@import 'custom';
 @import "semantic-ui";
 @import 'variables';
 

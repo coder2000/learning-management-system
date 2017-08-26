@@ -288,6 +288,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    videojs_rails (4.12.15)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -336,6 +337,7 @@ DEPENDENCIES
   spring
   turbolinks
   uglifier
+  videojs_rails
   web-console
 
 BUNDLED WITH

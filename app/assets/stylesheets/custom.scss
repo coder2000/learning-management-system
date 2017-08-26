@@ -108,7 +108,7 @@ body {
 //////////////////////////
 
 .background-image {
-  background: url("/background.jpg") top left no-repeat;
+  background: url(asset-path('background')) top left no-repeat;
   background-size: cover;
   height: 500px;
   margin-bottom: 10px;

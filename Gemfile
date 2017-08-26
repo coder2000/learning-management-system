@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.3'
+
 gem 'puma'
 
 # view
@@ -13,6 +14,7 @@ gem 'sass-rails'
 gem 'semantic-ui-sass'
 gem 'turbolinks'
 gem 'uglifier'
+gem 'videojs_rails'
 
 # gem 'omniauth-google-oauth2'
 # gem 'yt'

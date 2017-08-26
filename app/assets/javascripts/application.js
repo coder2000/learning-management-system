@@ -15,7 +15,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require videojs/video.min
+//= require video
 //= require semantic-ui
 //= require checkbox
 //= require form
