@@ -2,6 +2,7 @@
 class PostsController < ApplicationController
   before_action :group, only: %i[show create]
   before_action :post, only: %i[show destroy]
+
   def show
     redirect_to '/404' if @post.nil?
   end

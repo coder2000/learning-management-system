@@ -20,9 +20,7 @@ class RecordsController < ApplicationController
   end
 
   def show
-    if @record.nil?
-      redirect_to '/404'
-    end
+    redirect_to '/404' if @record.nil?
   end
 
   private

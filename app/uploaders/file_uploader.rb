@@ -13,7 +13,9 @@ class FileUploader < CarrierWave::Uploader::Base
   # storage :fog
   #
   version :thumb, if: :video? do
-    process thumbnail: [{ format: 'png', quality: 9, size: 598, logger: Rails.logger }]
+    process thumbnail: [{ format: 'png', quality: 9, size: 598,
+                          logger: Rails.logger }]
+
     def full_filename(for_file)
       png_name for_file, version_name
     end
