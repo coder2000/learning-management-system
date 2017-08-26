@@ -4,16 +4,16 @@ RSpec.describe User, type: :model do
   it { should be_mongoid_document }
 
   describe 'fields' do
-    it { is_expected.to have_field(:fname).of_type(String) }
-    it { is_expected.to have_field(:mname).of_type(String) }
-    it { is_expected.to have_field(:lname).of_type(String) }
+    it { is_expected.to have_field(:first_name).of_type(String) }
+    it { is_expected.to have_field(:middle_name).of_type(String) }
+    it { is_expected.to have_field(:last_name).of_type(String) }
     it { is_expected.to have_field(:gender).of_type(String) }
     it { is_expected.to have_field(:role).of_type(Integer) }
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_presence_of(:fname) }
+    it { is_expected.to validate_presence_of(:first_name) }
     it { is_expected.to validate_presence_of(:password).on(:create) }
     it { is_expected.to validate_presence_of(:password_confirmation).on(:create) }
     it { is_expected.to validate_confirmation_of(:password).on(:create) }
@@ -32,16 +32,16 @@ RSpec.describe User, type: :model do
   describe '#fullname' do
     let(:user) { FactoryGirl.create(:student) }
 
-    context 'when user have a lastname' do
-      it 'should return the fullname of the user' do
-        expect(user.fullname).to eq("#{user.fname.titleize} #{user.lname.titleize}")
+    context 'when user have a last name' do
+      it 'should return the full name of the user' do
+        expect(user.full_name).to eq("#{user.first_name.titleize} #{user.last_name.titleize}")
       end
     end
 
-    context "when user don't have a lastname" do
-      it 'should return the fullname of the user' do
-        user.update!(lname: nil)
-        expect(user.fullname).to eq(user.fname.titleize.to_s)
+    context "when user don't have a last name" do
+      it 'should return the full name of the user' do
+        user.update!(last_name: nil)
+        expect(user.full_name).to eq(user.first_name.titleize.to_s)
       end
     end
   end
