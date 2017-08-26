@@ -1,4 +1,4 @@
-# User model
+# User Model
 class User
   include Mongoid::Document
 

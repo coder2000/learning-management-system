@@ -1,3 +1,4 @@
+# Repository Model
 class Repository
   include Mongoid::Document
 
