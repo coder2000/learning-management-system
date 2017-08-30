@@ -1,29 +1,19 @@
 !!!
 %html
   %head
-    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type' }/
     %title Learning Management System
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
   %body
-    -if flash[:notice].present?
-      .ui.flash#notice
-        =flash[:notice]
-    =render 'header'
-    .ui.grid.container#main-container
+    = render 'application/header'
+    .container.mt-3
       .row
-        -if !logged_in?
-          .sixteen.wide.column
-            = yield
-        -else
-          .three.wide.column
-            =render 'left_sidebar'
-          .thirteen.wide.column
-            .ui.grid
-              .row
-                .eleven.wide.column
-                  = yield
-                .five.wide.column
-                  = render_right_sidebar
-    =render 'footer'
+        .col-md-3
+          = render 'application/left_sidebar'
+        .col-md-6
+          = yield
+        .col-md-3
+          = render 'application/right_sidebar'
+    = render 'application/footer'

@@ -11,76 +11,8 @@
  * file per style scope.
  *
  */
-@import 'normalize';
-@import 'posts';
+
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'video-js';
-@import 'custom';
-@import "semantic-ui";
-@import 'variables';
-
-body {
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 5px;
-}
-
-.ui.inverted.button {
-  background-color: transparent !important;
-  box-shadow: 0 0 0 2px #008947 inset !important;
-  color: $primary-color !important;
-}
-
-.ui.inverted.button:hover {
-  background-color: $primary-color !important;
-  box-shadow: 0 0 0 2px #008947 inset !important;
-  color: white !important;
-}
-
-.ui.flash {
-  background-color: $faded-primary-color;
-  color: white;
-  top: 55px;
-  right: 35px;
-  font-size: 13px;
-  padding: 20px 10px 20px 10px;
-  position: fixed;
-  height: auto;
-  width: 20%;
-  text-align: justify;
-  z-index: 999;
-}
-.ui.primary-color.label{
-  background-color: $primary-color !important;
-}
-
-//////////////////////////
-////                  ////
-////   link hovers    ////
-////                  ////
-//////////////////////////
-a:hover {
-  color: white !important;
-}
-
-a.item.hover-black:hover, .hover-black:hover {
-  color: black !important;
-}
-
-.post_link:hover, .ui.lik.list a:hover, #file-box a:hover {
-  color: $primary-color !important;
-}
-
-//////////////////////////
-////                  ////
-////   link           ////
-////                  ////
-//////////////////////////
-
-a {
-  color: $primary-color !important;
-}
-
-.menu a {
-  color: $dropdown-link-color !important;
-}

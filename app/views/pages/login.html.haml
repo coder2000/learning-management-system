@@ -1,22 +1,23 @@
-#login-container
-  %h2.ui.center.aligned.header#login-label
-    Login
-  =form_tag login_path, method: :post, class: 'ui form', id: 'login-form-control' do
-    .field.required.login-field
-      =text_field_tag :email, nil, placeholder: 'E-mail', autofocus: true
-    .field.required.login-field
-      =password_field_tag :password, nil, placeholder: 'Password'
-    .two.fields
-      .field
-        .ui.checkbox
-          =check_box :remember, nil
-          %label 
-            Remember Me
-      .field
-        =link_to 'Forgot Password', 'javascript:;', class: 'link'
-    .two.fields
-      .field
-        =submit_tag 'Login', class: 'ui button large login-buttons'
+.row
+  = form_tag login_path, method: :post, class: 'col s6 offset-6' do
+    .row
+      .col.s6.input-field
+        =text_field_tag :email, nil, placeholder: 'E-mail', autofocus: true
+    .row
+      .col.s6.input-field
+        =password_field_tag :password, nil, placeholder: 'Password'
+    .row
+      .col.s4
+        =check_box :remember, nil, class: 'filled-in'
+        %label{ for: 'remember_' }
+          Remember Me
+      .col.s4
+        = link_to 'Forgot Password', 'javascript:;'
+    .row
+      .col.s4
+        %button{ class: 'btn waves-effect waves-light', type: 'submit' }
+          Login
+          %i.material-icons send
       .field
         .ui.large.standard.option.button.login-buttons#sign-up-button
           Sign Up

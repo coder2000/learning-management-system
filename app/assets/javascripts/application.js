@@ -15,8 +15,9 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require popper
+//= require bootstrap
 //= require video
-//= require semantic-ui
 //= require checkbox
 //= require form
 //= require modal
@@ -28,6 +29,8 @@
 //= require visibility
 
 $(document).on('turbolinks:load', function () {
+    $('.dropdown-button').dropdown({hover: false});
+
     if ($("#new_post").length > 0) {
         $("#new_post").form()
     }

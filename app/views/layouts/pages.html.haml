@@ -1,18 +1,14 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type' }/
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }/
     %title Learning Management System
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
   %body
-    -if flash[:notice].present?
-      .ui.flash#notice
-        =flash[:notice]
-    =render 'application/header'
-    .background-image
-      .ui.grid.container#main-container
-        .row
-          .sixteen.wide.column
-            = yield
+    = render 'application/header'
+    = render 'shared/flash_messages'
+    .container
+      = yield
