@@ -1,7 +1,4 @@
-=form_for group do |g|
-  .field
-    =g.text_field :title, placeholder: "Group Title"
-  .field
-    =g.text_area :description, placeholder: "Group Description"
-  .field
-    =g.submit "Save", class: "ui button"
+.form-group
+  = f.text_field :title, placeholder: 'Group Title', class: 'form-control'
+.form-group
+  = f.text_area :description, placeholder: 'Group Description', class: 'form-control'

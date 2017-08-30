@@ -1,0 +1,12 @@
+#groupModal.modal
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %h5.modal-title Create Group
+        %button{ class: 'close', aria: { label: 'Close' }, data: { dismiss: 'modal' } }
+          = icon('close')
+      = form_for Group.new do |f|
+        .modal-body
+          = render 'groups/form', f: f
+        .modal-footer
+          = f.submit 'Create', class: 'btn btn-primary'
