@@ -1,30 +1,40 @@
-.row
-  = form_tag login_path, method: :post, class: 'col s6 offset-6' do
-    .row
-      .col.s6.input-field
-        =text_field_tag :email, nil, placeholder: 'E-mail', autofocus: true
-    .row
-      .col.s6.input-field
-        =password_field_tag :password, nil, placeholder: 'Password'
-    .row
-      .col.s4
-        =check_box :remember, nil, class: 'filled-in'
-        %label{ for: 'remember_' }
-          Remember Me
-      .col.s4
-        = link_to 'Forgot Password', 'javascript:;'
-    .row
-      .col.s4
-        %button{ class: 'btn waves-effect waves-light', type: 'submit' }
-          Login
-          %i.material-icons send
-      .field
-        .ui.large.standard.option.button.login-buttons#sign-up-button
+.row.mt-4
+  .col-md-6.mx-auto
+    .card
+      .card-header
+        %h2 Login
+      .card-body
+        = form_tag login_path, method: :post do
+          .form-group
+            = text_field_tag :email, nil, class: 'form-control', placeholder: 'E-mail', autofocus: true
+          .form-group
+            = password_field_tag :password, nil, class: 'form-control', placeholder: 'Password'
+          .form-check
+            %label{ for: 'remember_', class: 'form-check-label' }
+              = check_box :remember, nil, class: 'form-check-input'
+              Remember Me
+
+          %button{ class: 'btn btn-primary', type: 'submit' }
+            Login
+            = icon('send')
+
+      .card-footer
+        = link_to '#', class: 'btn btn-outline-primary' do
+          = icon('question')
+          Forgot Password
+
+        %button{ class: 'btn btn-success float-right', data: { target: '#signUpModal', toggle: 'modal' }, type: 'button' }
+          = icon('user-circle')
           Sign Up
-.ui.small.option.modal#sign-up-modal
-  .ui.top.attached.label
-    Sign up as
-  .ui.buttons#role-choices
-    =link_to 'Student', new_user_path('student'), class: 'ui button role-choice'
-    .or
-    =link_to 'Instructor', new_user_path('instructor'), class: 'ui button role-choice'
+
+.modal#signUpModal
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %h5{ class: 'modal-title' } Sign up as
+        %button{ class: 'close', aria: { label: 'Close' }, data: { dismiss: 'modal' } }
+          = icon('close')
+      .modal-body
+        .btn-group.mx-auto{ role: 'group' }
+          = link_to 'Student', new_user_path('student'), class: 'btn btn-warning'
+          = link_to 'Instructor', new_user_path('instructor'), class: 'btn btn-info'
