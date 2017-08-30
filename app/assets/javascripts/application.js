@@ -18,15 +18,7 @@
 //= require popper
 //= require bootstrap
 //= require video
-//= require checkbox
-//= require form
-//= require modal
-//= require dropdown
-//= require dimmer
-//= require message
-//= require tab
 //= require video_player
-//= require visibility
 
 $(document).on('turbolinks:load', function () {
     $('.dropdown-button').dropdown({hover: false});
