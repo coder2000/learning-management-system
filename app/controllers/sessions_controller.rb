@@ -6,14 +6,14 @@ class SessionsController < ApplicationController
   def authenticate
     user = login(params[:email], params[:password])
     if user
-      redirect_back_or_to(pages_index_path, notice: 'Logged in successful')
+      redirect_back_or_to(pages_index_path, success: 'Logged in successfully')
     else
-      redirect_to root_url, notice: 'Unknown password/email'
+      redirect_to root_url, flash: { error: 'Unknown password/email' }
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, notice: 'Logged out successfully'
+    redirect_to root_path, flash: { success: 'Logged out successfully' }
   end
 end
