@@ -1,7 +1,9 @@
-.overlay#sub_menu
-  .ui.menu
-    =link_to pages_index_path, class: ((params[:controller] == 'pages' and params[:action] == 'index') ? "item active hover-black" : "item hover-black" )do
+%ul.nav.justify-content-center
+  %li.nav-item
+    =link_to pages_index_path, class: 'nav-link' do
+      = icon('home')
       Home
-    =link_to groups_path, class: ((params[:controller] == 'groups' and params[:action] == 'index') ? "item active hover-black" : "item hover-black" )do
+  %li.nav-item
+    =link_to groups_path, class: 'nav-link' do
+      = icon('group')
       Groups
-

@@ -1,17 +1,22 @@
-.ui.segment
-  %h3.ui.header
-    =@repository.title.titleize
-  .ui.error.message#video-warning
-    =semantic_icon 'close'
-    .header
+.card
+  .card-header
+    %h3= @repository.title.titleize
+  .card-body
+    .alert.alert-warning.alert-dismissable.show.fade{ role: 'alert' }
+      %button{ type: 'button', class: 'close', data: { dismiss: 'alert' }, aria: { label: 'Close' } }
+        = icon('close')
       MP4 and OGG are the only available video files type that can be uploaded
-  .ui.form
+
     =form_for [@repository, @record], remote:true, html: { multipart: true } do |v|
-      =v.file_field :record_file, data: { multiple_caption: "{count} files selected" }, class: 'input-field', multiple: true
-      %label#video_button{for: 'record_record_file'}
-        %span Choose a file
-      =v.submit "Upload", class: "ui button"
-  - if @repository.records.present?
-    .ui.divided.list
-      -@repository.records.all.each do |record|
-        = render 'records/record', record: record
+      .form-row
+        .col
+          %label.custom-file
+            = v.file_field :record_file, class: 'custom-file-input', multiple: true
+            %span.custom-file-control
+        .col
+          = v.submit 'Upload', class: 'btn btn-primary'
+
+    - if @repository.records.present?
+      .ui.divided.list
+        -@repository.records.all.each do |record|
+          = render 'records/record', record: record
