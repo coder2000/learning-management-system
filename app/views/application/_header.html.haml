@@ -1,5 +1,6 @@
 %nav.navbar.navbar-light.bg-light.navbar-expand-md
-  %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#menu'}, aria: { controls: 'menu', expanded: 'false', label: 'Toggle navigation' } }
+  %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#menu' },
+   aria: { controls: 'menu', expanded: 'false', label: 'Toggle navigation' } }
     %span.navbar-toggler-icon
   = link_to 'Brand Name', root_url, class: 'navbar-brand'
   -if logged_in?

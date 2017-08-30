@@ -1,5 +1,6 @@
 # Users controller
 class UsersController < ApplicationController
+  layout 'pages', only: %i[new]
 
   before_action :check_if_logged_in, only: %i[new create]
   skip_before_action :require_login, only: %i[new create]
