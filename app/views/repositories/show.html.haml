@@ -2,9 +2,12 @@
   .card-header
     %h3= @repository.title.titleize
   .card-body
-    .alert.alert-warning.alert-dismissable.show.fade{ role: 'alert' }
+    .alert.alert-info.alert-dismissable.show.fade{ role: 'alert' }
       %button{ type: 'button', class: 'close', data: { dismiss: 'alert' }, aria: { label: 'Close' } }
         = icon('close')
+      %span.fa-stack.fa-lg
+        = icon('film', class: 'fa-stack-1x')
+        = icon('check', class: 'fa-stack-2x text-success')
       MP4 and OGG are the only available video files type that can be uploaded
 
     =form_for [@repository, @record], remote:true, html: { multipart: true } do |v|

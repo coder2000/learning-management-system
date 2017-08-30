@@ -1,23 +1,23 @@
-=r.hidden_field :role, value: :role == 'student' ? 1 : 2
+= r.hidden_field :role, value: :role == 'student' ? 1 : 2
 .form-group
-  =r.text_field :email, placeholder: 'E-mail', disabled: (params[:action] == 'edit' ? true : false), class: 'form-control'
+  = r.text_field :email, placeholder: 'E-mail', disabled: (params[:action] == 'edit' ? true : false), class: 'form-control'
 .form-group
   .input-group
     .input-group-addon
-      =r.select :gender, options_for_select([%w(Mr. male), %w(Ms. female), %w(Mrs. female)]), {}, { class: 'custom-select' }
-    =r.text_field :first_name, placeholder: 'First Name', class: 'form-control'
+      = r.select :gender, options_for_select([%w(Mr. male), %w(Ms. female), %w(Mrs. female)]), {}, { class: 'custom-select' }
+    = r.text_field :first_name, placeholder: 'First Name', class: 'form-control'
 .form-row
   .col
     .form-group
-      =r.text_field :middle_name, placeholder: 'Middle Name', class: 'form-control'
+      = r.text_field :middle_name, placeholder: 'Middle Name', class: 'form-control'
   .col
     .form-group
-      =r.text_field :last_name, placeholder: 'Last Name', class: 'form-control'
+      = r.text_field :last_name, placeholder: 'Last Name', class: 'form-control'
 -if !logged_in?
   .form-row
     .col
       .form-group
-        =r.password_field :password, placeholder: 'Password', class: 'form-control'
+        = r.password_field :password, placeholder: 'Password', class: 'form-control'
     .col
       .form-group
-        =r.password_field :password_confirmation, placeholder: 'Password Confirmation', class: 'form-control'
+        = r.password_field :password_confirmation, placeholder: 'Password Confirmation', class: 'form-control'

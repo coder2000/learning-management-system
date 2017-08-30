@@ -13,13 +13,5 @@
         Create Group
       .ui.form.group-form-control
         = render 'groups/form', group: Group.new
-    .ui.small.modal#create-repository-modal
-      .ui.top.attached.label
-        Create Repository
-      .ui.form.group-form-control#create-group-form-control
-        =form_for current_user.repositories.new do |g|
-          .field
-            =g.text_field :title, placeholder: "Repository Title"
-          .field
-            =g.submit "Create Repository", class: "ui button"
+    = render 'repositories/modal'
 
