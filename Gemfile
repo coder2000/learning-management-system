@@ -7,6 +7,7 @@ gem 'puma'
 # view
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'coffee-rails'
+gem 'data-confirm-modal', git: 'https://github.com/excid3/data-confirm-modal.git'
 gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'jbuilder'

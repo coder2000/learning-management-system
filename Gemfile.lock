@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/excid3/data-confirm-modal.git
+  revision: c7728b0620e8081c6b3f458ecfa9c84faf1d01cd
+  specs:
+    data-confirm-modal (1.2.0)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/mongoid-rspec/mongoid-rspec
   revision: f392d24abc6853895bd959b4916cd82a1b12f6f4
   specs:
@@ -327,6 +334,7 @@ DEPENDENCIES
   carrierwave-video
   carrierwave-video-thumbnailer
   coffee-rails
+  data-confirm-modal!
   database_cleaner
   factory_girl_rails
   faker

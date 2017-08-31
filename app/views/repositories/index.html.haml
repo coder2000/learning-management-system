@@ -1,5 +1,10 @@
-.ui.segment
-  - if @repositories.count > 0
-    .ui.divided.list
-      - @repositories.each do |r|
-        = render 'repositories/repository', repository: r
+%h2 Repositories
+
+%table.table
+  %thead
+    %tr
+      %th.w-75 Title
+      %th
+  %tbody
+    - @repositories.each do |r|
+      = render 'repositories/repository', r: r

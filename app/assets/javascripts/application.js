@@ -17,6 +17,7 @@
 //= require jquery.remotipart
 //= require popper
 //= require bootstrap
+//= require data-confirm-modal
 //= require video
 //= require video_player
 
