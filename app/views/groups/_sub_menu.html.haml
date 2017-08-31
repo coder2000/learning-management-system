@@ -18,24 +18,19 @@
           = link_to group_request_path(group.token),
                     class: "nav-link #{active?('show', 'requests')}" do
             Requests
-  .col-md-3
-    .dropdown
-      %button.btn.btn-info.dropdown-toggle#settings-menu{ data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
-        = icon('gear')
-        Options
-      .dropdown-menu{ aria: { labelledby: 'settings-menu' } }
-        = link_to edit_group_path(group), class: 'dropdown-item' do
-          = icon('edit')
-          Edit Group
-        = link_to group_path(group.token), class: 'dropdown-item text-danger',
-                  data: { confirm: "Are you sure you want to delete group #{group.title}?" },
-                  method: :delete do
-          = icon('trash')
-          Delete Group
 
--# if current_user.instructor_of?(group.token)
-  .ui.small.modal#edit-group-modal
-    .ui.top.attached.label Edit Group
-    .ui.form.group-form-control
-      = form_for Group.new do |f|
-        = render 'groups/form', group: group, f: f
+  - unless current_user.student?
+    .col-md-3
+      .dropdown
+        %button.btn.btn-info.dropdown-toggle#settings-menu{ data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
+          = icon('gear')
+          Options
+        .dropdown-menu{ aria: { labelledby: 'settings-menu' } }
+          = link_to edit_group_path(group), class: 'dropdown-item' do
+            = icon('edit')
+            Edit Group
+          = link_to group_path(group), class: 'dropdown-item text-danger',
+                    data: { confirm: "Are you sure you want to delete group #{group.title}?" },
+                    method: :delete do
+            = icon('trash')
+            Delete Group
