@@ -1,27 +1,32 @@
-.item.bordered{ id: "item-#{post.id}" }
-  .content
-    .ui.list
-      .item
-        = image_tag avatar_url(post.user.avatar.url), class: 'ui avatar image'
-        .content
-          .header
-            = link_to post.user.fullname, user_path(post.user.id),
-            class: 'post_link'
-            - if post.owner?(current_user.id)
-              .ui.inline.dropdown.post-actions
-                = semantic_icon 'angle down'
-                .menu
-                  = link_to 'Edit', 'javascript:;', class: 'item'
-                  = remove_post_link(group_post_path(post.group.id.to_s,
-                  post.id.to_s), post.id.to_s)
-          %span.time_ago= ctime_ago_in_words(post.created_at)
-    .description
-      %p
-        = truncate_content post.content
+.card{ id: "post-#{post.id}" }
+  .card-header
+    = image_tag avatar_url(post.user.avatar.url), class: 'image-thumbnail'
+    = link_to post.user.full_name, user_path(post.user.id)
+    - if post.owner?(current_user.id)
+      .dropdown.float-right
+        %button.btn.btn-info.dropdown-toggle{ id: "post-#{post.id}-menu",
+                data: { toggle: 'dropdown' },
+                aria: { haspopup: true, expanded: false } }
+          = icon('gear')
+          Options
+        .dropdown-menu{ aria: { labelledby: "post-#{post.id}-menu" } }
+          = link_to edit_group_post_path(post.group, post),
+                    class: 'dropdown-item' do
+            = icon('edit')
+            Edit Post
+          = link_to group_post_path(post.group, post), method: :delete,
+                    class: 'dropdown-item text-danger',
+                    data: { confirm: 'Are you sure you want to delete this post?' } do
+            = icon('trash')
+            Delete Post
+  .card-body
+    %p= truncate_content post.content
     - if post.video.present?
       .ui.divider
       = render('/shared/video_player', video: post.video,
-      player_id: "video-#{post.id}")
+               player_id: "video-#{post.id}")
     .ui.divider
     = extra?(post.quiz.present?, post.homework.present?,
     post.attachments.present?, group_post_path(post.group.token, post.id))
+  .card-footer
+    %span.time_ago= ctime_ago_in_words(post.created_at)

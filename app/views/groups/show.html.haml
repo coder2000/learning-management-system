@@ -1,10 +1,7 @@
 = render 'groups/sub_menu', group: @group
 #endless-container
-  = render 'groups/form_tab_menu'
-  .ui.items
+  .mt-3
     = render @posts
 = paginate @posts
 
-.ui.modal#video-modal
-  .content
-    #video-in-modal
+= render 'posts/post_tab_form'
