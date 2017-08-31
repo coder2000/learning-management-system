@@ -4,4 +4,5 @@
     = render @posts
 = paginate @posts
 
-= render 'posts/post_tab_form'
+- content_for :left_sidebar do
+  = render 'posts/post_tab_form'

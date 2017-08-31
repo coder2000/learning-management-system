@@ -1,4 +1,12 @@
-= image_tag avatar_url(current_user.avatar.url),
- class: 'image-thumbnail'
-= current_user.full_name
-= render 'shared/sidebar/my_groups'
+.row
+  .col
+    = image_tag avatar_url(current_user.avatar.url), class: 'image-thumbnail'
+    = current_user.full_name
+
+.row
+  .col
+    = render 'shared/sidebar/my_groups'
+
+.row.mt-2
+  .col
+    = yield :left_sidebar

@@ -1,22 +1,26 @@
 - if current_user.admin?
-  %ul.nav.nav-tabs.mb-2#group-tabs{ role: 'tablist' }
-    %li.nav-item
-      = link_to 'Post', '#post', data: { toggle: 'tab' },
+  .card
+    .card-header
+      New Post
+    .card-body
+      %ul.nav.nav-tabs.mb-2#group-tabs{ role: 'tablist' }
+        %li.nav-item
+          = link_to 'Post', '#post', data: { toggle: 'tab' },
                         class: 'nav-link active', role: 'tab'
-    %li.nav-item
-      = link_to 'Attachments', '#attachments', data: { toggle: 'tab' },
+        %li.nav-item
+          = link_to 'Attachments', '#attachments', data: { toggle: 'tab' },
                                class: 'nav-link', role: 'tab'
-    %li.nav-item
-      = link_to 'Quiz/Homework', '#quiz', data: { toggle: 'tab' },
+        %li.nav-item
+          = link_to 'Quiz/Homework', '#quiz', data: { toggle: 'tab' },
                                  class: 'nav-link', role: 'tab'
 
-  = form_for [@group, @group.posts.new], remote: true do |post|
-    .tab-content
-      .tab-pane.active#post{ role: 'tabpanel' }
-        .form-group
-          = post.text_area :content,
+      = form_for [@group, @group.posts.new], remote: true do |post|
+        .tab-content
+          .tab-pane.active#post{ role: 'tabpanel' }
+            .form-group
+              = post.text_area :content,
                            placeholder: 'Write a topic to be discussed',
                            class: 'form-control'
-      .tab-pane#attachments{ role: 'tabpanel' }
-        = render 'groups/repositories', post: post
-    = post.submit 'Post', class: 'btn btn-primary'
+          .tab-pane#attachments{ role: 'tabpanel' }
+            = render 'groups/repositories', post: post
+        = post.submit 'Post', class: 'btn btn-primary'

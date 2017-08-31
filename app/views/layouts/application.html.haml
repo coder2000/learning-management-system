@@ -11,13 +11,13 @@
     = csrf_meta_tags
   %body
     = render 'shared/header'
-    .container.mt-3
+    .container-fluid.mt-3
       = flash_messages
       .row
         .col-md-3
           = render 'shared/left_sidebar'
-        .col-md-6
+        .col-md-7
           = yield
-        .col-md-3
+        .col-md-2
           = render 'shared/right_sidebar'
     = render 'shared/footer'
