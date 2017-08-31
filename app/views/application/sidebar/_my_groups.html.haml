@@ -1,9 +1,9 @@
--if current_user.member_of.present?
+- if current_user.member_of.present?
   .ui.divider
   %h4#my-groups-label My Groups
   .ui.list#my-groups
     - current_user.member_of.each do |group|
-      =link_to group_path(group.token), class: 'item hover-black' do
-        = semantic_icon "users"
+      = link_to group_path(group.token), class: 'item hover-black' do
+        = semantic_icon 'users'
         .content
-          = truncate(group.title, length: 20, ommission: "...")
+          = truncate(group.title, length: 20, ommission: '...')

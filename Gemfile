@@ -67,6 +67,7 @@ end
 
 group :development do
   gem 'better_errors'
+  gem 'haml_lint'
   gem 'meta_request'
   gem 'spring'
   gem 'web-console'

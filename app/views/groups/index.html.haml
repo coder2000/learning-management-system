@@ -1,15 +1,15 @@
-=render 'application/sub_menu'
+= render 'application/sub_menu'
 .ui.segment
   - if current_user.member_of.present?
     .ui.three.column.grid
-      -current_user.member_of.each do |g|
+      - current_user.member_of.each do |g|
         .column
-          =link_to group_path(g.token) do
+          = link_to group_path(g.token) do
             .ui.fluid.card.groups-control
-              =image_tag "group_default.jpg"
+              = image_tag 'group_default.jpg'
               .content#group-title
                 .aligned.center.header
                   .ui.header.tiny#group-title-control
-                    =g.title
+                    = g.title
   - else
     You don't have a group yet.

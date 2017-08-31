@@ -1,9 +1,10 @@
-#repositoryModal.modal
+.modal#repository-modal
   .modal-dialog{ role: 'document' }
     .modal-content
       .modal-header
         %h5.modal-title Create Repository
-        %button{ class: 'close', aria: { label: 'Close' }, data: { dismiss: 'modal' } }
+        %button.close{ aria: { label: 'Close' },
+        data: { dismiss: 'modal' } }
           = icon('close')
       = form_for current_user.repositories.new do |f|
         .modal-body

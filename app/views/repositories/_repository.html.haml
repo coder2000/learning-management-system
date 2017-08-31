@@ -1,4 +1,6 @@
 %tr
   %td= link_to r.title, repository_path(r.id)
   %td
-    = link_to 'Remove', repository_path(r.id), class: 'btn btn-outline-danger float-right', method: :delete, data: { confirm: "Delete #{r.title}?" }
+    = link_to 'Remove', repository_path(r.id),
+    class: 'btn btn-outline-danger float-right',
+     method: :delete, data: { confirm: "Delete #{r.title}?" }

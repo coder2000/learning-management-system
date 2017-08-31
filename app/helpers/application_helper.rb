@@ -94,8 +94,9 @@ module ApplicationHelper
     flash.each do |msg_type, message|
       concat(content_tag(:div,
                          class: "alert alert-dismissable #{bootstrap_class_for(msg_type)} fade show", role: 'alert') do
-               concat content_tag(:button, icon('close'), class: 'close',
-                                                          data: { dismiss: 'alert' })
+               concat content_tag(:button, icon('close'),
+                                  class: 'close',
+                                  data: { dismiss: 'alert' })
                concat message
              end)
     end
@@ -109,5 +110,9 @@ module ApplicationHelper
       alert: 'alert-warning',
       notice: 'alert-info'
     }[flash_type.to_sym] || flash_type.to_s
+  end
+
+  def active?(action, controller = '')
+    params[:controller] == controller && params[:action] == action ? 'active' : ''
   end
 end

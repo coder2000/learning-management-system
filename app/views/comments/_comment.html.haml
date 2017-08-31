@@ -1,13 +1,16 @@
-.comment{ id: "comment-#{ comment.id }" }
-  = link_to "javascript:;", class: "avatar" do
-    = image_tag avatar_url(current_user.avatar.url), class: "ui circular image"
+.comment{ id: "comment-#{comment.id}" }
+  = link_to 'javascript:;', class: 'avatar' do
+    = image_tag avatar_url(current_user.avatar.url), class: 'ui circular image'
   .content
-    = link_to comment.user.fullname, "javascript:;", class: "post_link"
-    -if comment.owner?(current_user.id)
+    = link_to comment.user.full_name, 'javascript:;', class: 'post_link'
+    - if comment.owner?(current_user.id)
       .ui.inline.dropdown.post-actions
         = semantic_icon 'angle down'
         .menu
-          =link_to "Edit", edit_group_post_comment_path(params[:group_id], comment.post.id, comment.id), class: "item", remote: true
-          =link_to "Remove", group_post_comment_path(params[:group_id], comment.post.id, comment.id), data: { remote: true, method: :delete, confirm: "Are you sure?" }, class: "item"
+          = link_to 'Edit', edit_group_post_comment_path(params[:group_id],
+           comment.post.id, comment.id), class: 'item', remote: true
+          = link_to 'Remove', group_post_comment_path(params[:group_id],
+           comment.post.id, comment.id), data: { remote: true, method: :delete,
+            confirm: 'Are you sure?' }, class: 'item'
     .post-footer
       = render 'comments/content', comment: comment

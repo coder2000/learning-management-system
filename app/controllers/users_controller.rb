@@ -11,9 +11,11 @@ class UsersController < ApplicationController
 
   def create
     if User.create(data)
-      redirect_to root_url, notice: 'You have been successfully registered'
+      redirect_to root_url,
+                  flash: { success: 'You have been successfully registered' }
     else
-      redirect_to new_user_path(data[:role]), notice: 'Something went wrong'
+      redirect_to new_user_path(data[:role]),
+                  flash: { error: 'Something went wrong' }
     end
   end
 
@@ -26,10 +28,10 @@ class UsersController < ApplicationController
     if current_user == User.find(params[:id])
       if current_user.update(update_data)
         redirect_to edit_user_path(current_user.id),
-                    notice: 'Updated successfully'
+                    flash: { success: 'Updated successfully' }
       else
         redirect_to edit_user_path(current_user.id),
-                    notice: 'Something went wrong'
+                    flash: { error: 'Something went wrong' }
       end
     else
       redirect_to '/404', status: 404

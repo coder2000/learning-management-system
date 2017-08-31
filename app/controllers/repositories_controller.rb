@@ -9,10 +9,11 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-    authorize current_user.repositories.new, :create?
     repository = current_user.repositories.new(data)
+    authorize repository, :create?
     if repository.save!
-      redirect_to repositories_path(repository.id), notice: 'Repository Created'
+      redirect_to repositories_path(repository.id),
+                  flash: { success: 'Repository Created' }
     else
       redirect_to root_url
     end

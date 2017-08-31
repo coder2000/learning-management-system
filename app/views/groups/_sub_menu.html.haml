@@ -1,24 +1,29 @@
--number_of_members= @group.members.count
-.overlay#sub_menu
+- number_of_members = group.members.count
+.overlay#sub-menu
   .ui.menu
-    =link_to group_path(@group.token), class: (( params[:controller] == "groups" and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
-      =@group.title
-    =link_to group_members_path(@group.token), class: (params[:action] == 'members' ? "item active hover-black" : "item hover-black" )do
-      =number_of_members > 1 ? "Member".pluralize : "Member"
+    = link_to group_path(group.token),
+    class: "item #{active?('index', 'groups')} hover-black" do
+      = group.title
+    = link_to group_members_path(group.token),
+     class: "item hover-black #{active?('members')}" do
+      = number_of_members > 1 ? 'Member'.pluralize : 'Member'
       .ui.primary-color.circular.label
-        =number_of_members
-    -if not current_user.student?
-      =link_to group_request_path(@group.token), class: ((params[:controller] == 'requests' and params[:action] == 'show') ? "item active hover-black" : "item hover-black" )do
+        = number_of_members
+    - unless current_user.student?
+      = link_to group_request_path(group.token),
+       class: "item hover-black #{active?('show', 'requests')}" do
         Requests
       .ui.dropdown.item.hover-black.right.floated#group-settings
-        = semantic_icon "setting large"
+        = semantic_icon 'setting large'
         .menu
-          = link_to "Edit Group", 'javascript:;', class: "item", id: "edit-group"
-          = link_to "Delete Group", group_path(@group.token), class: "item", data: { method: :delete, confirm: "Are you sure to delete this group?" }
+          = link_to 'Edit Group', 'javascript:;', class: 'item',
+           id: 'edit-group'
+          = link_to 'Delete Group', group_path(group.token), class: 'item',
+           data: { method: :delete,
+            confirm: 'Are you sure to delete this group?' }
 
-- if current_user.instructor_of?(@group.token)
+- if current_user.instructor_of?(group.token)
   .ui.small.modal#edit-group-modal
-    .ui.top.attached.label
-      Edit Group
+    .ui.top.attached.label Edit Group
     .ui.form.group-form-control
-      = render 'groups/form', group: @group
+      = render 'groups/form', group: group

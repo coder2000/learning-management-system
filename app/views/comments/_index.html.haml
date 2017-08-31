@@ -1,4 +1,4 @@
 .ui.threaded.comments
-  -if post.comments.count > 0
+  - if post.comments.count > 0
     - post.comments.each do |c|
       = render 'comments/comment', comment: c

@@ -1,5 +1,6 @@
 .video-box-container{ align: 'center' }
-  %video.video-js.vjs-big-play-centered{ id: player_id, controls: :true, data: { setup: "{}", src: video.record_file.url } }
+  %video.video-js.vjs-big-play-centered{ id: player_id,
+   controls: :true, data: { setup: '{}', src: video.record_file.url } }
     %source{ src: video.record_file.url }
     %p.vjs-no-js
       Pls enable your javascript to view this video.

@@ -1,14 +1,16 @@
-
--if current_user.admin?
+- if current_user.admin?
   .ui.pointing.secondary.menu#post-form-menu
-    =link_to "Post", "javascript:;", data: { tab: "post" }, class: "item active"
-    =link_to "Attachments", "javascript:;", data: { tab: "attachment" }, class: "item"
-    =link_to "Quiz/Homework", "javascript:;", data: { tab: "quizahomework" }, class: "item"
+    = link_to 'Post', 'javascript:;', data: { tab: 'post' },
+     class: 'item active'
+    = link_to 'Attachments', 'javascript:;', data: { tab: 'attachment' },
+     class: 'item'
+    = link_to 'Quiz/Homework', 'javascript:;', data: { tab: 'quizahomework' },
+     class: 'item'
 .ui.form
-  =form_for [ @group, @group.posts.new ], remote: true do |post|
-    .ui.tab.active.segment.clearfix-segment{ data: { tab: "post" } }
+  = form_for [@group, @group.posts.new], remote: true do |post|
+    .ui.tab.active.segment.clearfix-segment{ data: { tab: 'post' } }
       .ui.field
-        =post.text_area :content, placeholder: "Write a topic to be discuss."
-      =post.submit "Post", class: "ui button right floated"
-    .ui.tab.segment.clearfix-segment{ data: { tab: "attachment" } }
+        = post.text_area :content, placeholder: 'Write a topic to be discuss.'
+      = post.submit 'Post', class: 'ui button right floated'
+    .ui.tab.segment.clearfix-segment{ data: { tab: 'attachment' } }
       = render 'repositories', post: post

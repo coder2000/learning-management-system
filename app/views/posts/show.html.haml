@@ -1,22 +1,25 @@
 .ui.card#post-show-card
   .content
     %h5.ui.header
-      =image_tag avatar_url(@post.user.avatar.url), class: "ui avatar image left floated"
-      = link_to @post.user.fullname, user_path(@post.user.id), class: "post_link"
+      = image_tag avatar_url(@post.user.avatar.url),
+      class: 'ui avatar image left floated'
+      = link_to @post.user.fullname, user_path(@post.user.id),
+      class: 'post_link'
       - if @post.owner?(current_user.id)
         .ui.inline.dropdown.post-actions
-          =semantic_icon "angle down"
+          = semantic_icon 'angle down'
           .menu
-            = link_to "Edit", "javascript:;", class: "item"
-            = link_to "Remove", "javascript:;", class: "item"
+            = link_to 'Edit', 'javascript:;', class: 'item'
+            = link_to 'Remove', 'javascript:;', class: 'item'
       %br
       .time_ago.meta= ctime_ago_in_words(@post.created_at)
     .description
       = @post.content
       .ui.divider
-      -if @post.video.present?
+      - if @post.video.present?
         .video-box-container{ align: 'center' }
-          %video.video-js.vjs-big-play-centered{ id: "video-#{ @post.id }", controls: :true, data: { setup: "{}" } }
+          %video.video-js.vjs-big-play-centered{ id: "video-#{@post.id}",
+          controls: :true, data: { setup: '{}' } }
             %source{ src: @post.video.record_file.url }
             %p.vjs-no-js
               Pls enable your javascript to view this video.

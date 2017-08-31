@@ -1,25 +1,29 @@
 %nav.navbar.navbar-light.bg-light.navbar-expand-md
-  %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#menu' },
+  %button.navbar-toggler{ type: 'button',
+   data: { toggle: 'collapse', target: '#menu' },
    aria: { controls: 'menu', expanded: 'false', label: 'Toggle navigation' } }
     %span.navbar-toggler-icon
   = link_to 'Brand Name', root_url, class: 'navbar-brand'
-  -if logged_in?
-    #menu.collapse.navbar-collapse
+  - if logged_in?
+    .collapse.navbar-collapse#menu
       %ul.navbar-nav.ml-auto
         %li.nav-item
           = link_to 'Home', pages_index_path, class: 'nav-link'
         %li.nav-item.dropdown
           = link_to current_user.full_name, edit_user_path(current_user.id),
-           class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' },
-           id: 'userDropdown', aria: { haspopup: 'true', expanded: 'false' }
+          id: 'userDropdown', class: 'nav-link dropdown-toggle',
+          data: { toggle: 'dropdown' }, aria: { haspopup: 'true',
+           expanded: 'false' }
           .dropdown-menu{ aria: { labelledby: 'userDropdown' } }
             = link_to repositories_path, class: 'dropdown-item' do
               = icon('folder')
               My Repositories
-            = link_to new_repository_path, class: 'dropdown-item', data: { toggle: 'modal', target: '#repositoryModal' } do
+            = link_to new_repository_path, class: 'dropdown-item',
+             data: { toggle: 'modal', target: '#repository-modal' } do
               = icon('folder')
               Create Repository
-            = link_to new_group_path, class: 'dropdown-item', data: { toggle: 'modal', target: '#groupModal' } do
+            = link_to new_group_path, class: 'dropdown-item',
+             data: { toggle: 'modal', target: '#group-modal' } do
               = icon('group')
               Create Group
             = link_to logout_path, method: :delete, class: 'dropdown-item' do

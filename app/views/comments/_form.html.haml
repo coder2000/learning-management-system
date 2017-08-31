@@ -1,5 +1,5 @@
-= form_for [ group, post, comment ], remote: remote do |comment|
+= form_for [group, post, comment], remote: remote do |comment|
   .ui.right.icon.fluid.input
-    = comment.text_field :content, placeholder: "Have something you want to ask?"
+    = comment.text_field :content,
+     placeholder: 'Have something you want to ask?'
     %i.comment.icon
-

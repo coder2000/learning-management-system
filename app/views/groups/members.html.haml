@@ -1,35 +1,33 @@
-=render 'groups/sub_menu'
+= render 'groups/sub_menu', group: @group
 .ui.segment
-  -if !@members.present?
+  - if !@members.present?
     .box
       .ui.icon.header
         %i.massive.users.icon
         .content
-          Your group code is: #{ params[:code] }
+          Your group code is: #{params[:code]}
         .sub.header
           Share your group code to your students to receive requests.
-  -else
+  - else
     .ui.items
-      -@members.each do |m|
-        .item{ id: "member-#{ m.id }"}
+      - @members.each do |m|
+        .item{ id: "member-#{m.id}" }
           .ui.mini.image
             = image_tag avatar_url(m.avatar.url)
           .middle.aligned.content
-            = link_to m.fullname, user_path(m.id), class: "hover-black"
+            = link_to m.full_name, user_path(m.id), class: 'hover-black'
           .middle.aligned.content
             - if current_user.admin?
               - if m.admin?
                 - unless m.instructor_of?(params[:group_id])
-                  =link_to "javascript:;" do
+                  = link_to 'javascript:;' do
                     .ui.basic.green.button.right.floated.compact
                       Make Admin
                 - else
                   - if m != current_user
-                    =link_to "javascript:;" do
+                    = link_to 'javascript:;' do
                       .ui.basic.green.button.right.floated.compact
                         Unset as Admin
             - if m != current_user && current_user.admin?
-              =remove_user_link( group_remove_member_path(params[:group_id], m.id.to_s), m.id.to_s ) do
-                .ui.basic.red.button.right.floated.compact#decline-button
-                  Remove
-
+              = remove_user_link(group_remove_member_path(params[:group_id], m.id.to_s), m.id.to_s) do
+                .ui.basic.red.button.right.floated.compact#decline-button Remove

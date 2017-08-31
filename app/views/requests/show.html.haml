@@ -1,26 +1,28 @@
-=render 'groups/sub_menu'
+= render 'groups/sub_menu'
 .ui.segment
-  -if !@requests.present?
+  - if !@requests.present?
     .box
       .ui.icon.header
         %i.massive.users.icon
         .content
-          Your group code is: #{ params[:group_id] }
+          Your group code is: #{params[:group_id]}
         .sub.header
           Share your group code to your students to receive requests.
-  -else
+  - else
     .ui.items
-      -@requests.each do |r|
+      - @requests.each do |r|
         .item
           .ui.mini.image
             = image_tag avatar_url(r.user.avatar.url)
           .middle.aligned.content
-            = link_to r.user.fullname, user_path(r.user.id)
+            = link_to r.user.full_name, user_path(r.user.id)
             %p want to join the group
           .middle.aligned.content
-            =link_to group_accept_request_path(params[:group_id], r.user_id.to_s, r.token) do
+            = link_to group_accept_request_path(params[:group_id],
+             r.user_id.to_s, r.token) do
               .ui.basic.button.right.floated.compact#accept-button
                 Accept
-            =link_to "javascript:;", data: {method: :delete, confirm: "Do you really want to decline this request?"} do
+            = link_to 'javascript:;', data: { method: :delete,
+             confirm: 'Do you really want to decline this request?' } do
               .ui.basic.red.button.right.floated.compact#decline-button
                 Decline

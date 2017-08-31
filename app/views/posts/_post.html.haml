@@ -1,23 +1,27 @@
-.item.bordered{ id: "item-#{ post.id }" }
+.item.bordered{ id: "item-#{post.id}" }
   .content
     .ui.list
       .item
-        =image_tag avatar_url(post.user.avatar.url), class: "ui avatar image"
+        = image_tag avatar_url(post.user.avatar.url), class: 'ui avatar image'
         .content
           .header
-            =link_to post.user.fullname, user_path(post.user.id), class: "post_link"
-            -if post.owner?(current_user.id)
+            = link_to post.user.fullname, user_path(post.user.id),
+            class: 'post_link'
+            - if post.owner?(current_user.id)
               .ui.inline.dropdown.post-actions
-                =semantic_icon "angle down"
+                = semantic_icon 'angle down'
                 .menu
-                  =link_to "Edit", "javascript:;", class: "item"
-                  = remove_post_link( group_post_path(post.group.id.to_s, post.id.to_s ), post.id.to_s )
+                  = link_to 'Edit', 'javascript:;', class: 'item'
+                  = remove_post_link(group_post_path(post.group.id.to_s,
+                  post.id.to_s), post.id.to_s)
           %span.time_ago= ctime_ago_in_words(post.created_at)
     .description
       %p
-        =truncate_content post.content
+        = truncate_content post.content
     - if post.video.present?
       .ui.divider
-      = render("/shared/video_player", video: post.video, player_id: "video-#{ post.id }")
+      = render('/shared/video_player', video: post.video,
+      player_id: "video-#{post.id}")
     .ui.divider
-    =has_extra(post.quiz.present?, post.homework.present?, post.attachments.present?, group_post_path(post.group.token, post.id))
+    = extra?(post.quiz.present?, post.homework.present?,
+    post.attachments.present?, group_post_path(post.group.token, post.id))

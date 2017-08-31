@@ -1,13 +1,5 @@
--if logged_in?
-  .ui.mini.modal.confirm-modal
-    .header
-    .content
-      %p#confirm-modal-content
-    .actions
-      .ui.negative.button No
-      .ui.positive.button Yes
-
-  -if current_user.admin?
+- if logged_in?
+  - if current_user.admin?
     = render 'groups/modal'
     = render 'repositories/modal'
 

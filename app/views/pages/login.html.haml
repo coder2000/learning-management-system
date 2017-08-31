@@ -6,11 +6,13 @@
       .card-body
         = form_tag login_path, method: :post do
           .form-group
-            = text_field_tag :email, nil, class: 'form-control', placeholder: 'E-mail', autofocus: true
+            = text_field_tag :email, nil, class: 'form-control',
+            placeholder: 'E-mail', autofocus: true
           .form-group
-            = password_field_tag :password, nil, class: 'form-control', placeholder: 'Password'
+            = password_field_tag :password, nil, class: 'form-control',
+            placeholder: 'Password'
           .form-check
-            %label{ for: 'remember_', class: 'form-check-label' }
+            %label.form-check-label{ for: 'remember_' }
               = check_box :remember, nil, class: 'form-check-input'
               Remember Me
 
@@ -23,18 +25,21 @@
           = icon('question')
           Forgot Password
 
-        %button{ class: 'btn btn-success float-right', data: { target: '#signUpModal', toggle: 'modal' }, type: 'button' }
+        %button{ class: 'btn btn-success float-right',
+        data: { target: '#signup-modal', toggle: 'modal' }, type: 'button' }
           = icon('user-circle')
           Sign Up
 
-.modal#signUpModal
+.modal#signup-modal
   .modal-dialog{ role: 'document' }
     .modal-content
       .modal-header
         %h5.modal-title Sign up as
-        %button{ class: 'close', aria: { label: 'Close' }, data: { dismiss: 'modal' } }
+        %button.close{ aria: { label: 'Close' }, data: { dismiss: 'modal' } }
           = icon('close')
       .modal-body
         .btn-group.w-100{ role: 'group' }
-          = link_to 'Student', new_user_path('student'), class: 'btn btn-warning'
-          = link_to 'Instructor', new_user_path('instructor'), class: 'btn btn-info'
+          = link_to 'Student', new_user_path('student'),
+          class: 'btn btn-warning'
+          = link_to 'Instructor', new_user_path('instructor'),
+          class: 'btn btn-info'

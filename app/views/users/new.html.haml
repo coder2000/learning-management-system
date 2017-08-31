@@ -4,10 +4,10 @@
       = form_for @user do |r|
         .card-header
           Sign Up as a
-          =params[:role].titleize
+          = params[:role].titleize
         .card-body
           = render 'users/form', r: r
         .card-footer
           .btn-group.float-right.mb-2{ role: 'group' }
-            =r.submit 'Register', class: 'btn btn-primary'
-            =link_to 'Back', root_url, class: 'btn btn-info'
+            = r.submit 'Register', class: 'btn btn-primary'
+            = link_to 'Back', root_url, class: 'btn btn-info'
