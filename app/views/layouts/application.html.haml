@@ -2,22 +2,22 @@
 %html{ lang: 'en' }
   %head
     %meta{ content: 'text/html; charset=UTF-8',
-    http: { equiv: 'Content-Type' } }/
+           http: { equiv: 'Content-Type' } }/
     %title Learning Management System
     = stylesheet_link_tag 'application', media: 'all',
-    data: { turbolinks_track: true }
+                                         data: { turbolinks_track: true }
     = javascript_include_tag 'application',
-    data: { turbolinks_track: true }
+                             data: { turbolinks_track: true }
     = csrf_meta_tags
   %body
-    = render 'application/header'
+    = render 'shared/header'
     .container.mt-3
       = flash_messages
       .row
         .col-md-3
-          = render 'application/left_sidebar'
+          = render 'shared/left_sidebar'
         .col-md-6
           = yield
         .col-md-3
-          = render 'application/right_sidebar'
-    = render 'application/footer'
+          = render 'shared/right_sidebar'
+    = render 'shared/footer'

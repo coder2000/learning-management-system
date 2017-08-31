@@ -1,16 +1,22 @@
 - if current_user.admin?
-  .ui.pointing.secondary.menu#post-form-menu
-    = link_to 'Post', 'javascript:;', data: { tab: 'post' },
-     class: 'item active'
-    = link_to 'Attachments', 'javascript:;', data: { tab: 'attachment' },
-     class: 'item'
-    = link_to 'Quiz/Homework', 'javascript:;', data: { tab: 'quizahomework' },
-     class: 'item'
-.ui.form
+  %ul.nav.nav-tabs.mb-2#group-tabs{ role: 'tablist' }
+    %li.nav-item
+      = link_to 'Post', '#post', data: { toggle: 'tab' },
+                        class: 'nav-link active', role: 'tab'
+    %li.nav-item
+      = link_to 'Attachments', '#attachments', data: { toggle: 'tab' },
+                               class: 'nav-link', role: 'tab'
+    %li.nav-item
+      = link_to 'Quiz/Homework', '#quiz', data: { toggle: 'tab' },
+                                 class: 'nav-link', role: 'tab'
+
   = form_for [@group, @group.posts.new], remote: true do |post|
-    .ui.tab.active.segment.clearfix-segment{ data: { tab: 'post' } }
-      .ui.field
-        = post.text_area :content, placeholder: 'Write a topic to be discuss.'
-      = post.submit 'Post', class: 'ui button right floated'
-    .ui.tab.segment.clearfix-segment{ data: { tab: 'attachment' } }
-      = render 'repositories', post: post
+    .tab-content
+      .tab-pane.active#post{ role: 'tabpanel' }
+        .form-group
+          = post.text_area :content,
+                           placeholder: 'Write a topic to be discussed',
+                           class: 'form-control'
+      .tab-pane#attachments{ role: 'tabpanel' }
+        = render 'groups/repositories', post: post
+    = post.submit 'Post', class: 'btn btn-primary'

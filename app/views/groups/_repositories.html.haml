@@ -1,19 +1,17 @@
 - if current_user.repositories.present? && current_user.admin?
-  .field
+  .form-group
     %label Repositories
     = select_tag :repositories,
      options_from_collection_for_select(current_user.repositories,
-      :id, :title), include_blank: true
-  .field.hidden-field
+      :id, :title), include_blank: true, class: 'custom-select'
+  .form-group
     %label Video
     = post.select :video, file_options(current_user.repositories, 'video'),
-     include_blank: true
-  .field#file-attachment-field
+     include_blank: true, class: 'custom-select'
+  .form-group#file-attachment-field
     %label Other attachments
     = select_tag :attachments, file_options(current_user.repositories,
-     'application'), class: 'ui fluid search selection dropdown',
-      id: 'post-attachments', multiple: true
-  = post.submit 'Post', class: 'ui button right floated'
+     'application'), id: 'post-attachments', multiple: true
 - else
   .box
     %i.folder.icon.massive

@@ -1,6 +1,6 @@
-= render 'sub_menu'
+= render 'groups/sub_menu', group: @group
 #endless-container
-  = render 'form_tab_menu'
+  = render 'groups/form_tab_menu'
   .ui.items
     = render @posts
 = paginate @posts
@@ -8,11 +8,3 @@
 .ui.modal#video-modal
   .content
     #video-in-modal
-
-
-
-
-
-
-
-

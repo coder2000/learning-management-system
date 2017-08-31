@@ -2,15 +2,15 @@
 %html{ lang: 'en' }
   %head
     %meta{ content: 'text/html; charset=UTF-8',
-    http: { equiv: 'Content-Type' } }/
+           http: { equiv: 'Content-Type' } }/
     %title Learning Management System
     = stylesheet_link_tag 'application', media: 'all',
-    data: { turbolinks_track: true }
+                                         data: { turbolinks_track: true }
     = javascript_include_tag 'application',
-    data: { turbolinks_track: true }
+                             data: { turbolinks_track: true }
     = csrf_meta_tags
   %body.background
-    = render 'application/header'
+    = render 'shared/header'
     .container.mt-3
       = flash_messages
       = yield

@@ -1,29 +1,41 @@
 - number_of_members = group.members.count
-.overlay#sub-menu
-  .ui.menu
-    = link_to group_path(group.token),
-    class: "item #{active?('index', 'groups')} hover-black" do
-      = group.title
-    = link_to group_members_path(group.token),
-     class: "item hover-black #{active?('members')}" do
-      = number_of_members > 1 ? 'Member'.pluralize : 'Member'
-      .ui.primary-color.circular.label
-        = number_of_members
-    - unless current_user.student?
-      = link_to group_request_path(group.token),
-       class: "item hover-black #{active?('show', 'requests')}" do
-        Requests
-      .ui.dropdown.item.hover-black.right.floated#group-settings
-        = semantic_icon 'setting large'
-        .menu
-          = link_to 'Edit Group', 'javascript:;', class: 'item',
-           id: 'edit-group'
-          = link_to 'Delete Group', group_path(group.token), class: 'item',
-           data: { method: :delete,
-            confirm: 'Are you sure to delete this group?' }
+.row
+  .col-md-9
+    %ul.nav
+      %li.nav-item
+        = link_to group_path(group.token),
+                  class: "nav-link #{active?('index', 'groups')}" do
+          = group.title
+      %li.nav-item
+        = link_to group_members_path(group.token),
+                  class: "nav-link #{active?('members')}" do
+          = 'Member'.pluralize(number_of_members)
+          %span.badge.badge-info
+            = number_of_members
 
-- if current_user.instructor_of?(group.token)
+      - unless current_user.student?
+        %li.nav-item
+          = link_to group_request_path(group.token),
+                    class: "nav-link #{active?('show', 'requests')}" do
+            Requests
+  .col-md-3
+    .dropdown
+      %button.btn.btn-info.dropdown-toggle#settings-menu{ data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } }
+        = icon('gear')
+        Options
+      .dropdown-menu{ aria: { labelledby: 'settings-menu' } }
+        = link_to edit_group_path(group), class: 'dropdown-item' do
+          = icon('edit')
+          Edit Group
+        = link_to group_path(group.token), class: 'dropdown-item text-danger',
+                  data: { confirm: "Are you sure you want to delete group #{group.title}?" },
+                  method: :delete do
+          = icon('trash')
+          Delete Group
+
+-# if current_user.instructor_of?(group.token)
   .ui.small.modal#edit-group-modal
     .ui.top.attached.label Edit Group
     .ui.form.group-form-control
-      = render 'groups/form', group: group
+      = form_for Group.new do |f|
+        = render 'groups/form', group: group, f: f

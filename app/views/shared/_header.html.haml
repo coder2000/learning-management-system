@@ -26,6 +26,7 @@
              data: { toggle: 'modal', target: '#group-modal' } do
               = icon('group')
               Create Group
+            .dropdown-divider  
             = link_to logout_path, method: :delete, class: 'dropdown-item' do
               = icon('power-off')
               Logout
